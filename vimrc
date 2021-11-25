@@ -40,6 +40,8 @@ hi User1 cterm=bold term=bold gui=bold
 "}}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
+" Set spell check on
+set spell spelllang=en_us
 
 " Commands
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
@@ -49,8 +51,8 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let localleader="\\"
 
 inoremap <c-d> <esc>ddi
-vnoremap jk <esc>
 inoremap jk <esc>
+vnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
@@ -65,6 +67,8 @@ vnoremap <leader>'' c''<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
+nnoremap <leader>a $
+nnoremap <leader>i ^
 
 " Force myself to stop using arrow keys and escape
 inoremap <esc> <nop>
@@ -86,11 +90,24 @@ iabbrev @@ samuelfneumann@gmail.com
 iabbrev u@@ sfneuman@ualberta.ca
 iabbrev _name Samuel Frederick Neumann
 
+" Abbreviations iff -> if, then, else
+autocmd FileType python iabbrev <buffer> iff if:<left>
+autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
+autocmd FileType go iabbrev <buffer> iff if{<cr>}<up><right>
+
+" Abbreviations ffor -> for; wwh -> while
+autocmd FileType python iabbrev <buffer> ffor for:<left>
+autocmd FileType python iabbrev <buffer> wwh while:<left>
+autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
+autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
+autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
+autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
+
 " Some general settings
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
-set mouse=a " Allow mouse usageA
+set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
 
 " Bracket matching
