@@ -73,6 +73,14 @@ noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
+" In any file, <localleader>c comments line and <localleader>x uncomments line
+autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
+autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<esc>
+autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
+autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+autocmd FileType python nnoremap <buffer> <localleader>x :s/^#//<esc>
+
 " Abbreviations
 iabbrev @@ samuelfneumann@gmail.com
 iabbrev u@@ sfneuman@ualberta.ca
