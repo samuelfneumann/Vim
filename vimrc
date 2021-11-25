@@ -1,4 +1,3 @@
-" https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 set fileencodings=utf-8
 set encoding=utf-8
 set title " Set filename in window title bar
@@ -12,19 +11,31 @@ hi clear StatusLineNC " Status line of non-current window
 hi StatusLine cterm=none gui=none term=none
 hi StatusLineNC cterm=reverse gui=reverse term=reverse
 
+let g:currentmode={
+       \ 'n'  : 'NORMAL',
+       \ 'v'  : 'VISUAL',
+       \ 'V'  : 'V·Line',
+       \ "\<C-V>" : 'V·Block',
+       \ 'i'  : 'INSERT',
+       \ 'R'  : 'R',
+       \ 'Rv' : 'V·Replace',
+       \ 'c'  : 'Command',
+       \}
+
 set statusline=
-set statusline +=%1*\ %n\ %*            " buffer number
-set statusline +=%5*%{&ff}%*            " file format
-set statusline +=%3*%y%*                " file type
-set statusline +=%4*\ %<%F%*            " full path
-set statusline +=%2*%m%*                " modified flag
-set statusline +=\ \ \                  " blank space
-set statusline +=%V                     " right align
-set statusline +=%1*%=%5l%*             " current line
-set statusline +=%2*/%L%*               " total lines
-set statusline +=%1*%4v\ %*             " virtual column number
-"set statusline +=%2*0x%04B\ %*         " character under cursor
+set statusline+=\ %n     " buffer number
+set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\ %*  " mode
+set statusline+=%{&ff}   " file format
+set statusline+=%y       " file type
+set statusline+=\ %<%F   " full path
+set statusline+=%-5m     " modified flag
+set statusline+=%V       " right align
+set statusline+=%=%5l    " current line
+set statusline+=/%L      " total lines
+set statusline+=%4v\     " virtual column number
 set laststatus=2
+
+hi User1 cterm=bold term=bold gui=bold
 
 "}}}
 
@@ -32,6 +43,10 @@ set laststatus=2
 
 " Commands
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+
+" Maps
+inoremap <c-d> <esc>ddi
+
 
 set nocompatible
 set showcmd " Show partial commands you type in last line
