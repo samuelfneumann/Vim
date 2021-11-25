@@ -45,9 +45,31 @@ hi User1 cterm=bold term=bold gui=bold
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 
 " Maps
+:let mapleader="-"
+:let localleader="\\"
+
 inoremap <c-d> <esc>ddi
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
+nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
+nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
+nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
+vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
+vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
+vnoremap <leader>"" c""<esc>P
+vnoremap <leader>'' c''<esc>P
+vnoremap <leader>() c()<esc>P
+vnoremap <leader>[] c[]<esc>P
+vnoremap <leader>{} c{}<esc>P
 
+" Abbreviations
+iabbrev @@ samuelfneumann@gmail.com
+iabbrev u@@ sfneuman@ualberta.ca
+iabbrev _name Samuel Frederick Neumann
 
+" Some general settings
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
