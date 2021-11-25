@@ -49,6 +49,8 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let localleader="\\"
 
 inoremap <c-d> <esc>ddi
+vnoremap jk <esc>
+inoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
@@ -63,6 +65,13 @@ vnoremap <leader>'' c''<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
+
+" Force myself to stop using arrow keys and escape
+inoremap <esc> <nop>
+noremap <Down> <nop>
+noremap <Up> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 
 " Abbreviations
 iabbrev @@ samuelfneumann@gmail.com
