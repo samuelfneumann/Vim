@@ -52,7 +52,6 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
-vnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
@@ -60,6 +59,8 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
 nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
+nnoremap <leader>a $
+nnoremap <leader>i ^
 vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
 vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
@@ -67,8 +68,7 @@ vnoremap <leader>'' c''<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
-nnoremap <leader>a $
-nnoremap <leader>i ^
+vnoremap jk <esc>
 
 " Force myself to stop using arrow keys and escape
 inoremap <esc> <nop>
