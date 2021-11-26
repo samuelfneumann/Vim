@@ -79,20 +79,40 @@ noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
+" Tabs and comments autocommands
 " In any file, <localleader>c comments line and <localleader>x uncomments line
-autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
-autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<esc>
-autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>
-autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>
-autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
-autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
-autocmd FileType go vnoremap <buffer> <localleader>c :s/^/\/\/<cr>
-autocmd FileType go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
-autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-autocmd FileType python nnoremap <buffer> <localleader>x :s/^#//<esc>
-autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>
-autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>
+" In any file, <leader><tab> adds a tab and <leader>x<tab> removes a tab
+fun! RemoveTab()
+	if &ft =~ 'python'
+		" PEP8 says to expand tabs, so remove spaces
+		nnoremap <leader>x<tab> :s/^    //<cr>
+		vnoremap <leader>x<tab> :s/^    //<cr>
+		return
+	endif
 
+	" Otherwise remove a regular tab character
+	nnoremap <leader>x<tab> :s/^\t//<cr>
+	vnoremap <leader>x<tab> :s/^\t//<cr>
+endfun
+	
+augroup comments_tabs
+    autocmd!
+	autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
+	autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<esc>
+	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
+	autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
+	autocmd FileType go vnoremap <buffer> <localleader>c :s/^/\/\/<cr>
+    autocmd FileType go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
+	autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+	autocmd FileType python nnoremap <buffer> <localleader>x :s/^#//<esc>
+	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>
+	autocmd BufEnter * nnoremap <leader><tab> I<tab><esc>
+	autocmd BufEnter * vnoremap <leader><tab> :s/^/<tab><cr>
+	autocmd BufEnter * call RemoveTab()
+augroup end
 
 " Abbreviations
 iabbrev @@ samuelfneumann@gmail.com
@@ -100,32 +120,40 @@ iabbrev u@@ sfneuman@ualberta.ca
 iabbrev _name Samuel Frederick Neumann
 
 " Abbreviations iff -> if, then, else
-autocmd FileType python iabbrev <buffer> iff if:<left>
-autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
-autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
-autocmd FileType go iabbrev <buffer> if use_iff
-autocmd FileType julia iabbrev <buffer> if use_iff
-autocmd FileType python iabbrev <buffer> if use_iff
+augroup if
+	autocmd!
+	autocmd FileType python iabbrev <buffer> iff if:<left>
+	autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
+	autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
+	autocmd FileType go iabbrev <buffer> if use_iff
+	autocmd FileType julia iabbrev <buffer> if use_iff
+	autocmd FileType python iabbrev <buffer> if use_iff
+augroup end
 
 " Abbreviations ffor -> for; wwh -> while
-autocmd FileType python iabbrev <buffer> ffor for:<left>
-autocmd FileType python iabbrev <buffer> wwh while:<left>
-autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
-autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
-autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
-autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
-autocmd FileType go iabbrev <buffer> for use_ffor_wwh
-autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
-autocmd FileType python iabbrev <buffer> for use_ffor_wwh
-
+augroup for
+	autocmd!
+	autocmd FileType python iabbrev <buffer> ffor for:<left>
+	autocmd FileType python iabbrev <buffer> wwh while:<left>
+	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
+	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
+	autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
+	autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
+	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
+	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
+	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
+augroup end
+	
 " Abbreviations for ff -> function
-autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
-autocmd FileType python iabbrev <buffer> ff def :<left>
-autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
-autocmd FileType julia iabbrev <buffer> function use_ff
-autocmd FileType python iabbrev <buffer> def use_ff
-autocmd FileType go iabbrev <buffer> func use_ff
-
+augroup function
+	autocmd!
+	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
+	autocmd FileType python iabbrev <buffer> ff def :<left>
+	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
+	autocmd FileType julia iabbrev <buffer> function use_ff
+	autocmd FileType python iabbrev <buffer> def use_ff
+	autocmd FileType go iabbrev <buffer> func use_ff
+augroup end
 
 " Some general settings
 set nocompatible
@@ -153,7 +181,8 @@ highlight CursorLine cterm=bold term=bold
 set cursorline
 
 " Set tabbing
-set expandtab " Use spaces instead of tabs
+set noexpandtab 
+autocmd FileType python set expandtab " PEP8 says to expand tabs
 set smarttab
 set tabstop=4 " Set tab width to 4 columns
 set softtabstop=4
