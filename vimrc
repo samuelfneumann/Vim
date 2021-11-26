@@ -24,16 +24,16 @@ let g:currentmode={
        \}
 
 set statusline=
-set statusline+=\ %n     " buffer number
+set statusline+=\ %n		" buffer number
 set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\ %*  " mode
-set statusline+=%{&ff}   " file format
-set statusline+=%y       " file type
+set statusline+=%{&ff}		" file format
+set statusline+=%y			" file type
 set statusline+=\ %<%F   " full path
-set statusline+=%-5m     " modified flag
-set statusline+=%V       " right align
-set statusline+=%=%5l    " current line
-set statusline+=/%L      " total lines
-set statusline+=%4v\     " virtual column number
+set statusline+=%-5m		" modified flag
+set statusline+=%V       	" right align
+set statusline+=%=%5l    	" current line
+set statusline+=/%L      	" total lines
+set statusline+=%4v\     	" virtual column number
 set laststatus=2
 
 hi User1 cterm=bold term=bold gui=bold
@@ -44,12 +44,11 @@ hi User1 cterm=bold term=bold gui=bold
 " Set spell check on
 set spell spelllang=en_us
 
-
-" Commands
+" Commands ----------------------------------------------------------------{{{
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+"}}}
 
-
-" Maps
+" Maps --------------------------------------------------------------------{{{
 :let mapleader="-"
 :let localleader="\\"
 
@@ -73,14 +72,15 @@ vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
 vnoremap jk <esc>
 
-" Force myself to stop using arrow keys and escape
+" Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
 noremap <Down> <nop>
 noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+"}}}
 
-" Comments autocommands
+" Comment shortcuts ----------------------------------------------------{{{
 " In any file, <localleader>c comments line and <localleader>x uncomments line
 augroup comments_tabs
     autocmd!
@@ -97,12 +97,17 @@ augroup comments_tabs
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
 augroup end
+"}}}
+"}}}
 
-" Abbreviations
+" Abbreviations -----------------------------------------------------------{{{
+" Contact abbreviations -----------{{{
 iabbrev @@ samuelfneumann@gmail.com
 iabbrev u@@ sfneuman@ualberta.ca
 iabbrev _name Samuel Frederick Neumann
+"}}}
 
+" Syntax abbreviations --------------------------------------------------{{{
 " Abbreviations iff -> if, then, else
 augroup if
 	autocmd!
@@ -152,8 +157,10 @@ augroup pythonImports
     autocmd FileType python iabbrev <buffer> ijson import json
     autocmd FileType python iabbrev <buffer> ijson import json
 augroup end
+"}}}
+"}}}
 
-" Some general settings
+" General settings -------------------------------------------------{{{
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
@@ -212,6 +219,6 @@ set wildmode=list:longest " Behave similarly to bash completion
 set textwidth=79
 set fo+=t
 set fo-=l
-
-" }}}
+"}}}
+"}}}
 
