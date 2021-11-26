@@ -79,22 +79,8 @@ noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-" Tabs and comments autocommands
+" Comments autocommands
 " In any file, <localleader>c comments line and <localleader>x uncomments line
-" In any file, <leader><tab> adds a tab and <leader>x<tab> removes a tab
-fun! RemoveTab()
-	if &ft =~ 'python'
-		" PEP8 says to expand tabs, so remove spaces
-		nnoremap <leader>x<tab> :s/^    //<cr>
-		vnoremap <leader>x<tab> :s/^    //<cr>
-		return
-	endif
-
-	" Otherwise remove a regular tab character
-	nnoremap <leader>x<tab> :s/^\t//<cr>
-	vnoremap <leader>x<tab> :s/^\t//<cr>
-endfun
-	
 augroup comments_tabs
     autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
@@ -104,14 +90,11 @@ augroup comments_tabs
 	autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
 	autocmd FileType go vnoremap <buffer> <localleader>c :s/^/\/\/<cr>
-    autocmd FileType go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
+	autocmd filetype go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-	autocmd FileType python nnoremap <buffer> <localleader>x :s/^#//<esc>
+	autocmd filetype python nnoremap <buffer> <localleader>x :s/^#//<esc>
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>
-	autocmd BufEnter * nnoremap <leader><tab> I<tab><esc>
-	autocmd BufEnter * vnoremap <leader><tab> :s/^/<tab><cr>
-	autocmd BufEnter * call RemoveTab()
 augroup end
 
 " Abbreviations
@@ -123,11 +106,15 @@ iabbrev _name Samuel Frederick Neumann
 augroup if
 	autocmd!
 	autocmd FileType python iabbrev <buffer> iff if:<left>
+	autocmd FileType python iabbrev <buffer> eliff elif:<left>
+	autocmd FileType python iabbrev <buffer> elsee else:<left>
 	autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
 	autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
 	autocmd FileType go iabbrev <buffer> if use_iff
 	autocmd FileType julia iabbrev <buffer> if use_iff
 	autocmd FileType python iabbrev <buffer> if use_iff
+	autocmd FileType python iabbrev <buffer> elif use_eliff
+	autocmd FileType python iabbrev <buffer> else use_elsee
 augroup end
 
 " Abbreviations ffor -> for; wwh -> while
@@ -148,11 +135,21 @@ augroup end
 augroup function
 	autocmd!
 	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
-	autocmd FileType python iabbrev <buffer> ff def :<left>
+	autocmd FileType python iabbrev <buffer> ff def:<left>
 	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
 	autocmd FileType julia iabbrev <buffer> function use_ff
 	autocmd FileType python iabbrev <buffer> def use_ff
 	autocmd FileType go iabbrev <buffer> func use_ff
+augroup end
+
+" Abbreviations for Python imports
+augroup pythonImports
+    autocmd FileType python iabbrev <buffer> iscipy import scipy
+    autocmd FileType python iabbrev <buffer> inumpy import numpy as np
+    autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
+    autocmd FileType python iabbrev <buffer> ipickle import pickle
+    autocmd FileType python iabbrev <buffer> ijson import json
+    autocmd FileType python iabbrev <buffer> ijson import json
 augroup end
 
 " Some general settings
