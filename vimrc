@@ -164,7 +164,7 @@ augroup end
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
-set mouse=a " Allow mouse usage
+" set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
 
 " Bracket matching
