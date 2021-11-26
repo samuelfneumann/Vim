@@ -2,6 +2,7 @@ set fileencodings=utf-8
 set encoding=utf-8
 set title " Set filename in window title bar
 
+
 " RULER/STATUSLINE --------------------------------------------------------- {{{
 set ruler
 set rulerformat=%Y\ %=(%l,%c)%V%p%%
@@ -52,7 +53,7 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let mapleader="-"
 :let localleader="\\"
 
-inoremap <c-d> <esc>ddi
+" inoremap <c-d> <esc>ddi
 inoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -84,17 +85,17 @@ noremap <right> <nop>
 augroup comments_tabs
     autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
-	autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<esc>
-	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>x:s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
-	autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
-	autocmd FileType go vnoremap <buffer> <localleader>c :s/^/\/\/<cr>
-	autocmd filetype go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
+	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!// <cr>:nohlsearch<cr>
+	autocmd filetype go vnoremap <buffer> <localleader>x :s/^\/\///<cr>:nohlsearch<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-	autocmd filetype python nnoremap <buffer> <localleader>x :s/^#//<esc>
-	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>
+	autocmd filetype python nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
 augroup end
 
 " Abbreviations
