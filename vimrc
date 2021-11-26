@@ -43,8 +43,10 @@ hi User1 cterm=bold term=bold gui=bold
 " Set spell check on
 set spell spelllang=en_us
 
+
 " Commands
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+
 
 " Maps
 :let mapleader="-"
@@ -80,10 +82,17 @@ noremap <right> <nop>
 " In any file, <localleader>c comments line and <localleader>x uncomments line
 autocmd FileType julia nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<esc>
+autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>
+autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>
 autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType go nnoremap <buffer> <localleader>x :s/^\/\///<esc>
+autocmd FileType go vnoremap <buffer> <localleader>c :s/^/\/\/<cr>
+autocmd FileType go vnoremap <buffer> <localleader>x :s/^\/\///<cr>
 autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType python nnoremap <buffer> <localleader>x :s/^#//<esc>
+autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>
+autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>
+
 
 " Abbreviations
 iabbrev @@ samuelfneumann@gmail.com
@@ -93,7 +102,10 @@ iabbrev _name Samuel Frederick Neumann
 " Abbreviations iff -> if, then, else
 autocmd FileType python iabbrev <buffer> iff if:<left>
 autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
-autocmd FileType go iabbrev <buffer> iff if{<cr>}<up><right>
+autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
+autocmd FileType go iabbrev <buffer> if use_iff
+autocmd FileType julia iabbrev <buffer> if use_iff
+autocmd FileType python iabbrev <buffer> if use_iff
 
 " Abbreviations ffor -> for; wwh -> while
 autocmd FileType python iabbrev <buffer> ffor for:<left>
@@ -102,6 +114,18 @@ autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
 autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
 autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
 autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
+autocmd FileType go iabbrev <buffer> for use_ffor_wwh
+autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
+autocmd FileType python iabbrev <buffer> for use_ffor_wwh
+
+" Abbreviations for ff -> function
+autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
+autocmd FileType python iabbrev <buffer> ff def :<left>
+autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
+autocmd FileType julia iabbrev <buffer> function use_ff
+autocmd FileType python iabbrev <buffer> def use_ff
+autocmd FileType go iabbrev <buffer> func use_ff
+
 
 " Some general settings
 set nocompatible
