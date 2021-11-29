@@ -224,7 +224,13 @@ augroup GitCommitTextWidth
 augroup end
 set fo+=t
 set fo-=l
+
+" Set the column textwidth+1 to be coloured, and colour any text past this
+" bound as red
 set colorcolumn=+1
+highlight ColorColumn ctermbg=gray guibg=gray ctermfg=red guifg=red
+highlight User2 ctermfg=red guifg=red
+call matchadd('User2', '\%>80v.\+', 100)
 "}}}
 "}}}
 
