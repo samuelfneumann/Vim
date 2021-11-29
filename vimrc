@@ -112,15 +112,16 @@ iabbrev _name Samuel Frederick Neumann
 " Abbreviations iff -> if, then, else
 augroup IfAbbrev
 	autocmd!
-	autocmd FileType python iabbrev <buffer> iff if:<left>
-	autocmd FileType python iabbrev <buffer> eliff elif:<left>
+	autocmd FileType python iabbrev <buffer> if if:<left>
+	autocmd FileType python iabbrev <buffer> elif elif:<left>
 	autocmd FileType python iabbrev <buffer> else else:<cr><left>
-	autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
-	autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
-	autocmd FileType go iabbrev <buffer> if use_iff
-	autocmd FileType julia iabbrev <buffer> if use_iff
-	autocmd FileType python iabbrev <buffer> if use_iff
-	autocmd FileType python iabbrev <buffer> elif use_eliff
+	autocmd FileType julia iabbrev <buffer> if if<cr>end<up>
+	autocmd FileType julia iabbrev <buffer> elseif else if<cr><up>
+	autocmd FileType go iabbrev <buffer> if if{<cr><cr>}<up><up><right>
+	"autocmd FileType go iabbrev <buffer> if use_iff
+	"autocmd FileType julia iabbrev <buffer> if use_iff
+	"autocmd FileType python iabbrev <buffer> if use_iff
+	"autocmd FileType python iabbrev <buffer> elif use_eliff
 augroup end
 
 " Abbreviations ffor -> for; wwh -> while
@@ -150,12 +151,70 @@ augroup end
 
 " Abbreviations for Python imports
 augroup PyImport
+	autocmd!
     autocmd FileType python iabbrev <buffer> iscipy import scipy
     autocmd FileType python iabbrev <buffer> inumpy import numpy as np
     autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
     autocmd FileType python iabbrev <buffer> ipickle import pickle
     autocmd FileType python iabbrev <buffer> ijson import json
     autocmd FileType python iabbrev <buffer> ijson import json
+augroup end
+"}}}
+
+" Abbreviations for Julia/Unicode
+augroup JuliaUnicode
+	autocmd!
+	autocmd FileType julia iabbrev _alpha α
+	autocmd FileType julia iabbrev _beta β
+	autocmd FileType julia iabbrev _gamma γ
+	autocmd FileType julia iabbrev _delta δ
+	autocmd FileType julia iabbrev _epsilon ε
+	autocmd FileType julia iabbrev _zeta ζ
+	autocmd FileType julia iabbrev _eta η
+	autocmd FileType julia iabbrev _theta θ
+	autocmd FileType julia iabbrev _iota ι
+	autocmd FileType julia iabbrev _kappa κ
+	autocmd FileType julia iabbrev _lambda λ
+	autocmd FileType julia iabbrev _mu μ
+	autocmd FileType julia iabbrev _nu ν
+	autocmd FileType julia iabbrev _psi ξ
+	autocmd FileType julia iabbrev _omicron ο
+	autocmd FileType julia iabbrev _pi π
+	autocmd FileType julia iabbrev _rho ρ
+	autocmd FileType julia iabbrev _varsigma ς
+	autocmd FileType julia iabbrev _sigma σ
+	autocmd FileType julia iabbrev _tau τ
+	autocmd FileType julia iabbrev _upsilon υ
+	autocmd FileType julia iabbrev _phi φ
+	autocmd FileType julia iabbrev _xi χ
+	autocmd FileType julia iabbrev _psi ψ
+	autocmd FileType julia iabbrev _omega ω 
+	autocmd FileType julia iabbrev _Alpha Α
+	autocmd FileType julia iabbrev _Beta Β
+	autocmd FileType julia iabbrev _Gamma Γ
+	autocmd FileType julia iabbrev _Delta Δ
+	autocmd FileType julia iabbrev _Epsilon Ε
+	autocmd FileType julia iabbrev _Zeta Ζ
+	autocmd FileType julia iabbrev _Eta Η
+	autocmd FileType julia iabbrev _Theta Θ
+	autocmd FileType julia iabbrev _Iota Ι
+	autocmd FileType julia iabbrev _Kappa Κ
+	autocmd FileType julia iabbrev _Lambda Λ
+	autocmd FileType julia iabbrev _Mu Μ
+	autocmd FileType julia iabbrev _Nu Ν
+	autocmd FileType julia iabbrev _Psi Ξ
+	autocmd FileType julia iabbrev _Omicron Ο
+	autocmd FileType julia iabbrev _Pi Π
+	autocmd FileType julia iabbrev _Rho Ρ
+	autocmd FileType julia iabbrev _Sigma Σ
+	autocmd FileType julia iabbrev _Tau Τ
+	autocmd FileType julia iabbrev _Upsilon Υ
+	autocmd FileType julia iabbrev _Phi Φ
+	autocmd FileType julia iabbrev _Xi Χ
+	autocmd FileType julia iabbrev _Psi Ψ
+	autocmd FileType julia iabbrev _Omega Ω
+	autocmd FileType julia iabbrev _in ∈ 
+	autocmd FileType julia iabbrev _notin ∉
 augroup end
 "}}}
 "}}}
