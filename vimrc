@@ -224,6 +224,7 @@ augroup GitCommitTextWidth
 augroup end
 set fo+=t
 set fo-=l
+set colorcolumn=+1
 "}}}
 "}}}
 
