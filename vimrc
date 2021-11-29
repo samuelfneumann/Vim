@@ -84,18 +84,18 @@ noremap <right> <nop>
 " In any file, <localleader>c comments line and <localleader>x uncomments line
 augroup comments_tabs
     autocmd!
-	autocmd FileType julia nnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
-	autocmd FileType julia nnoremap <buffer> <localleader>x :s/^# //<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^# //<cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>c :s!^!// <cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>x :s!^// !!<cr>:nohlsearch<cr>
-	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!// <cr>:nohlsearch<cr>
-	autocmd filetype go vnoremap <buffer> <localleader>x :s!^// !!<cr>:nohlsearch<cr>
-	autocmd FileType python nnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
-	autocmd filetype python nnoremap <buffer> <localleader>x :s/^# //<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>x :s/^# //<cr>:nohlsearch<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
+	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
+	autocmd filetype go vnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
+	autocmd FileType python nnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd filetype python nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
