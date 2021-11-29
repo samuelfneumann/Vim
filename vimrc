@@ -166,6 +166,7 @@ set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
+set undofile " Use an undofile 
 
 " Bracket matching
 set matchpairs+=<:> " Highlight these kinds of brackets as well
