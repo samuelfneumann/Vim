@@ -61,8 +61,9 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
 nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
-nnoremap <leader>a $
-nnoremap <leader>i ^
+nnoremap <leader>a g_
+nnoremap <leader>i _
+vnoremap jk <esc>
 vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
 vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
@@ -70,10 +71,10 @@ vnoremap <leader>'' c''<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
-vnoremap jk <esc>
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
+vnoremap <esc> <nop>
 noremap <Down> <nop>
 noremap <Up> <nop>
 noremap <left> <nop>
@@ -113,14 +114,13 @@ augroup IfAbbrev
 	autocmd!
 	autocmd FileType python iabbrev <buffer> iff if:<left>
 	autocmd FileType python iabbrev <buffer> eliff elif:<left>
-	autocmd FileType python iabbrev <buffer> elsee else:<left>
+	autocmd FileType python iabbrev <buffer> else else:<cr><left>
 	autocmd FileType julia iabbrev <buffer> iff if<cr>end<up>
 	autocmd FileType go iabbrev <buffer> iff if{<cr><cr>}<up><up><right>
 	autocmd FileType go iabbrev <buffer> if use_iff
 	autocmd FileType julia iabbrev <buffer> if use_iff
 	autocmd FileType python iabbrev <buffer> if use_iff
 	autocmd FileType python iabbrev <buffer> elif use_eliff
-	autocmd FileType python iabbrev <buffer> else use_elsee
 augroup end
 
 " Abbreviations ffor -> for; wwh -> while
