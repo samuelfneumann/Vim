@@ -109,7 +109,7 @@ iabbrev _name Samuel Frederick Neumann
 
 " Syntax abbreviations --------------------------------------------------{{{
 " Abbreviations iff -> if, then, else
-augroup if
+augroup IfAbbrev
 	autocmd!
 	autocmd FileType python iabbrev <buffer> iff if:<left>
 	autocmd FileType python iabbrev <buffer> eliff elif:<left>
@@ -124,7 +124,7 @@ augroup if
 augroup end
 
 " Abbreviations ffor -> for; wwh -> while
-augroup for
+augroup ForAbbrev
 	autocmd!
 	autocmd FileType python iabbrev <buffer> ffor for:<left>
 	autocmd FileType python iabbrev <buffer> wwh while:<left>
@@ -138,7 +138,7 @@ augroup for
 augroup end
 	
 " Abbreviations for ff -> function
-augroup function
+augroup FuncAbbrev
 	autocmd!
 	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
 	autocmd FileType python iabbrev <buffer> ff def:<left>
@@ -149,7 +149,7 @@ augroup function
 augroup end
 
 " Abbreviations for Python imports
-augroup pythonImports
+augroup PyImport
     autocmd FileType python iabbrev <buffer> iscipy import scipy
     autocmd FileType python iabbrev <buffer> inumpy import numpy as np
     autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
@@ -217,6 +217,11 @@ set wildmode=list:longest " Behave similarly to bash completion
 
 " Set allowable text width
 set textwidth=79
+augroup GitCommitTextWidth
+	" Git commit body should be only 72 characters long
+	autocmd!
+	autocmd FileType gitcommit setlocal textwidth=72
+augroup end
 set fo+=t
 set fo-=l
 "}}}
