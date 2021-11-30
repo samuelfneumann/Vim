@@ -1,5 +1,6 @@
-set fileencodings=utf-8
-set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
+set termencoding=utf-8 " The encoding to use to type and display
+set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
 
@@ -104,9 +105,13 @@ augroup comments_tabs
 	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
 	autocmd filetype go vnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd filetype python nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd Filetype python nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType vim nnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
+	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/^"//<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"//<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
@@ -122,110 +127,100 @@ iabbrev _name Samuel Frederick Neumann
 " Abbreviations iff -> if, then, else
 augroup IfAbbrev
 	autocmd!
-	autocmd FileType python iabbrev <buffer> if if:<left>
-	autocmd FileType python iabbrev <buffer> elif elif:<left>
-	autocmd FileType python iabbrev <buffer> else else:<cr><left>
 	autocmd FileType julia iabbrev <buffer> if if<cr>end<up>
 	autocmd FileType julia iabbrev <buffer> elseif else if<cr><up>
 	autocmd FileType go iabbrev <buffer> if if{<cr><cr>}<up><up><right>
-	"autocmd FileType go iabbrev <buffer> if use_iff
-	"autocmd FileType julia iabbrev <buffer> if use_iff
-	"autocmd FileType python iabbrev <buffer> if use_iff
-	"autocmd FileType python iabbrev <buffer> elif use_eliff
+	autocmd FileType python iabbrev <buffer> if if:<left>
+	autocmd FileType python iabbrev <buffer> elif elif:<left>
+	autocmd FileType python iabbrev <buffer> else else:<cr><left>
+	autocmd FileType vim iabbrev <buffer> if if<cr>endif<up>
 augroup end
 
 " Abbreviations ffor -> for; wwh -> while
 augroup ForAbbrev
 	autocmd!
-	autocmd FileType python iabbrev <buffer> ffor for:<left>
-	autocmd FileType python iabbrev <buffer> wwh while:<left>
+	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
 	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
 	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
 	autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
 	autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
 	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
-	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
 	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
+	autocmd FileType python iabbrev <buffer> ffor for:<left>
+	autocmd FileType python iabbrev <buffer> wwh while:<left>
+	autocmd FileType vim iabbrev <buffer> ffor for<cr>endfor<up>
+	autocmd FileType vim iabbrev <buffer> for use_ffor
 augroup end
 	
 " Abbreviations for ff -> function
 augroup FuncAbbrev
 	autocmd!
-	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<cr><up>jk?_<cr>xi
-	autocmd FileType python iabbrev <buffer> ff def:<left>
-	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
 	autocmd FileType julia iabbrev <buffer> function use_ff
-	autocmd FileType python iabbrev <buffer> def use_ff
+	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<up>jk?_<cr>xi
+	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
 	autocmd FileType go iabbrev <buffer> func use_ff
+	autocmd FileType python iabbrev <buffer> ff def:<left>
+	autocmd FileType python iabbrev <buffer> def use_ff
+	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunction<up>jk?_<cr>xi
+	autocmd FileType vim iabbrev <buffer> function use_ff
 augroup end
 
 " Abbreviations for Python imports
-augroup PyImport
-	autocmd!
-    autocmd FileType python iabbrev <buffer> iscipy import scipy
-    autocmd FileType python iabbrev <buffer> inumpy import numpy as np
-    autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
-    autocmd FileType python iabbrev <buffer> ipickle import pickle
-    autocmd FileType python iabbrev <buffer> ijson import json
-    autocmd FileType python iabbrev <buffer> ijson import json
-augroup end
-"}}}
+source pyimports.vim
+""}}}
 
-" Abbreviations for Julia/Unicode ----------------------------{{{
-augroup JuliaUnicode
-	autocmd!
-	autocmd FileType julia iabbrev _alpha α
-	autocmd FileType julia iabbrev _beta β
-	autocmd FileType julia iabbrev _gamma γ
-	autocmd FileType julia iabbrev _delta δ
-	autocmd FileType julia iabbrev _epsilon ε
-	autocmd FileType julia iabbrev _zeta ζ
-	autocmd FileType julia iabbrev _eta η
-	autocmd FileType julia iabbrev _theta θ
-	autocmd FileType julia iabbrev _iota ι
-	autocmd FileType julia iabbrev _kappa κ
-	autocmd FileType julia iabbrev _lambda λ
-	autocmd FileType julia iabbrev _mu μ
-	autocmd FileType julia iabbrev _nu ν
-	autocmd FileType julia iabbrev _psi ξ
-	autocmd FileType julia iabbrev _omicron ο
-	autocmd FileType julia iabbrev _pi π
-	autocmd FileType julia iabbrev _rho ρ
-	autocmd FileType julia iabbrev _varsigma ς
-	autocmd FileType julia iabbrev _sigma σ
-	autocmd FileType julia iabbrev _tau τ
-	autocmd FileType julia iabbrev _upsilon υ
-	autocmd FileType julia iabbrev _phi φ
-	autocmd FileType julia iabbrev _xi χ
-	autocmd FileType julia iabbrev _psi ψ
-	autocmd FileType julia iabbrev _omega ω 
-	autocmd FileType julia iabbrev _Alpha Α
-	autocmd FileType julia iabbrev _Beta Β
-	autocmd FileType julia iabbrev _Gamma Γ
-	autocmd FileType julia iabbrev _Delta Δ
-	autocmd FileType julia iabbrev _Epsilon Ε
-	autocmd FileType julia iabbrev _Zeta Ζ
-	autocmd FileType julia iabbrev _Eta Η
-	autocmd FileType julia iabbrev _Theta Θ
-	autocmd FileType julia iabbrev _Iota Ι
-	autocmd FileType julia iabbrev _Kappa Κ
-	autocmd FileType julia iabbrev _Lambda Λ
-	autocmd FileType julia iabbrev _Mu Μ
-	autocmd FileType julia iabbrev _Nu Ν
-	autocmd FileType julia iabbrev _Psi Ξ
-	autocmd FileType julia iabbrev _Omicron Ο
-	autocmd FileType julia iabbrev _Pi Π
-	autocmd FileType julia iabbrev _Rho Ρ
-	autocmd FileType julia iabbrev _Sigma Σ
-	autocmd FileType julia iabbrev _Tau Τ
-	autocmd FileType julia iabbrev _Upsilon Υ
-	autocmd FileType julia iabbrev _Phi Φ
-	autocmd FileType julia iabbrev _Xi Χ
-	autocmd FileType julia iabbrev _Psi Ψ
-	autocmd FileType julia iabbrev _Omega Ω
-	autocmd FileType julia iabbrev _in ∈ 
-	autocmd FileType julia iabbrev _notin ∉
-augroup end
+" Abbreviations for Unicode Characters ----------------------------{{{
+iabbrev _alpha α
+iabbrev _beta β 
+iabbrev _gamma γ
+iabbrev _delta δ 
+iabbrev _epsilon ε
+iabbrev _zeta ζ
+iabbrev _eta η
+iabbrev _theta θ
+iabbrev _iota ι
+iabbrev _kappa κ
+iabbrev _lambda λ
+iabbrev _mu μ
+iabbrev _nu ν
+iabbrev _psi ξ
+iabbrev _omicron ο
+iabbrev _pi π
+iabbrev _rho ρ
+iabbrev _varsigma ς
+iabbrev _sigma σ
+iabbrev _tau τ
+iabbrev _upsilon υ
+iabbrev _phi φ
+iabbrev _xi χ
+iabbrev _psi ψ
+iabbrev _omega ω 
+iabbrev _Alpha Α
+iabbrev _Beta Β
+iabbrev _Gamma Γ
+iabbrev _Delta Δ
+iabbrev _Epsilon Ε
+iabbrev _Zeta Ζ
+iabbrev _Eta Η
+iabbrev _Theta Θ
+iabbrev _Iota Ι
+iabbrev _Kappa Κ
+iabbrev _Lambda Λ
+iabbrev _Mu Μ
+iabbrev _Nu Ν
+iabbrev _Psi Ξ
+iabbrev _Omicron Ο
+iabbrev _Pi Π
+iabbrev _Rho Ρ
+iabbrev _Sigma Σ
+iabbrev _Tau Τ
+iabbrev _Upsilon Υ
+iabbrev _Phi Φ
+iabbrev _Xi Χ
+iabbrev _Psi Ψ
+iabbrev _Omega Ω
+iabbrev _in ∈ 
+iabbrev _notin ∉
 "}}}
 "}}}
 
