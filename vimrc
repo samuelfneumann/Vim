@@ -52,18 +52,20 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let mapleader="-"
 :let localleader="\\"
 
-" inoremap <c-d> <esc>ddi
+" Remap the <esc> key
 inoremap jk <esc>
+vnoremap jk <esc>
+
+" Edit and source vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Wrap text in ", ', (), [], or {}
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
 nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
-nnoremap <leader>a g_
-nnoremap <leader>i _
-vnoremap jk <esc>
 vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
 vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
@@ -71,6 +73,14 @@ vnoremap <leader>'' c''<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
+
+" Move to beginning or end of line
+nnoremap <leader>a g_
+nnoremap <leader>i _
+
+" Place/remove semi-colon at line end without moving the curson
+nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
+nnoremap <leader>x; :execute "normal! mq:s/;$//\e`q"<cr>:nohlsearch<cr>
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
@@ -161,7 +171,7 @@ augroup PyImport
 augroup end
 "}}}
 
-" Abbreviations for Julia/Unicode
+" Abbreviations for Julia/Unicode ----------------------------{{{
 augroup JuliaUnicode
 	autocmd!
 	autocmd FileType julia iabbrev _alpha α
@@ -226,6 +236,7 @@ set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
 set undofile " Use an undofile 
+set magic " Use magic for escape characters
 
 " Bracket matching
 set matchpairs+=<:> " Highlight these kinds of brackets as well
