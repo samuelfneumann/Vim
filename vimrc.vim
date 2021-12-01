@@ -1,14 +1,7 @@
-" ToDo: Ensure tabline matches statusline theme
-" TabLine
-" TabLineFill
-" TabLineSel
-
 set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
-
-
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " Set spell check on
