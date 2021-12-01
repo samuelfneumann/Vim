@@ -3,15 +3,29 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-
 " RULER/STATUSLINE --------------------------------------------------------- {{{
 set ruler
 set rulerformat=%Y\ %=(%l,%c)%V%p%%
 
-hi clear StatusLine " Status line of current window
-hi clear StatusLineNC " Status line of non-current window
-hi StatusLine cterm=none gui=none term=none
-hi StatusLineNC cterm=reverse gui=reverse term=reverse
+" This isn't working yet... We always get that it is light background
+" Also, the formatoptions is changed by ftplugin again... but only in vimrc
+function SetStatusLineColour()
+	echom &background
+	hi clear StatusLine " Status line of current window
+	hi clear StatusLineNC " Status line of non-current window
+	if &background==#"light"
+		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=white
+		hi StatusLineNC cterm=none gui=none term=none
+		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=white
+		return
+	else
+		hi StatusLine cterm=none gui=none term=none ctermbg=white ctermfg=black
+		hi StatusLineNC cterm=none gui=none term=none
+		hi User1 cterm=bold term=bold gui=bold ctermbg=white ctermfg=black
+	endif
+endfunction
+
+autocmd VimEnter * call SetStatusLineColour()
 
 let g:currentmode={
        \ 'n'  : 'NORMAL',
@@ -36,8 +50,6 @@ set statusline+=%=%5l    	" current line
 set statusline+=/%L      	" total lines
 set statusline+=%4v\     	" virtual column number
 set laststatus=2
-
-hi User1 cterm=bold term=bold gui=bold
 
 "}}}
 
@@ -175,6 +187,7 @@ augroup PyImport
     autocmd FileType python iabbrev <buffer> ijson import json
 	autocmd FileType python iabbrev <buffer> ios import os
 	autocmd FileType python iabbrev <buffer> iosp from os import path
+	autocmd FileType python iabbrev <buffer> iseaborn import seaborn as sns
 augroup end
 "}}}
 
@@ -230,6 +243,7 @@ iabbrev _Psi Ψ
 iabbrev _Omega Ω
 iabbrev _in ∈ 
 iabbrev _notin ∉
+"}}}
 "}}}
 "}}}
 
@@ -297,8 +311,18 @@ augroup GitCommitTextWidth
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
 augroup end
-set fo+=t
-set fo-=l
+augroup TextFormatting
+	autocmd!
+	" Automatic formatting of paragraphs
+	autocmd FileType text setlocal formatoptions+=a 
+augroup end
+set formatoptions+=t " Auto wrap text using textwidth
+set formatoptions+=c " Auto wrap comments using textwidth
+set formatoptions+=r " Automatically insert comment leader on <ENTER>
+set formatoptions+=n " Recognize numbered lists when formatting
+set formatoptions-=l " Long lines should be broken in insert mode
+set formatoptions+=j " Remove comment leader when joining lines
+set formatoptions+=q " Allow formatting of comments with "gq"
 
 " Set the column textwidth+1 to be coloured, and colour any text past this
 " bound as red
