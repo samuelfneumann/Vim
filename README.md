@@ -26,7 +26,7 @@ done manually by hand using `git` and Vim's builtin plugin system.
 ### Julia-Vim
 
 [Julia-Vim](https://github.com/JuliaEditorSupport/julia-vim/tree/master/keymap)
-is used to get `LaTex` symbols as-you-type. The plugin options are defined in 
+is used to get `LaTeΧ` symbols as-you-type. The plugin options are defined in 
 `vimrc` under the relevant folding. To install this plugin:
 
 ```bash
