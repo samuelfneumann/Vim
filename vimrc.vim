@@ -1,111 +1,19 @@
 " ToDo: Ensure tabline matches statusline theme
+" TabLine
+" TabLineFill
+" TabLineSel
 
 set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-" RULER/STATUSLINE -------------------------------------------------------- {{{
-set ruler
-set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
-" Set colour of statusLine based on macOS appearance -----------------------{{{
-
-" LightOrDark returns if the operating system appearance on macOS is light
-" (true) or dark (false)
-function LightOrDark()
-	let output =  system("defaults read -g AppleInterfaceStyle")
-
-	" Set if OS appearance is light or dark
-	let light_not_dark=1
-	if v:shell_error != 0
-		" Light theme
-		let light_not_dark=1
-	else    
-		" Dark theme
-		let light_not_dark=0
-	endif
-	return light_not_dark
-endfunction
-
-" SetStatusLineColour sets the status line colour based on the appearance of
-" the operating system
-function SetStatusLineColour()
-	hi clear StatusLine " Clear status line of current window
-	hi clear StatusLineNC " Clear status line of non-current window
-	hi clear StatusLineTerm " Clear status line of current terminal
-	hi clear StatusLineTermNC " Clear status line of non-current terminal
-
-	let light_not_dark = LightOrDark()
-	if light_not_dark
-		hi StatusLine cterm=none gui=none term=none ctermbg=black ctermfg=white
-			\ guibg=black "guifg=white
-		hi StatusLineNC cterm=none gui=none term=none
-
-		" Set User1 colour, used for the current mode in the statusline
-		hi User1 cterm=bold term=bold gui=bold ctermbg=black ctermfg=white
-		
-		"Manually set the statusline for the terminal, since still in beta in
-		" vim 8.1
-		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green 
-			\ ctermfg=white guibg=green guifg=white
-		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen 
-			\ ctermfg=white guibg=darkgreen guifg=white
-		return
-	else
-		hi StatusLine cterm=none gui=none term=none ctermbg=white ctermfg=black
-			\ guibg=white guifg=black
-		hi StatusLineNC cterm=none gui=none term=none
-		
-		" Set User1 colour, used for the current mode in the statusline
-		hi User1 cterm=bold term=bold gui=bold ctermbg=white ctermfg=black
-		
-		"Manually set the statusline for the terminal, since still in beta in
-		" vim 8.1
-		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue 
-			\ ctermfg=white guibg=blue guifg=white
-		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue 
-			\ ctermfg=white guibg=darkblue guifg=white
-		return
-	endif
-endfunction
-
-" Only set statusline colour if on macOS (vim version >= 8.0.1630)
-let s:uname = trim(system("uname"))
-if s:uname==?"Darwin"
-	autocmd VimEnter * call SetStatusLineColour()
-endif
-"}}}
-let g:currentmode={
-		\ 'n'  : 'NORMAL',
-		\ 'v'  : 'VISUAL',
-		\ 'V'  : 'V·Line',
-		\ "\<C-V>" : 'V·Block',
-		\ 'i'  : 'INSERT',
-		\ 'R'  : 'R',
-		\ 'Rv' : 'V·Replace',
-		\ 'c'  : 'Command',
-		\ 't'  : 'Terminal',
-		\}
-
-set statusline=
-set statusline+=\ %n		" buffer number
-set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\ %*  " mode
-set statusline+=%{&ff}		" file format
-set statusline+=%y			" file type
-set statusline+=\ %<%F   " full path
-set statusline+=%-5m		" modified flag
-set statusline+=%V       	" right align
-set statusline+=%=%5l    	" current line
-set statusline+=/%L      	" total lines
-set statusline+=%4v\     	" virtual column number
-set laststatus=2
-
-"}}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " Set spell check on
 set spell spelllang=en_us
+
 
 " Commands ----------------------------------------------------------------{{{
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
@@ -356,18 +264,160 @@ set incsearch " Highlight matching characters as you type
 syntax on
 set number
 
-" Set the cursorline -------------------------------------------------------{{{
+" Auto read when files are changed outside vim
+"set autoread
+"au FocusGained,BufEnter * checktime
+
+" Enable wildmenu
+set wildmenu " Enable auto completion after pressing tab
+set wildmode=list:longest " Behave similarly to bash completion
+
+" Scroll N lines past the cursor when scrolling with mouse
+set scrolloff=5
+
+" Ruler/StatusLine -------------------------------------------------------- {{{
+set ruler
+set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
+
+" Set colour of statusLine based on macOS appearance -----------------------{{{
+
+" LightOrDark returns if the operating system appearance on macOS is light
+" (true) or dark (false)
+function LightOrDark()
+	let output =  system("defaults read -g AppleInterfaceStyle")
+
+	" Set if OS appearance is light or dark
+	let light_not_dark=1
+	if v:shell_error != 0
+		" Light theme
+		let light_not_dark=1
+	else    
+		" Dark theme
+		let light_not_dark=0
+	endif
+	return light_not_dark
+endfunction
+
+" SetStatusLineColour sets the status line colour based on the appearance of
+" the operating system
+function SetStatusLineColour()
+	hi clear StatusLine " Clear status line of current window
+	hi clear StatusLineNC " Clear status line of non-current window
+	hi clear StatusLineTerm " Clear status line of current terminal
+	hi clear StatusLineTermNC " Clear status line of non-current terminal
+
+	let light_not_dark = LightOrDark()
+	if light_not_dark
+		hi StatusLine cterm=none gui=none term=none ctermbg=darkgray
+			\ ctermfg=white guibg=darkgray "guifg=white
+		hi StatusLineNC cterm=none gui=none term=none
+
+		" Set User1 colour, used for the current mode in the statusline
+		hi User1 cterm=bold term=bold gui=bold ctermbg=darkgray ctermfg=white
+			\ guibg=darkgray guifg=white
+		
+		"Manually set the statusline for the terminal, since still in beta in
+		" vim 8.1
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green 
+			\ ctermfg=white guibg=green guifg=white
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen 
+			\ ctermfg=white guibg=darkgreen guifg=white
+		return
+	else
+		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=black
+			\ guibg=gray guifg=black
+		hi StatusLineNC cterm=none gui=none term=none
+		
+		" Set User1 colour, used for the current mode in the statusline
+		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=black
+		
+		"Manually set the statusline for the terminal, since still in beta in
+		" vim 8.1
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue 
+			\ ctermfg=white guibg=blue guifg=white
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue 
+			\ ctermfg=white guibg=darkblue guifg=white
+		return
+	endif
+endfunction
+
+" Only set statusline colour if on macOS (vim version >= 8.0.1630)
+let s:uname = trim(system("uname"))
+if s:uname==?"Darwin"
+	autocmd VimEnter * call SetStatusLineColour()
+endif
+"}}}
+
+let g:currentmode={
+		\ 'n'  : 'NORMAL',
+		\ 'v'  : 'VISUAL',
+		\ 'V'  : 'V·Line',
+		\ "\<C-V>" : 'V·Block',
+		\ 'i'  : 'INSERT',
+		\ 'R'  : 'R',
+		\ 'Rv' : 'V·Replace',
+		\ 'c'  : 'Command',
+		\ 't'  : 'Terminal',
+		\}
+
+set statusline=
+set statusline+=\ %n		" buffer number
+set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\ %*  " mode
+set statusline+=%{&ff}		" file format
+set statusline+=%y			" file type
+set statusline+=\ %<%F   " full path
+set statusline+=%-5m		" modified flag
+set statusline+=%V       	" right align
+set statusline+=%=%5l    	" current line
+set statusline+=/%L      	" total lines
+set statusline+=%4v\     	" virtual column number
+set laststatus=2
+
+"}}}
+
+" TabLine ------------------------------------------------------------------{{{
+" SetTabLine sets the tab line theme
+function SetTabLine()
+	hi clear TabLine
+	hi clear TabLineFill
+	hi clear TabLineSel
+
+	let light_not_dark = LightOrDark()
+	if light_not_dark
+		echom "light"
+		hi TabLine cterm=none term=none gui=none ctermbg=darkgray ctermfg=white
+			\ guibg=darkgray guifg=white
+		hi TabLineFill ctermbg=darkgray guibg=darkgray
+		hi TabLineSel cterm=bold term=bold gui=bold ctermfg=black
+		return
+	else
+		hi TabLine cterm=none term=none gui=none ctermbg=gray ctermfg=black
+			\ guibg=gray guifg=black
+		hi TabLineFill ctermbg=gray guibg=gray
+		hi TabLineSel cterm=bold term=bold gui=bold ctermfg=white
+		return
+	endif
+endfunction
+
+" Only set tabline colour if on macOS (vim version >= 8.0.1630)
+let s:uname = trim(system("uname"))
+if s:uname==?"Darwin"
+	autocmd VimEnter * call SetTabLine()
+endif
+"}}}
+
+" Cursorline -------------------------------------------------------{{{
 hi clear CursorLine
 hi CursorLineNR cterm=bold term=bold
 highlight CursorLine cterm=bold term=bold
 set cursorline
 "}}}
 
-" Set window pane split theme ----------------------------------------------{{{
+" Window Pane Splitter -----------------------------------------------------{{{
 hi VertSplit cterm=none gui=none term=none
 "}}}
 
-" Set tabbing --------------------------------------------------------------{{{
+" Tabbing ------------------------------------------------------------------{{{
 set noexpandtab 
 autocmd FileType python set expandtab " PEP8 says to expand tabs
 set smarttab
@@ -378,10 +428,7 @@ set autoindent
 set smartindent
 "}}}
 
-" Scroll N lines past the cursor when scrolling with mouse
-set scrolloff=5
-
-" Enable file type detection -----------------------------------------------{{{
+" File Type Detection ------------------------------------------------------{{{
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -391,15 +438,7 @@ filetype plugin on " Use only plugins for this file's type
 filetype indent on " Load an indent file for the detected file type
 "}}}
 
-" Auto read when files are changed outside vim
-"set autoread
-"au FocusGained,BufEnter * checktime
-
-" Enable wildmenu
-set wildmenu " Enable auto completion after pressing tab
-set wildmode=list:longest " Behave similarly to bash completion
-
-" Set allowable text width -------------------------------------------------{{{
+" Textwidth ----------------------------------------------------------------{{{
 set textwidth=79
 augroup GitCommitTextWidth
 	" Git commit body should be only 72 characters long
@@ -420,7 +459,7 @@ set formatoptions+=j " Remove comment leader when joining lines
 set formatoptions+=q " Allow formatting of comments with "gq"
 "}}}
 
-" Set colorcolumn ----------------------------------------------------------{{{
+" Colorcolumn --------------------------------------------------------------{{{
 " Set the column textwidth+1 to be coloured, and colour any text past this
 " bound as red
 highlight ColorColumn ctermbg=gray guibg=gray ctermfg=red guifg=red
