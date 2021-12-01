@@ -3,20 +3,35 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-" RULER/STATUSLINE --------------------------------------------------------- {{{
+" RULER/STATUSLINE -------------------------------------------------------- {{{
 set ruler
-set rulerformat=%Y\ %=(%l,%c)%V%p%%
+set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
-" This isn't working yet... We always get that it is light background
-" Also, the formatoptions is changed by ftplugin again... but only in vimrc
+" Set colour of statusLine based on OS appearance --------------------------{{{
+function LightOrDark()
+	let output =  system("defaults read -g AppleInterfaceStyle")
+
+	" Set if OS appearance is light or dark
+	let light_not_dark=1
+	if v:shell_error != 0
+		" Light theme
+		let light_not_dark=1
+	else    
+		" Dark theme
+		let light_not_dark=0
+	endif
+	return light_not_dark
+endfunction
+
 function SetStatusLineColour()
-	echom &background
-	hi clear StatusLine " Status line of current window
-	hi clear StatusLineNC " Status line of non-current window
-	if &background==#"light"
-		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=white
+	hi clear StatusLine " Clear status line of current window
+	hi clear StatusLineNC " Clear status line of non-current window
+
+	let light_not_dark = LightOrDark()
+	if light_not_dark
+		hi StatusLine cterm=none gui=none term=none ctermbg=black ctermfg=white
 		hi StatusLineNC cterm=none gui=none term=none
-		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=white
+		hi User1 cterm=bold term=bold gui=bold ctermbg=black ctermfg=white
 		return
 	else
 		hi StatusLine cterm=none gui=none term=none ctermbg=white ctermfg=black
@@ -26,6 +41,7 @@ function SetStatusLineColour()
 endfunction
 
 autocmd VimEnter * call SetStatusLineColour()
+"}}}
 
 let g:currentmode={
        \ 'n'  : 'NORMAL',
@@ -326,9 +342,9 @@ set formatoptions+=q " Allow formatting of comments with "gq"
 
 " Set the column textwidth+1 to be coloured, and colour any text past this
 " bound as red
-set colorcolumn=+1
 highlight ColorColumn ctermbg=gray guibg=gray ctermfg=red guifg=red
 highlight User2 ctermfg=red guifg=red
+set colorcolumn=+1
 call matchadd('User2', '\%>80v.\+', 100)
 "}}}
 "}}}
