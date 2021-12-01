@@ -1,3 +1,5 @@
+" ToDo: Ensure tabline matches statusline theme
+
 set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
@@ -113,6 +115,7 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let mapleader="-"
 :let localleader="\\"
 
+" Terminal Navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
 " <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
 " respectively
@@ -129,12 +132,25 @@ tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
 tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
 vnoremap <leader>T :tab term ++close<cr>
 nnoremap <leader>T :tab term ++close<cr>
+"}}}
 
-" Tab navigation
-noremap <c-w>tn :tabn<cr>
-noremap <c-w>tp :tabp<cr> 
-noremap <c-w>tf :tabfirst<cr> 
-noremap <c-w>tl :tablast<cr>
+" Tab navigation ----------------------------------------------------------{{{
+noremap <leader>tn :tabn<cr>
+noremap <leader>tp :tabp<cr> 
+noremap <leader>tg :tabfirst<cr> 
+noremap <leader>tG :tablast<cr>
+tnoremap <leader>tn <c-w>:tabn<cr>
+tnoremap <leader>tp <c-w>:tabp<cr>
+tnoremap <leader>tg <c-w>:tabfirst<cr>
+tnoremap <leader>tG <c-w>:tablast<cr>
+"}}}
+
+" Window navigation
+noremap <leader>+ <c-w>+
+noremap <leader>- <c-w>-
+noremap <leader>> <c-w>>
+noremap <leader>< <c-w><
+noremap <leader>= <c-w>=
 
 " Remap the <esc> key
 inoremap jk <esc>
@@ -180,22 +196,22 @@ noremap <right> <nop>
 " In any file, <localleader>c comments line and <localleader>x uncomments line
 augroup comments_tabs
     autocmd!
-	autocmd FileType julia nnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType julia nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>x :s/\v# {0,1}//<cr>:nohlsearch<cr>
 	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#/ /<cr>:nohlsearch<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>c :execute "normal!mqI// \e`q"<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>x :s!\v// {0,1}!!<cr>:nohlsearch<cr>
 	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
-	autocmd filetype go vnoremap <buffer> <localleader>x :s!^//!!<cr>:nohlsearch<cr>
-	autocmd FileType python nnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd Filetype python nnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
+	autocmd Filetype go vnoremap <buffer> <localleader>x :s!^//!  !<cr>:nohlsearch<cr>
+	autocmd FileType python nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
+	autocmd Filetype python nnoremap <buffer> <localleader>x :s/\v# {0,1}//<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#//<cr>:nohlsearch<cr>
-	autocmd FileType vim nnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
-	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/^"//<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#/ /<cr>:nohlsearch<cr>
+	autocmd FileType vim nnoremap <buffer> <localleader>c :execute "normal! mqI\" \e`q"<cr>
+	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/\v" {0,1}//<cr>:nohlsearch<cr>
 	autocmd FileType vim vnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"//<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"/ /<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
