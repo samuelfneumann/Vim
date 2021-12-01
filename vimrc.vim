@@ -303,10 +303,10 @@ let g:currentmode={
 
 set statusline=
 set statusline+=\ %n		" buffer number
-set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\ %*  " mode
-set statusline+=%{&ff}		" file format
+set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
+set statusline+=\ %{&ff}	" file format
 set statusline+=%y			" file type
-set statusline+=\ %<%F   " full path
+set statusline+=\ %<%F		" full path
 set statusline+=%-5m		" modified flag
 set statusline+=%V       	" right align
 set statusline+=%=%5l    	" current line
@@ -411,7 +411,7 @@ call matchadd('User2', '\%>80v.\+', 100)
 " Julia-vim Options --------------------------------------------------------{{{
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
 let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
-let g:julia_blocks=0
+let g:julia_blocks=0 " Don't allow the Julia block moving
 "}}}
 
 "}}}
