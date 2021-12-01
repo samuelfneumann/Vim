@@ -8,3 +8,5 @@
 **/*.un~
 
 **/*.DS_Store
+
+vim/bundle
