@@ -356,13 +356,18 @@ set incsearch " Highlight matching characters as you type
 syntax on
 set number
 
-" Set the cursorline
+" Set the cursorline -------------------------------------------------------{{{
 hi clear CursorLine
 hi CursorLineNR cterm=bold term=bold
 highlight CursorLine cterm=bold term=bold
 set cursorline
+"}}}
 
-" Set tabbing
+" Set window pane split theme ----------------------------------------------{{{
+hi VertSplit cterm=none gui=none term=none
+"}}}
+
+" Set tabbing --------------------------------------------------------------{{{
 set noexpandtab 
 autocmd FileType python set expandtab " PEP8 says to expand tabs
 set smarttab
@@ -371,11 +376,12 @@ set softtabstop=4
 set shiftwidth=4 " Set shift width to 4 spaces
 set autoindent
 set smartindent
+"}}}
 
 " Scroll N lines past the cursor when scrolling with mouse
 set scrolloff=5
 
-" Enable file type detection
+" Enable file type detection -----------------------------------------------{{{
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -383,6 +389,7 @@ augroup end
 filetype on
 filetype plugin on " Use only plugins for this file's type
 filetype indent on " Load an indent file for the detected file type
+"}}}
 
 " Auto read when files are changed outside vim
 "set autoread
@@ -392,7 +399,7 @@ filetype indent on " Load an indent file for the detected file type
 set wildmenu " Enable auto completion after pressing tab
 set wildmode=list:longest " Behave similarly to bash completion
 
-" Set allowable text width
+" Set allowable text width -------------------------------------------------{{{
 set textwidth=79
 augroup GitCommitTextWidth
 	" Git commit body should be only 72 characters long
@@ -411,7 +418,9 @@ set formatoptions+=n " Recognize numbered lists when formatting
 set formatoptions-=l " Long lines should be broken in insert mode
 set formatoptions+=j " Remove comment leader when joining lines
 set formatoptions+=q " Allow formatting of comments with "gq"
+"}}}
 
+" Set colorcolumn ----------------------------------------------------------{{{
 " Set the column textwidth+1 to be coloured, and colour any text past this
 " bound as red
 highlight ColorColumn ctermbg=gray guibg=gray ctermfg=red guifg=red
@@ -420,4 +429,4 @@ set colorcolumn=+1
 call matchadd('User2', '\%>80v.\+', 100)
 "}}}
 "}}}
-
+"}}}
