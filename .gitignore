@@ -9,4 +9,4 @@
 
 **/*.DS_Store
 
-/vim/vim/pack/plugins/start/*/
+/vim/vim/pack/plugins/start/
