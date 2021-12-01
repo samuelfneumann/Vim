@@ -3,6 +3,7 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
+
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " Set spell check on
 set spell spelllang=en_us
@@ -180,59 +181,6 @@ augroup PyImport
 augroup end
 "}}}
 
-" Abbreviations for Unicode Characters ----------------------------{{{
-iabbrev _alpha α
-iabbrev _beta β 
-iabbrev _gamma γ
-iabbrev _delta δ 
-iabbrev _epsilon ε
-iabbrev _zeta ζ
-iabbrev _eta η
-iabbrev _theta θ
-iabbrev _iota ι
-iabbrev _kappa κ
-iabbrev _lambda λ
-iabbrev _mu μ
-iabbrev _nu ν
-iabbrev _psi ξ
-iabbrev _omicron ο
-iabbrev _pi π
-iabbrev _rho ρ
-iabbrev _varsigma ς
-iabbrev _sigma σ
-iabbrev _tau τ
-iabbrev _upsilon υ
-iabbrev _phi φ
-iabbrev _xi χ
-iabbrev _psi ψ
-iabbrev _omega ω 
-iabbrev _Alpha Α
-iabbrev _Beta Β
-iabbrev _Gamma Γ
-iabbrev _Delta Δ
-iabbrev _Epsilon Ε
-iabbrev _Zeta Ζ
-iabbrev _Eta Η
-iabbrev _Theta Θ
-iabbrev _Iota Ι
-iabbrev _Kappa Κ
-iabbrev _Lambda Λ
-iabbrev _Mu Μ
-iabbrev _Nu Ν
-iabbrev _Psi Ξ
-iabbrev _Omicron Ο
-iabbrev _Pi Π
-iabbrev _Rho Ρ
-iabbrev _Sigma Σ
-iabbrev _Tau Τ
-iabbrev _Upsilon Υ
-iabbrev _Phi Φ
-iabbrev _Xi Χ
-iabbrev _Psi Ψ
-iabbrev _Omega Ω
-iabbrev _in ∈ 
-iabbrev _notin ∉
-"}}}
 "}}}
 "}}}
 
@@ -459,5 +407,12 @@ highlight User2 ctermfg=red guifg=red
 set colorcolumn=+1
 call matchadd('User2', '\%>80v.\+', 100)
 "}}}
+
+" Julia-vim Options --------------------------------------------------------{{{
+let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
+let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
+let g:julia_blocks=0
+"}}}
+
 "}}}
 "}}}
