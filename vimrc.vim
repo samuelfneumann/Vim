@@ -384,7 +384,6 @@ function SetTabLine()
 
 	let light_not_dark = LightOrDark()
 	if light_not_dark
-		echom "light"
 		hi TabLine cterm=none term=none gui=none ctermbg=darkgray ctermfg=white
 			\ guibg=darkgray guifg=white
 		hi TabLineFill ctermbg=darkgray guibg=darkgray
