@@ -9,4 +9,5 @@
 
 **/*.DS_Store
 
-/vim/vim/pack/plugins/start/
+# Ignore plugins
+/vim/pack/plugins/
