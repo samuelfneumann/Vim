@@ -31,17 +31,40 @@ endfunction
 function SetStatusLineColour()
 	hi clear StatusLine " Clear status line of current window
 	hi clear StatusLineNC " Clear status line of non-current window
+	hi clear StatusLineTerm " Clear status line of current terminal
+	hi clear StatusLineTermNC " Clear status line of non-current terminal
 
 	let light_not_dark = LightOrDark()
 	if light_not_dark
 		hi StatusLine cterm=none gui=none term=none ctermbg=black ctermfg=white
+			\ guibg=black "guifg=white
 		hi StatusLineNC cterm=none gui=none term=none
+
+		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=black ctermfg=white
+		
+		"Manually set the statusline for the terminal, since still in beta in
+		" vim 8.1
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green 
+			\ ctermfg=white guibg=green guifg=white
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen 
+			\ ctermfg=white guibg=darkgreen guifg=white
 		return
 	else
 		hi StatusLine cterm=none gui=none term=none ctermbg=white ctermfg=black
+			\ guibg=white guifg=black
 		hi StatusLineNC cterm=none gui=none term=none
+		
+		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=white ctermfg=black
+		
+		"Manually set the statusline for the terminal, since still in beta in
+		" vim 8.1
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue 
+			\ ctermfg=white guibg=blue guifg=white
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue 
+			\ ctermfg=white guibg=darkblue guifg=white
+		return
 	endif
 endfunction
 
@@ -51,17 +74,17 @@ if s:uname==?"Darwin"
 	autocmd VimEnter * call SetStatusLineColour()
 endif
 "}}}
-
 let g:currentmode={
-       \ 'n'  : 'NORMAL',
-       \ 'v'  : 'VISUAL',
-       \ 'V'  : 'V·Line',
-       \ "\<C-V>" : 'V·Block',
-       \ 'i'  : 'INSERT',
-       \ 'R'  : 'R',
-       \ 'Rv' : 'V·Replace',
-       \ 'c'  : 'Command',
-       \}
+		\ 'n'  : 'NORMAL',
+		\ 'v'  : 'VISUAL',
+		\ 'V'  : 'V·Line',
+		\ "\<C-V>" : 'V·Block',
+		\ 'i'  : 'INSERT',
+		\ 'R'  : 'R',
+		\ 'Rv' : 'V·Replace',
+		\ 'c'  : 'Command',
+		\ 't'  : 'Terminal',
+		\}
 
 set statusline=
 set statusline+=\ %n		" buffer number
@@ -90,9 +113,33 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 :let mapleader="-"
 :let localleader="\\"
 
+" Open the terminal using -[tT]
+" <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
+" respectively
+" <leader>T opens a terminal in a new tab
+" <leader>xt exits the terminal
+tnoremap <leader>xt exit<cr>
+nnoremap <leader>th :term ++close<cr><c-w>H
+nnoremap <leader>tl :term ++close<cr><c-w>L
+nnoremap <leader>tk :term ++close<cr><c-w>K
+nnoremap <leader>tj :term ++close<cr><c-w>J
+tnoremap <leader>th <c-w>:term ++close<cr><c-w>H
+tnoremap <leader>tl <c-w>:term ++close<cr><c-w>L
+tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
+tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
+vnoremap <leader>T :tab term ++close<cr>
+nnoremap <leader>T :tab term ++close<cr>
+
+" Tab navigation
+noremap <c-w>tn :tabn<cr>
+noremap <c-w>tp :tabp<cr> 
+noremap <c-w>tf :tabfirst<cr> 
+noremap <c-w>tl :tablast<cr>
+
 " Remap the <esc> key
 inoremap jk <esc>
 vnoremap jk <esc>
+tnoremap jk <esc>
 
 " Edit and source vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
