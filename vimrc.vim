@@ -7,7 +7,10 @@ set title " Set filename in window title bar
 set ruler
 set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
-" Set colour of statusLine based on OS appearance --------------------------{{{
+" Set colour of statusLine based on macOS appearance -----------------------{{{
+
+" LightOrDark returns if the operating system appearance on macOS is light
+" (true) or dark (false)
 function LightOrDark()
 	let output =  system("defaults read -g AppleInterfaceStyle")
 
@@ -23,6 +26,8 @@ function LightOrDark()
 	return light_not_dark
 endfunction
 
+" SetStatusLineColour sets the status line colour based on the appearance of
+" the operating system
 function SetStatusLineColour()
 	hi clear StatusLine " Clear status line of current window
 	hi clear StatusLineNC " Clear status line of non-current window
@@ -40,7 +45,11 @@ function SetStatusLineColour()
 	endif
 endfunction
 
-autocmd VimEnter * call SetStatusLineColour()
+" Only set statusline colour if on macOS (vim version >= 8.0.1630)
+let s:uname = trim(system("uname"))
+if s:uname==?"Darwin"
+	autocmd VimEnter * call SetStatusLineColour()
+endif
 "}}}
 
 let g:currentmode={
