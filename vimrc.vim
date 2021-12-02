@@ -163,12 +163,12 @@ augroup end
 augroup FuncAbbrev
 	autocmd!
 	autocmd FileType julia iabbrev <buffer> function use_ff
-	autocmd FileType julia iabbrev <buffer> ff function_()<cr>end<up>jk?_<cr>xi
+	autocmd FileType julia iabbrev <buffer> ff function_()<cr>endjk?_<cr>jk:nohlsearch<cr>xi
 	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
 	autocmd FileType go iabbrev <buffer> func use_ff
 	autocmd FileType python iabbrev <buffer> ff def:<left>
 	autocmd FileType python iabbrev <buffer> def use_ff
-	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunction<up>jk?_<cr>xi
+	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunctionjk?_<cr>:nohlsearch<cr>xi
 	autocmd FileType vim iabbrev <buffer> function use_ff
 augroup end
 
