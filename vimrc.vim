@@ -96,7 +96,7 @@ noremap <right> <nop>
 
 " Comment shortcuts ----------------------------------------------------{{{
 " In any file, <localleader>c comments line and <localleader>x uncomments line
-augroup comments_tabs
+augroup CommentsAndTabs
     autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
 	autocmd FileType julia nnoremap <buffer> <localleader>x :s/\v# {0,1}//<cr>:nohlsearch<cr>
@@ -369,7 +369,7 @@ set smartindent
 "}}}
 
 " File Type Detection ------------------------------------------------------{{{
-augroup filetype_vim
+augroup FiletypeVim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup end
