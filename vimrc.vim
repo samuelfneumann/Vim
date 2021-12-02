@@ -424,9 +424,10 @@ let g:julia_blocks=0 " Don't allow the Julia block moving
 " Julia-formatter Options --------------------------------------------------{{{
 augroup JuliaFormatter
 	autocmd!
-	" Remap = to use JuliaFormatter.vim instead of Julia-vim, which is dumb
-	autocmd FileType julia noremap gg=G :JuliaFormatterFormat<cr>
-	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
+	" Remap = to use JuliaFormatter.vim
+ 	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
+ 	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
+ 	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
 augroup end
 let g:JuliaFormatter_options = {
         \ 'style' : 'blue',
