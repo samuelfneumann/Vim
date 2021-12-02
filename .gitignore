@@ -1,13 +1,15 @@
+# Ignore files that are used for testing
 *.jl
 *.py
 *.txt
 *.go
 
-**/*.swo
-
-**/*.un~
-
-**/*.DS_Store
-
 # Ignore plugins
 /vim/pack/plugins/
+
+# Ignore vim files
+vim/.netrwhist
+**/*.swo
+**/*.un~
+**/*.DS_Store
+
