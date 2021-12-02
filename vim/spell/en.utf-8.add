@@ -13,3 +13,5 @@ QLearning
 Float64
 ε
 struct
+whitespace
+colour
