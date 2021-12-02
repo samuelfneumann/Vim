@@ -185,7 +185,7 @@ augroup end
 "}}}
 
 " General settings -------------------------------------------------{{{
-set nocompatible
+set nocompatible 
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
@@ -359,13 +359,17 @@ hi VertSplit cterm=none gui=none term=none
 
 " Tabbing ------------------------------------------------------------------{{{
 set noexpandtab 
-autocmd FileType python set expandtab " PEP8 says to expand tabs
+augroup ModifiedExpandTab
+	autocmd!
+	autocmd FileType python set expandtab " PEP8 says to expand tabs
+	autocmd FileType julia set expandtab " Julia should have expanded tabs
+augroup end
 set smarttab
 set tabstop=4 " Set tab width to 4 columns
 set softtabstop=4
 set shiftwidth=4 " Set shift width to 4 spaces
-set autoindent
-set smartindent
+ set autoindent
+ set smartindent
 "}}}
 
 " File Type Detection ------------------------------------------------------{{{
@@ -380,16 +384,23 @@ filetype indent on " Load an indent file for the detected file type
 
 " Textwidth ----------------------------------------------------------------{{{
 set textwidth=79
-augroup GitCommitTextWidth
+augroup ModifiedTextWidth
 	" Git commit body should be only 72 characters long
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
+	
+	" Julia text width is 92 characters
+	autocmd FileType julia setlocal textwidth=92
 augroup end
+
 augroup TextFormatting
 	autocmd!
 	" Automatic formatting of paragraphs
 	autocmd FileType text setlocal formatoptions+=a 
 augroup end
+"}}}
+
+" Format options -----------------------------------------------------------{{{
 set formatoptions+=t " Auto wrap text using textwidth
 set formatoptions+=c " Auto wrap comments using textwidth
 set formatoptions+=r " Automatically insert comment leader on <ENTER>
@@ -400,12 +411,8 @@ set formatoptions+=q " Allow formatting of comments with "gq"
 "}}}
 
 " Colorcolumn --------------------------------------------------------------{{{
-" Set the column textwidth+1 to be coloured, and colour any text past this
-" bound as red
-highlight ColorColumn ctermbg=gray guibg=gray ctermfg=red guifg=red
-highlight User2 ctermfg=red guifg=red
+highlight ColorColumn ctermbg=gray guibg=gray
 set colorcolumn=+1
-call matchadd('User2', '\%>80v.\+', 100)
 "}}}
 
 " Julia-vim Options --------------------------------------------------------{{{
@@ -413,6 +420,19 @@ let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
 let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
 let g:julia_blocks=0 " Don't allow the Julia block moving
 "}}}
+
+" Julia-formatter Options --------------------------------------------------{{{
+augroup JuliaFormatter
+	autocmd!
+	" Remap = to use JuliaFormatter.vim instead of Julia-vim, which is dumb
+	autocmd FileType julia noremap gg=G :JuliaFormatterFormat<cr>
+	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
+augroup end
+let g:JuliaFormatter_options = {
+        \ 'style' : 'blue',
+        \ }
+let g:JuliaFormatter_always_launch_server=1
+" }}}
 
 "}}}
 "}}}

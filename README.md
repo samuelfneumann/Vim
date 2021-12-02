@@ -34,4 +34,19 @@ cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git://github.com/JuliaEditorSupport/julia-vim.git
 ```
+### JuliaFormatter
+[JuliaFormatter](https://github.com/kdheepak/JuliaFormatter.vim) is used to
+format `Julia` code, since the
+[Julia-Vim](https://github.com/JuliaEditorSupport/julia-vim/tree/master/keymap)
+plugin formats it in a very strange way. The JuliaFormatter plugin has a lot of
+functionality for formatting `Julia` code according to different style guides.
+The formatting of this plugin is remapped to `gg=G` to format the entire
+file and `=` to format a selection, and `==` to format a line, as is the usual
+case in vim.
 
+To install this plugin:
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:kdheepak/JuliaFormatter.vim.git
+```
