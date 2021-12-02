@@ -86,6 +86,7 @@ nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>x; :execute "normal! mq:s/;$//\e`q"<cr>:nohlsearch<cr>
 
 " Remove trailing whitespace, leaving cursor in-place
+nnoremap <leader><space><space> mq:s/\v\s+$//<cr>:nohlsearch<cr>`q
 nnoremap <leader><space> mq:%s/\v\s+$//<cr>:nohlsearch<cr>`q
 vnoremap <leader><space> mq:s/\v\s+$//<cr>:nohlsearch<cr>`q
 
