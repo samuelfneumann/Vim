@@ -61,3 +61,21 @@ cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:kdheepak/JuliaFormatter.vim.git
 ```
+
+You should also create a sysimage in order to speed up the plugin. This process
+is described on the plugin's github page in more details, but to create a
+sysimage:
+
+```bash
+cd /path/to/JuliaFormatter.vim/
+julia --project scripts/packagecompiler.jl
+```
+
+The `vimrc` file already has the option set to look for this sysimage. If you
+would like to create a sysimage in a directory other than the default
+directory, you will have to specify this in the `vimrc` file:
+
+```bash
+let g:JuliaFormatter_use_sysimage=1
+let g:JuliaFormatter_sysimage_path="/path/to/julia_sysimage.so"
+```

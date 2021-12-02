@@ -38,8 +38,8 @@ nnoremap <leader>T :tab term ++close<cr>
 
 " Tab navigation ----------------------------------------------------------{{{
 noremap <leader>tn :tabn<cr>
-noremap <leader>tp :tabp<cr> 
-noremap <leader>tg :tabfirst<cr> 
+noremap <leader>tp :tabp<cr>
+noremap <leader>tg :tabfirst<cr>
 noremap <leader>tG :tablast<cr>
 tnoremap <leader>tn <c-w>:tabn<cr>
 tnoremap <leader>tp <c-w>:tabp<cr>
@@ -84,6 +84,10 @@ nnoremap <leader>i _
 " Place/remove semi-colon at line end without moving the curson
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>x; :execute "normal! mq:s/;$//\e`q"<cr>:nohlsearch<cr>
+
+" Remove trailing whitespace, leaving cursor in-place
+nnoremap <leader><space> mq:%s/\v\s+$//<cr>:nohlsearch<cr>`q
+vnoremap <leader><space> mq:s/\v\s+$//<cr>:nohlsearch<cr>`q
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
@@ -153,7 +157,7 @@ augroup ForAbbrev
 	autocmd FileType vim iabbrev <buffer> ffor for<cr>endfor<up>
 	autocmd FileType vim iabbrev <buffer> for use_ffor
 augroup end
-	
+
 " Abbreviations for ff -> function
 augroup FuncAbbrev
 	autocmd!
@@ -185,36 +189,75 @@ augroup end
 "}}}
 
 " General settings -------------------------------------------------{{{
-set nocompatible 
+set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
-set undofile " Use an undofile 
+set undofile " Use an undofile
 set magic " Use magic for escape characters
+set scrolloff=5 " Scroll 5 lines past cursor with mouse
 
-" Bracket matching
+" Bracket matching ---------------------------------------------------------{{{
 set matchpairs+=<:> " Highlight these kinds of brackets as well
 set showmatch " Show matching brackets when cursor is over them
+"}}}
 
-" Searching
+" Searching ----------------------------------------------------------------{{{
 set hlsearch " Use highlighting when searching
 set incsearch " Highlight matching characters as you type
+"}}}
 
-" Use syntax highlighting and line numbers
+" Syntax highlighting and line numbers -------------------------------------{{{
 syntax on
 set number
+"}}}
 
-" Auto read when files are changed outside vim
+" Auto read when files are changed outside vim -----------------------------{{{
 "set autoread
 "au FocusGained,BufEnter * checktime
+""}}}
 
-" Enable wildmenu
+" Highlight trailing whitespace --------------------------------------------{{{
+" Choose only one option from this folding for highlighting trailing spaces
+
+" === Option 1 ===
+" When using syntax, this will only work if syntax highlighting is enabled
+" for the current file type
+"augroup TrailingWhiteSpace
+"	autocmd VimEnter * highlight ExtraWhitespace ctermbg=red guibg=red
+"	autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+"augroup end
+
+" === Option 2 ===
+" If the below lines are used instead of those above, then trailing whitespace
+" is not matched whilst typing.
+ autocmd Colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
+ colorscheme default
+ match ExtraWhitespace /\s\+$/
+ augroup TrailingWhiteSpace
+ 	autocmd!
+ 	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+ 	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+ 	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+ 	autocmd BufWinLeave * call clearmatches()
+ augroup end
+" }}}
+
+" On Save -----------------------------------------------------------------{{{
+augroup OnSave
+	" Autocommand group for events to happen on save
+	autocmd!
+
+	" Remove all trailing whitespace on save
+	autocmd BufWritePre * :%s/\s\+$//e
+augroup end
+" }}}
+
+" Wildmenu -----------------------------------------------------------------{{{
 set wildmenu " Enable auto completion after pressing tab
 set wildmode=list:longest " Behave similarly to bash completion
-
-" Scroll N lines past the cursor when scrolling with mouse
-set scrolloff=5
+"}}}
 
 " Ruler/StatusLine -------------------------------------------------------- {{{
 set ruler
@@ -232,7 +275,7 @@ function LightOrDark()
 	if v:shell_error != 0
 		" Light theme
 		let light_not_dark=1
-	else    
+	else
 		" Dark theme
 		let light_not_dark=0
 	endif
@@ -256,27 +299,27 @@ function SetStatusLineColour()
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=darkgray ctermfg=white
 			\ guibg=darkgray guifg=white
-		
+
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
-		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green 
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green
 			\ ctermfg=white guibg=green guifg=white
-		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen 
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen
 			\ ctermfg=white guibg=darkgreen guifg=white
 		return
 	else
 		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=black
 			\ guibg=gray guifg=black
 		hi StatusLineNC cterm=none gui=none term=none
-		
+
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=black
-		
+
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
-		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue 
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue
 			\ ctermfg=white guibg=blue guifg=white
-		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue 
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue
 			\ ctermfg=white guibg=darkblue guifg=white
 		return
 	endif
@@ -358,7 +401,7 @@ hi VertSplit cterm=none gui=none term=none
 "}}}
 
 " Tabbing ------------------------------------------------------------------{{{
-set noexpandtab 
+set noexpandtab
 augroup ModifiedExpandTab
 	autocmd!
 	autocmd FileType python set expandtab " PEP8 says to expand tabs
@@ -388,7 +431,7 @@ augroup ModifiedTextWidth
 	" Git commit body should be only 72 characters long
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
-	
+
 	" Julia text width is 92 characters
 	autocmd FileType julia setlocal textwidth=92
 augroup end
@@ -396,7 +439,7 @@ augroup end
 augroup TextFormatting
 	autocmd!
 	" Automatic formatting of paragraphs
-	autocmd FileType text setlocal formatoptions+=a 
+	autocmd FileType text setlocal formatoptions+=a
 augroup end
 "}}}
 
@@ -433,6 +476,7 @@ let g:JuliaFormatter_options = {
         \ 'style' : 'blue',
         \ }
 let g:JuliaFormatter_always_launch_server=1
+let g:JuliaFormatter_use_sysimage=1
 " }}}
 
 "}}}
