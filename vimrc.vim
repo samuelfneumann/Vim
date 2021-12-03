@@ -2,7 +2,7 @@ set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
-
+colorscheme default
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " Set spell check on
@@ -34,6 +34,7 @@ tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
 tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
 vnoremap <leader>T :tab term ++close<cr>
 nnoremap <leader>T :tab term ++close<cr>
+noremap <leader>N <c-w>N<cr>
 "}}}
 
 " Tab navigation ----------------------------------------------------------{{{
@@ -53,21 +54,34 @@ noremap <leader>- <c-w>-
 noremap <leader>> <c-w>>
 noremap <leader>< <c-w><
 noremap <leader>= <c-w>=
+tnoremap <leader>ph <c-w>h
 noremap <leader>ph <c-w>h
+tnoremap <leader>pj <c-w>j
 noremap <leader>pj <c-w>j
+tnoremap <leader>pk <c-w>k
 noremap <leader>pk <c-w>k
+tnoremap <leader>pl <c-w>l
 noremap <leader>pl <c-w>l
+tnoremap <leader>pH <c-w>H
 noremap <leader>pH <c-w>H
+tnoremap <leader>pJ <c-w>J
 noremap <leader>pJ <c-w>J
+tnoremap <leader>pK <c-w>K
 noremap <leader>pK <c-w>K
+tnoremap <leader>pL <c-w>L
 noremap <leader>pL <c-w>L
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
+tnoremap <leader>bn <c-w>:bnext<cr>
 noremap <leader>bn :bnext<cr>
+tnoremap <leader>bp <c-w>:bprev<cr>
 noremap <leader>bp :bprev<cr>
+tnoremap <leader>bg <c-w>:bfirst<cr>
 noremap <leader>bg :bfirst<cr>
+tnoremap <leader>bG <c-w>:blast<cr>
 noremap <leader>bG :blast<cr>
+tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
 "}}}
 
@@ -189,6 +203,11 @@ augroup FuncAbbrev
 	autocmd FileType vim iabbrev <buffer> function use_ff
 augroup end
 
+augroup ModuleAbbrev
+	autocmd!
+	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>jkA
+augroup end
+
 " Abbreviations for Python imports -----------------------------{{{
 augroup PyImport
 	autocmd!
@@ -235,6 +254,9 @@ set incsearch " Highlight matching characters as you type
 "}}}
 
 " Syntax highlighting and line numbers -------------------------------------{{{
+highlight Comment ctermfg=white ctermbg=black
+highlight goString ctermfg=white ctermbg=blue
+highlight Conditional ctermfg=black ctermbg=red
 syntax on
 set number
 "}}}
@@ -494,16 +516,17 @@ let g:julia_blocks=0 " Don't allow the Julia block moving
 augroup JuliaFormatter
 	autocmd!
 	" Remap = to use JuliaFormatter.vim
-" 	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
-" 	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
-" 	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
+  	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
+  	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
+  	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
 augroup end
 let g:JuliaFormatter_options = {
         \ 'style' : 'blue',
         \ }
-let g:JuliaFormatter_always_launch_server=1
+" let g:JuliaFormatter_always_launch_server=1
 let g:JuliaFormatter_use_sysimage=1
 " }}}
+" }}}
+" }}}
 
-"}}}
-"}}}
+
