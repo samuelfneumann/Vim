@@ -200,6 +200,13 @@ set magic " Use magic for escape characters
 set scrolloff=5 " Scroll 5 lines past cursor with mouse
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
 
+" Terminal settings --------------------------------------------------------{{{
+augroup TerminalSettings
+	autocmd!
+	autocmd BufEnter * if &buftype==?"terminal" | setlocal nospell | endif
+augroup end
+" }}}
+
 " Bracket matching ---------------------------------------------------------{{{
 set matchpairs+=<:> " Highlight these kinds of brackets as well
 set showmatch " Show matching brackets when cursor is over them
