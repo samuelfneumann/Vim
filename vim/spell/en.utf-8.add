@@ -15,3 +15,5 @@ Float64
 struct
 whitespace
 colour
+numpy
+hyperparameter

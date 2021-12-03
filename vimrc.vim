@@ -198,6 +198,7 @@ set ttyfast " Increase scroll speed
 set undofile " Use an undofile
 set magic " Use magic for escape characters
 set scrolloff=5 " Scroll 5 lines past cursor with mouse
+set backspace=indent,eol,start " Allow backspacing over auto indents etc.
 
 " Bracket matching ---------------------------------------------------------{{{
 set matchpairs+=<:> " Highlight these kinds of brackets as well
@@ -469,9 +470,9 @@ let g:julia_blocks=0 " Don't allow the Julia block moving
 augroup JuliaFormatter
 	autocmd!
 	" Remap = to use JuliaFormatter.vim
- 	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
- 	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
- 	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
+" 	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
+" 	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
+" 	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
 augroup end
 let g:JuliaFormatter_options = {
         \ 'style' : 'blue',
