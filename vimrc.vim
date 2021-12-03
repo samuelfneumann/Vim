@@ -47,12 +47,21 @@ tnoremap <leader>tg <c-w>:tabfirst<cr>
 tnoremap <leader>tG <c-w>:tablast<cr>
 "}}}
 
-" Window navigation
+" Window/Pane navigation ---------------------------------------------------{{{
 noremap <leader>+ <c-w>+
 noremap <leader>- <c-w>-
 noremap <leader>> <c-w>>
 noremap <leader>< <c-w><
 noremap <leader>= <c-w>=
+"}}}
+
+" Buffer navigation --------------------------------------------------------{{{
+noremap <leader>bn :bnext<cr>
+noremap <leader>bp :bprev<cr>
+noremap <leader>bg :bfirst<cr>
+noremap <leader>bG :blast<cr>
+noremap <leader>bls :ls<cr>
+"}}}
 
 " Remap the <esc> key
 inoremap jk <esc>
@@ -463,7 +472,7 @@ set formatoptions+=q " Allow formatting of comments with "gq"
 "}}}
 
 " Colorcolumn --------------------------------------------------------------{{{
-highlight ColorColumn ctermbg=gray guibg=gray
+highlight ColorColumn ctermbg=cyan guibg=cyan
 set colorcolumn=+1
 "}}}
 
