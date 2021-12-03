@@ -406,7 +406,7 @@ set cursorline
 "}}}
 
 " Window Pane Splitter -----------------------------------------------------{{{
-hi VertSplit cterm=none gui=none term=none
+hi VertSplit cterm=bold gui=bold term=bold ctermbg=magenta guibg=magenta
 "}}}
 
 " Tabbing ------------------------------------------------------------------{{{
