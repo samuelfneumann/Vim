@@ -53,6 +53,14 @@ noremap <leader>- <c-w>-
 noremap <leader>> <c-w>>
 noremap <leader>< <c-w><
 noremap <leader>= <c-w>=
+noremap <leader>ph <c-w>h
+noremap <leader>pj <c-w>j
+noremap <leader>pk <c-w>k
+noremap <leader>pl <c-w>l
+noremap <leader>pH <c-w>H
+noremap <leader>pJ <c-w>J
+noremap <leader>pK <c-w>K
+noremap <leader>pL <c-w>L
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
