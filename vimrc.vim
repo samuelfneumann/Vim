@@ -83,12 +83,12 @@ nnoremap <leader>i _
 
 " Place/remove semi-colon at line end without moving the curson
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
-nnoremap <leader>x; :execute "normal! mq:s/;$//\e`q"<cr>:nohlsearch<cr>
+nnoremap <leader>x; :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
 
 " Remove trailing whitespace, leaving cursor in-place
-nnoremap <leader><space><space> mq:s/\v\s+$//<cr>:nohlsearch<cr>`q
-nnoremap <leader><space> mq:%s/\v\s+$//<cr>:nohlsearch<cr>`q
-vnoremap <leader><space> mq:s/\v\s+$//<cr>:nohlsearch<cr>`q
+nnoremap <leader><space><space> mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+nnoremap <leader><space> mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
+vnoremap <leader><space> mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
@@ -104,21 +104,21 @@ noremap <right> <nop>
 augroup CommentsAndTabs
     autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
-	autocmd FileType julia nnoremap <buffer> <localleader>x :s/\v# {0,1}//<cr>:nohlsearch<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>x :s/\v# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#/ /<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#/ /e<cr>:nohlsearch<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>c :execute "normal!mqI// \e`q"<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>x :s!\v// {0,1}!!<cr>:nohlsearch<cr>
 	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
 	autocmd Filetype go vnoremap <buffer> <localleader>x :s!^//!  !<cr>:nohlsearch<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
-	autocmd Filetype python nnoremap <buffer> <localleader>x :s/\v# {0,1}//<cr>:nohlsearch<cr>
+	autocmd Filetype python nnoremap <buffer> <localleader>x :s/\v# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#/ /<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#/ /e<cr>:nohlsearch<cr>
 	autocmd FileType vim nnoremap <buffer> <localleader>c :execute "normal! mqI\" \e`q"<cr>
-	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/\v" {0,1}//<cr>:nohlsearch<cr>
+	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/\v" {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType vim vnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"/ /<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"/ /e<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
