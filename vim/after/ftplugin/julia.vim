@@ -1,5 +1,4 @@
 " Textwidth ----------------------------------------------------------------{{{
-set textwidth=72
 " Julia text width is 92 characters
 autocmd FileType julia setlocal textwidth=92
 "}}}
@@ -12,11 +11,5 @@ set formatoptions+=n " Recognize numbered lists when formatting
 set formatoptions-=l " Long lines should be broken in insert mode
 set formatoptions+=j " Remove comment leader when joining lines
 set formatoptions+=q " Allow formatting of comments with "gq"
-"}}}
-
-" Colorcolumn --------------------------------------------------------------{{{
-" Set the column textwidth+1
-highlight ColorColumn ctermbg=gray guibg=gray
-set colorcolumn=+1
 "}}}
 
