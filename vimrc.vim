@@ -88,8 +88,8 @@ noremap <leader>bls :ls<cr>
 "}}}
 
 " Splitting the window
-nnoremap <leader>s :split
-nnoremap <leader>sv :vsplit
+nnoremap <leader>sph :split<cr>
+nnoremap <leader>spv :vsplit<cr>
 
 " Remap the <esc> key
 inoremap jk <esc>
