@@ -96,7 +96,14 @@ tnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Wrap text in `, ", ', (), [], or {}
+" Wrap text in `, ", ', (), [], or {} --------------------------------------{{{
+
+" In visual mode <leader><symbol><symbol> wraps the selection in <symbol> from
+" the beginning of the first selected line to the end of the last selected
+" line. <leader><symbol> wraps only the selection (not the selected lines)
+" in <symbol>
+"
+" In normal mode, <leader><symbol> wraps the current word in <symbol>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
 nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
@@ -112,6 +119,7 @@ vnoremap <leader>`` c``<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
+"}}}
 
 " Move to beginning or end of line
 nnoremap <leader>a g_
