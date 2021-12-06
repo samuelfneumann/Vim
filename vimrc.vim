@@ -349,8 +349,9 @@ function SetStatusLineColour()
 	let light_not_dark = LightOrDark()
 	if light_not_dark
 		hi StatusLine cterm=none gui=none term=none ctermbg=darkgray
-			\ ctermfg=white guibg=darkgray "guifg=white
-		hi StatusLineNC cterm=none gui=none term=none
+			\ ctermfg=white guibg=darkgray guifg=white
+		hi StatusLineNC cterm=none gui=none term=none ctermbg=gray
+			\ ctermfg=white guibg=gray guifg=white
 
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=darkgray ctermfg=white
@@ -358,15 +359,16 @@ function SetStatusLineColour()
 
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
-		hi StatusLineTerm cterm=none gui=none term=none ctermbg=green
-			\ ctermfg=white guibg=green guifg=white
-		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkgreen
+		hi StatusLineTerm cterm=none gui=none term=none ctermbg=darkgreen
 			\ ctermfg=white guibg=darkgreen guifg=white
+		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=green
+			\ ctermfg=white guibg=green guifg=white
 		return
 	else
 		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=black
 			\ guibg=gray guifg=black
-		hi StatusLineNC cterm=none gui=none term=none
+		hi StatusLineNC cterm=none gui=none term=none ctermbg=darkgray
+			\ ctermfg=black guibg=darkgray guifg=black
 
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=black
