@@ -22,8 +22,8 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 " <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
 " respectively
 " <leader>T opens a terminal in a new tab
-" <leader>xt exits the terminal
-tnoremap <leader>xt exit<cr>
+" <leader>tx exits the terminal
+tnoremap <leader>tx exit<cr>
 nnoremap <leader>th :term ++close<cr><c-w>H
 nnoremap <leader>tl :term ++close<cr><c-w>L
 nnoremap <leader>tk :term ++close<cr><c-w>K
@@ -34,7 +34,7 @@ tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
 tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
 vnoremap <leader>T :tab term ++close<cr>
 nnoremap <leader>T :tab term ++close<cr>
-noremap <leader>N <c-w>N<cr>
+tnoremap <leader>N <c-w>N<cr>
 "}}}
 
 " Tab navigation ----------------------------------------------------------{{{
@@ -73,6 +73,8 @@ noremap <leader>pL <c-w>L
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
+tnoremap <leader>bd <c-w>:bd
+nnoremap <leader>bd :bd
 tnoremap <leader>bn <c-w>:bnext<cr>
 noremap <leader>bn :bnext<cr>
 tnoremap <leader>bp <c-w>:bprev<cr>
@@ -117,12 +119,12 @@ nnoremap <leader>i _
 
 " Place/remove semi-colon at line end without moving the curson
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
-nnoremap <leader>x; :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
+nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
 
 " Remove trailing whitespace, leaving cursor in-place
-nnoremap <leader><space><space> mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
-nnoremap <leader><space> mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
-vnoremap <leader><space> mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+nnoremap <leader><space><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+nnoremap <leader><space>x mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
+vnoremap <leader><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
@@ -134,25 +136,25 @@ noremap <right> <nop>
 "}}}
 
 " Comment shortcuts ----------------------------------------------------{{{
-" In any file, <localleader>c comments line and <localleader>x uncomments line
+" In any file, <localleader>c comments line and <localleader>cx uncomments line
 augroup CommentsAndTabs
     autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
-	autocmd FileType julia nnoremap <buffer> <localleader>x :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>x :s/^#/ /e<cr>:nohlsearch<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>c :execute "normal!mqI// \e`q"<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>x :s!\v// {0,1}!!<cr>:nohlsearch<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>cx :s!\v// {0,1}!!<cr>:nohlsearch<cr>
 	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
-	autocmd Filetype go vnoremap <buffer> <localleader>x :s!^//!  !<cr>:nohlsearch<cr>
+	autocmd Filetype go vnoremap <buffer> <localleader>cx :s!^//!  !<cr>:nohlsearch<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
-	autocmd Filetype python nnoremap <buffer> <localleader>x :s/\v# {0,1}//e<cr>:nohlsearch<cr>
+	autocmd Filetype python nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>x :s/^#/ /e<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>cx :s/^#/ /e<cr>:nohlsearch<cr>
 	autocmd FileType vim nnoremap <buffer> <localleader>c :execute "normal! mqI\" \e`q"<cr>
-	autocmd Filetype vim nnoremap <buffer> <localleader>x :s/\v" {0,1}//e<cr>:nohlsearch<cr>
+	autocmd Filetype vim nnoremap <buffer> <localleader>cx :s/\v" {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType vim vnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>x :s/^"/ /e<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>cx :s/^"/ /e<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
