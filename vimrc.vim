@@ -94,16 +94,19 @@ tnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Wrap text in ", ', (), [], or {}
+" Wrap text in `, ", ', (), [], or {}
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
+nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
 nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
 vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
+vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
 vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
 vnoremap <leader>'' c''<esc>P
+vnoremap <leader>`` c``<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
@@ -293,12 +296,17 @@ set number
 " }}}
 
 " On Save -----------------------------------------------------------------{{{
+function RemoveTrailingWhitespace()
+	execute "normal! mq"
+	execute "normal! :%s/\\s\\+$//e\r"
+	execute "normal! `q"
+endfunction
 augroup OnSave
 	" Autocommand group for events to happen on save
 	autocmd!
 
 	" Remove all trailing whitespace on save
-	autocmd BufWritePre * :%s/\s\+$//e
+	autocmd BufWritePre * call RemoveTrailingWhitespace()
 augroup end
 " }}}
 
