@@ -23,7 +23,7 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 " respectively
 " <leader>T opens a terminal in a new tab
 " <leader>tx exits the terminal
-tnoremap <leader>tx exit<cr>
+tnoremap <leader>tx <c-w> :q!<cr>
 nnoremap <leader>th :term ++close<cr><c-w>H
 nnoremap <leader>tl :term ++close<cr><c-w>L
 nnoremap <leader>tk :term ++close<cr><c-w>K
