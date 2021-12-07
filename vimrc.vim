@@ -88,7 +88,9 @@ noremap <leader>bls :ls<cr>
 "}}}
 
 " Splitting the window
+tnoremap <leader>sph <c-w>:split<cr>
 nnoremap <leader>sph :split<cr>
+tnoremap <leader>spv <c-w>:vsplit<cr>
 nnoremap <leader>spv :vsplit<cr>
 
 " Remap the <esc> key
@@ -148,24 +150,25 @@ noremap <right> <nop>
 "}}}
 
 " Comment shortcuts ----------------------------------------------------{{{
-" In any file, <localleader>c comments line and <localleader>cx uncomments line
+" In any file, <localleader>cc creates a comment out of the line and
+" <localleader>cx uncomments line
 augroup CommentsAndTabs
     autocmd!
-	autocmd FileType julia nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
+	autocmd FileType julia nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
 	autocmd FileType julia nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>c :s/^/# <cr>:nohlsearch<cr>
+	autocmd FileType julia vnoremap <buffer> <localleader>cc :s/^/# <cr>:nohlsearch<cr>
 	autocmd FileType julia vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>c :execute "normal!mqI// \e`q"<cr>
+	autocmd FileType go nnoremap <buffer> <localleader>cc :execute "normal!mqI// \e`q"<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>cx :s!\v// {0,1}!!<cr>:nohlsearch<cr>
-	autocmd FileType go vnoremap <buffer> <localleader>c :s!^!//<cr>:nohlsearch<cr>
+	autocmd FileType go vnoremap <buffer> <localleader>cc :s!^!//<cr>:nohlsearch<cr>
 	autocmd Filetype go vnoremap <buffer> <localleader>cx :s!^//!  !<cr>:nohlsearch<cr>
-	autocmd FileType python nnoremap <buffer> <localleader>c :execute "normal! mqI# \e`q"<cr>
+	autocmd FileType python nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
 	autocmd Filetype python nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>c :s/^/#<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>cc :s/^/#<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>cx :s/^#/ /e<cr>:nohlsearch<cr>
-	autocmd FileType vim nnoremap <buffer> <localleader>c :execute "normal! mqI\" \e`q"<cr>
+	autocmd FileType vim nnoremap <buffer> <localleader>cc :execute "normal! mqI\" \e`q"<cr>
 	autocmd Filetype vim nnoremap <buffer> <localleader>cx :s/\v" {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>c :s/^/"<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>cc :s/^/"<cr>:nohlsearch<cr>
 	autocmd FileType vim vnoremap <buffer> <localleader>cx :s/^"/ /e<cr>:nohlsearch<cr>
 augroup end
 "}}}
@@ -532,6 +535,11 @@ set colorcolumn=+1
 
 " Julia-vim Options --------------------------------------------------------{{{
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
+ augroup LatexUnicode
+	" Don't allow autoexpand if a tex file has been opened in a buffer
+ 	autocmd!
+ 	autocmd FileType tex :let g:latex_to_unicode_auto=0
+ augroup end
 let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
 let g:julia_blocks=0 " Don't allow the Julia block moving
 "}}}
