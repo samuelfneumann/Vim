@@ -153,7 +153,7 @@ noremap <right> <nop>
 " In any file, <localleader>cc creates a comment out of the line and
 " <localleader>cx uncomments line
 augroup CommentsAndTabs
-    autocmd!
+	autocmd!
 	autocmd FileType julia nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
 	autocmd FileType julia nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType julia vnoremap <buffer> <localleader>cc :s/^/# <cr>:nohlsearch<cr>
@@ -233,17 +233,17 @@ augroup StructAbbrev
 	autocmd FileType julia iabbrev <buffer> struct struct<cr>endjkkA
 	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endjkkA
 	autocmd FileType python iabbrev <buffer> def def:jki
-	autocmd FileType go iabbrev <buffer> type type {<cr>}jkkg_i
+	autocmd FileType go iabbrev <buffer> type type{<cr>}jkkg_i
 augroup end
 
 " Abbreviations for Python imports -----------------------------{{{
 augroup PyImport
 	autocmd!
-    autocmd FileType python iabbrev <buffer> iscipy import scipy
-    autocmd FileType python iabbrev <buffer> inumpy import numpy as np
-    autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
-    autocmd FileType python iabbrev <buffer> ipickle import pickle
-    autocmd FileType python iabbrev <buffer> ijson import json
+	autocmd FileType python iabbrev <buffer> iscipy import scipy
+	autocmd FileType python iabbrev <buffer> inumpy import numpy as np
+	autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
+	autocmd FileType python iabbrev <buffer> ipickle import pickle
+	autocmd FileType python iabbrev <buffer> ijson import json
 	autocmd FileType python iabbrev <buffer> ios import os
 	autocmd FileType python iabbrev <buffer> iosp from os import path
 	autocmd FileType python iabbrev <buffer> iseaborn import seaborn as sns
@@ -308,16 +308,16 @@ set number
 " === Option 2 ===
 " If the below lines are used instead of those above, then trailing whitespace
 " is not matched whilst typing.
- autocmd Colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
- colorscheme default
- match ExtraWhitespace /\s\+$/
- augroup TrailingWhiteSpace
- 	autocmd!
- 	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
- 	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
- 	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
- 	autocmd BufWinLeave * call clearmatches()
- augroup end
+autocmd Colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
+colorscheme default
+match ExtraWhitespace /\s\+$/
+augroup TrailingWhiteSpace
+	autocmd!
+	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+	autocmd BufWinLeave * call clearmatches()
+augroup end
 " }}}
 
 " On Save -----------------------------------------------------------------{{{
@@ -374,26 +374,26 @@ function SetStatusLineColour()
 	let light_not_dark = LightOrDark()
 	if light_not_dark
 		hi StatusLine cterm=none gui=none term=none ctermbg=darkgray
-			\ ctermfg=white guibg=darkgray guifg=white
+					\ ctermfg=white guibg=darkgray guifg=white
 		hi StatusLineNC cterm=none gui=none term=none ctermbg=gray
-			\ ctermfg=white guibg=gray guifg=white
+					\ ctermfg=white guibg=gray guifg=white
 
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=darkgray ctermfg=white
-			\ guibg=darkgray guifg=white
+					\ guibg=darkgray guifg=white
 
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
 		hi StatusLineTerm cterm=none gui=none term=none ctermbg=darkgreen
-			\ ctermfg=white guibg=darkgreen guifg=white
+					\ ctermfg=white guibg=darkgreen guifg=white
 		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=green
-			\ ctermfg=white guibg=green guifg=white
+					\ ctermfg=white guibg=green guifg=white
 		return
 	else
 		hi StatusLine cterm=none gui=none term=none ctermbg=gray ctermfg=black
-			\ guibg=gray guifg=black
+					\ guibg=gray guifg=black
 		hi StatusLineNC cterm=none gui=none term=none ctermbg=darkgray
-			\ ctermfg=black guibg=darkgray guifg=black
+					\ ctermfg=black guibg=darkgray guifg=black
 
 		" Set User1 colour, used for the current mode in the statusline
 		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=black
@@ -401,9 +401,9 @@ function SetStatusLineColour()
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
 		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue
-			\ ctermfg=white guibg=blue guifg=white
+					\ ctermfg=white guibg=blue guifg=white
 		hi StatusLineTermNC cterm=none gui=none term=none ctermbg=darkblue
-			\ ctermfg=white guibg=darkblue guifg=white
+					\ ctermfg=white guibg=darkblue guifg=white
 		return
 	endif
 endfunction
@@ -416,16 +416,17 @@ endif
 "}}}
 
 let g:currentmode={
-		\ 'n'  : 'NORMAL',
-		\ 'v'  : 'VISUAL',
-		\ 'V'  : 'V·Line',
-		\ "\<C-V>" : 'V·Block',
-		\ 'i'  : 'INSERT',
-		\ 'R'  : 'R',
-		\ 'Rv' : 'V·Replace',
-		\ 'c'  : 'Command',
-		\ 't'  : 'Terminal',
-		\}
+			\ 'n'  : 'NORMAL',
+			\ 'v'  : 'VISUAL',
+			\ 'V'  : 'V·Line',
+			\ "\<C-V>" : 'V·Block',
+			\ 'i'  : 'INSERT',
+			\ 'R'  : 'R',
+			\ 'Rv' : 'V·Replace',
+			\ 'c'  : 'Command',
+			\ 't'  : 'Terminal',
+			\ 's'  : 'Snipped',
+			\}
 
 set statusline=
 set statusline+=\ %n		" buffer number
@@ -452,13 +453,13 @@ function SetTabLine()
 	let light_not_dark = LightOrDark()
 	if light_not_dark
 		hi TabLine cterm=none term=none gui=none ctermbg=darkgray ctermfg=white
-			\ guibg=darkgray guifg=white
+					\ guibg=darkgray guifg=white
 		hi TabLineFill ctermbg=darkgray guibg=darkgray
 		hi TabLineSel cterm=bold term=bold gui=bold ctermfg=black
 		return
 	else
 		hi TabLine cterm=none term=none gui=none ctermbg=gray ctermfg=black
-			\ guibg=gray guifg=black
+					\ guibg=gray guifg=black
 		hi TabLineFill ctermbg=gray guibg=gray
 		hi TabLineSel cterm=bold term=bold gui=bold ctermfg=white
 		return
@@ -474,8 +475,8 @@ endif
 
 " Cursorline -------------------------------------------------------{{{
 hi clear CursorLine
-hi CursorLineNR cterm=bold term=bold
-highlight CursorLine cterm=bold term=bold
+highlight CursorLineNR cterm=bold term=bold gui=bold
+highlight CursorLine cterm=bold term=bold gui=bold
 set cursorline
 "}}}
 
@@ -494,14 +495,14 @@ set smarttab
 set tabstop=4 " Set tab width to 4 columns
 set softtabstop=4
 set shiftwidth=4 " Set shift width to 4 spaces
- set autoindent
- set smartindent
+set autoindent
+set smartindent
 "}}}
 
 " File Type Detection ------------------------------------------------------{{{
 augroup FiletypeVim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
 augroup end
 filetype on
 filetype plugin on " Use only plugins for this file's type
@@ -543,11 +544,11 @@ set colorcolumn=+1
 
 " Julia-vim Options --------------------------------------------------------{{{
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
- augroup LatexUnicode
+augroup LatexUnicode
 	" Don't allow autoexpand if a tex file has been opened in a buffer
- 	autocmd!
- 	autocmd FileType tex :let g:latex_to_unicode_auto=0
- augroup end
+	autocmd!
+	autocmd FileType tex :let g:latex_to_unicode_auto=0
+augroup end
 let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
 let g:julia_blocks=0 " Don't allow the Julia block moving
 "}}}
@@ -556,16 +557,23 @@ let g:julia_blocks=0 " Don't allow the Julia block moving
 augroup JuliaFormatter
 	autocmd!
 	" Remap = to use JuliaFormatter.vim
-  	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
-  	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
-  	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
+	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
+	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
+	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
 augroup end
 let g:JuliaFormatter_options = {
-        \ 'style' : 'blue',
-        \ }
+			\ 'style' : 'blue',
+			\ }
 " let g:JuliaFormatter_always_launch_server=1
 let g:JuliaFormatter_use_sysimage=1
 " }}}
+
+" UltiSnips Options --------------------------------------------------------{{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader>na" " Next snippet arg
+let g:UltiSnipsJumpBackwardTrigger="<leader>pa" " Previous snippet arg
+" }}}
+
 " }}}
 " }}}
 

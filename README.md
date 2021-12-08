@@ -21,13 +21,13 @@ below.
 
 All plugins use the built-in Vim plugin manager. They do not use Vundle, or
 Vim-plug or any other complicated plugin manager. Rather, everything must be
-done manually by hand using `git` and Vim's builtin plugin system. 
+done manually by hand using `git` and Vim's builtin plugin system.
 
 ### Julia-Vim
 
 [Julia-Vim](https://github.com/JuliaEditorSupport/julia-vim/tree/master/keymap)
 is used to get `LaTeΧ` symbols as-you-type as well as to support syntax
-highlighting in `Julia`. The plugin options are defined in 
+highlighting in `Julia`. The plugin options are defined in
 `vimrc` under the relevant folding. To install this plugin:
 
 ```bash
@@ -46,7 +46,7 @@ The JuliaFormatter plugin has a lot of
 functionality for formatting `Julia` code according to different style guides,
 and it conforms to the Blue style guide as well.
 The formatting of this plugin is remapped to `=G` to format from the cursor to
-the end of the file and `=` to format a selection, and `==` to format a line, 
+the end of the file and `=` to format a selection, and `==` to format a line,
 as is the usual case in vim.
 
 This plugin has a few quirks. Because it's calling some `Julia` code
@@ -79,3 +79,27 @@ directory, you will have to specify this in the `vimrc` file:
 let g:JuliaFormatter_use_sysimage=1
 let g:JuliaFormatter_sysimage_path="/path/to/julia_sysimage.so"
 ```
+
+### UltiSnips
+[UltiSnips](https://github.com/SirVer/ultisnips) is used for code snippets. To
+install:
+
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:SirVer/ultisnips.git
+```
+
+You can use any snippets you would like, or even define your own. I use
+[vim-snippets](https://github.com/honza/vim-snippets). To install:
+
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:honza/vim-snippets.git
+```
+
+## Plugins to use
+
+- [ ] YouCompleteMe
+- [ ] vimtex
