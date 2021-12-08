@@ -200,8 +200,8 @@ augroup ForAbbrev
 	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
 	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
 	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
-	autocmd FileType go iabbrev <buffer> ffor for{<cr>}<up><right><right>
-	autocmd FileType go iabbrev <buffer> wwh for {<cr><cr>}<up>
+	autocmd FileType go iabbrev <buffer> ffor for {<cr>}jkkg_i
+	autocmd FileType go iabbrev <buffer> wwh for {<cr>}jkkg_i
 	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
 	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
 	autocmd FileType python iabbrev <buffer> ffor for:<left>
@@ -226,6 +226,14 @@ augroup end
 augroup ModuleAbbrev
 	autocmd!
 	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>jkA
+augroup end
+
+augroup StructAbbrev
+	autocmd!
+	autocmd FileType julia iabbrev <buffer> struct struct<cr>endjkkA
+	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endjkkA
+	autocmd FileType python iabbrev <buffer> def def:jki
+	autocmd FileType go iabbrev <buffer> type type {<cr>}jkkg_i
 augroup end
 
 " Abbreviations for Python imports -----------------------------{{{
