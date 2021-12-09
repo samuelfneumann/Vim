@@ -96,10 +96,14 @@ You can use any snippets you would like, or even define your own. I use
 ```bash
 cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
-git clone git@github.com:honza/vim-snippets.git
+git clone git@github.com:samuelfneumann/vim-snippets.git
 ```
 
-## Plugins to use
+### VimTex
+[VimTex](https://github.com/lervag/vimtex) is used for `LaTeχ`. To install:
 
-- [ ] YouCompleteMe
-- [ ] vimtex
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:lervag/vimtex.git
+`
