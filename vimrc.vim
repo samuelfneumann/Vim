@@ -591,9 +591,8 @@ let g:UltiSnipsNoPythonWarning=1
 "" will be for Ulti and snipMate snippets
 "let g:UltiSnipsSnippetDirectories=["~/.vim/pack/plugins/start/vim-snippets"]
 
-" Disable snipMate snippets
-let g:UltiSnipsEnableSnipMate=0
-
+" Enable snipMate snippets
+let g:UltiSnipsEnableSnipMate=1
 " }}}
 
 " Inkscape Figures ---------------------------------------------------------{{{
