@@ -585,12 +585,14 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" " Next snippet arg
 let g:UltiSnipsJumpBackwardTrigger="<leader>p<tab>" " Previous snippet arg
 
+let g:UltiSnipsNoPythonWarning=1
+
 "" Only use snippets defined in my version of the vim-snippets repository, this
 "" will be for Ulti and snipMate snippets
 "let g:UltiSnipsSnippetDirectories=["~/.vim/pack/plugins/start/vim-snippets"]
-"
-"" Enable snipMate snippets
-"let g:UltiSnipsEnableSnipMate=1
+
+" Disable snipMate snippets
+let g:UltiSnipsEnableSnipMate=0
 
 " }}}
 
@@ -617,11 +619,18 @@ nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/Figures/
 
 " VimTex -------------------------------------------------------------------{{{
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-" }}}
-" }}}
-" }}}
 
+" Set how citations are concealed
+let g:vimtex_syntax_conceal_cites = {
+          \ 'type': 'icon',
+          \ 'icon': '📖',
+          \ 'verbose': v:true,
+          \}
+
+set conceallevel=2
+hi clear Conceal
+hi Conceal cterm=none gui=none
+" }}}
+" }}}
+" }}}
