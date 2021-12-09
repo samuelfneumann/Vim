@@ -182,74 +182,74 @@ iabbrev _name Samuel Frederick Neumann
 "}}}
 
 " Syntax abbreviations --------------------------------------------------{{{
-" Abbreviations iff -> if, then, else
-augroup IfAbbrev
-	autocmd!
-	autocmd FileType julia iabbrev <buffer> if if<cr>end<up>
-	autocmd FileType julia iabbrev <buffer> elseif else if<cr><up>
-	autocmd FileType go iabbrev <buffer> if if{<cr><cr>}<up><up><right>
-	autocmd FileType python iabbrev <buffer> if if:<left>
-	autocmd FileType python iabbrev <buffer> elif elif:<left>
-	autocmd FileType python iabbrev <buffer> else else:<cr><left>
-	autocmd FileType vim iabbrev <buffer> if if<cr>endif<up>
-augroup end
-
-" Abbreviations ffor -> for; wwh -> while
-augroup ForAbbrev
-	autocmd!
-	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
-	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
-	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
-	autocmd FileType go iabbrev <buffer> ffor for {<cr>}jkkg_i
-	autocmd FileType go iabbrev <buffer> wwh for {<cr>}jkkg_i
-	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
-	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
-	autocmd FileType python iabbrev <buffer> ffor for:<left>
-	autocmd FileType python iabbrev <buffer> wwh while:<left>
-	autocmd FileType vim iabbrev <buffer> ffor for<cr>endfor<up>
-	autocmd FileType vim iabbrev <buffer> for use_ffor
-augroup end
-
-" Abbreviations for ff -> function
-augroup FuncAbbrev
-	autocmd!
-	autocmd FileType julia iabbrev <buffer> function use_ff
-	autocmd FileType julia iabbrev <buffer> ff function_()<cr>endjk?_<cr>jk:nohlsearch<cr>xi
-	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
-	autocmd FileType go iabbrev <buffer> func use_ff
-	autocmd FileType python iabbrev <buffer> ff def:<left>
-	autocmd FileType python iabbrev <buffer> def use_ff
-	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunctionjk?_<cr>:nohlsearch<cr>xi
-	autocmd FileType vim iabbrev <buffer> function use_ff
-augroup end
-
-augroup ModuleAbbrev
-	autocmd!
-	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>jkA
-augroup end
-
-augroup StructAbbrev
-	autocmd!
-	autocmd FileType julia iabbrev <buffer> struct struct<cr>endjkkA
-	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endjkkA
-	autocmd FileType python iabbrev <buffer> def def:jki
-	autocmd FileType go iabbrev <buffer> type type{<cr>}jkkg_i
-augroup end
-
-" Abbreviations for Python imports -----------------------------{{{
-augroup PyImport
-	autocmd!
-	autocmd FileType python iabbrev <buffer> iscipy import scipy
-	autocmd FileType python iabbrev <buffer> inumpy import numpy as np
-	autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
-	autocmd FileType python iabbrev <buffer> ipickle import pickle
-	autocmd FileType python iabbrev <buffer> ijson import json
-	autocmd FileType python iabbrev <buffer> ios import os
-	autocmd FileType python iabbrev <buffer> iosp from os import path
-	autocmd FileType python iabbrev <buffer> iseaborn import seaborn as sns
-augroup end
-"}}}
-
+" " Abbreviations iff -> if, then, else
+" augroup IfAbbrev
+" 	autocmd!
+" 	autocmd FileType julia iabbrev <buffer> if if<cr>end<up>
+" 	autocmd FileType julia iabbrev <buffer> elseif else if<cr><up>
+" 	autocmd FileType go iabbrev <buffer> if if{<cr><cr>}<up><up><right>
+" 	autocmd FileType python iabbrev <buffer> if if:<left>
+" 	autocmd FileType python iabbrev <buffer> elif elif:<left>
+" 	autocmd FileType python iabbrev <buffer> else else:<cr><left>
+" 	autocmd FileType vim iabbrev <buffer> if if<cr>endif<up>
+" augroup end
+"
+" " Abbreviations ffor -> for; wwh -> while
+" augroup ForAbbrev
+" 	autocmd!
+" 	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
+" 	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
+" 	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
+" 	autocmd FileType go iabbrev <buffer> ffor for {<cr>}jkkg_i
+" 	autocmd FileType go iabbrev <buffer> wwh for {<cr>}jkkg_i
+" 	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
+" 	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
+" 	autocmd FileType python iabbrev <buffer> ffor for:<left>
+" 	autocmd FileType python iabbrev <buffer> wwh while:<left>
+" 	autocmd FileType vim iabbrev <buffer> ffor for<cr>endfor<up>
+" 	autocmd FileType vim iabbrev <buffer> for use_ffor
+" augroup end
+"
+" " Abbreviations for ff -> function
+" augroup FuncAbbrev
+" 	autocmd!
+" 	autocmd FileType julia iabbrev <buffer> function use_ff
+" 	autocmd FileType julia iabbrev <buffer> ff function_()<cr>endjk?_<cr>jk:nohlsearch<cr>xi
+" 	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
+" 	autocmd FileType go iabbrev <buffer> func use_ff
+" 	autocmd FileType python iabbrev <buffer> ff def:<left>
+" 	autocmd FileType python iabbrev <buffer> def use_ff
+" 	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunctionjk?_<cr>:nohlsearch<cr>xi
+" 	autocmd FileType vim iabbrev <buffer> function use_ff
+" augroup end
+"
+" augroup ModuleAbbrev
+" 	autocmd!
+" 	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>jkA
+" augroup end
+"
+" augroup StructAbbrev
+" 	autocmd!
+" 	autocmd FileType julia iabbrev <buffer> struct struct<cr>endjkkA
+" 	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endjkkA
+" 	autocmd FileType python iabbrev <buffer> def def:jki
+" 	autocmd FileType go iabbrev <buffer> type type{<cr>}jkkg_i
+" augroup end
+"
+" " Abbreviations for Python imports -----------------------------{{{
+" augroup PyImport
+" 	autocmd!
+" 	autocmd FileType python iabbrev <buffer> iscipy import scipy
+" 	autocmd FileType python iabbrev <buffer> inumpy import numpy as np
+" 	autocmd FileType python iabbrev <buffer> imatplotlib import matplotlib.pyplot as plt
+" 	autocmd FileType python iabbrev <buffer> ipickle import pickle
+" 	autocmd FileType python iabbrev <buffer> ijson import json
+" 	autocmd FileType python iabbrev <buffer> ios import os
+" 	autocmd FileType python iabbrev <buffer> iosp from os import path
+" 	autocmd FileType python iabbrev <buffer> iseaborn import seaborn as sns
+" augroup end
+" "}}}
+"
 "}}}
 "}}}
 
@@ -591,8 +591,8 @@ let g:UltiSnipsNoPythonWarning=1
 "" will be for Ulti and snipMate snippets
 "let g:UltiSnipsSnippetDirectories=["~/.vim/pack/plugins/start/vim-snippets"]
 
-" Enable snipMate snippets
-let g:UltiSnipsEnableSnipMate=1
+" Disable snipMate snippets -- if needed, copy to UltiSnips
+let g:UltiSnipsEnableSnipMate=0
 " }}}
 
 " Inkscape Figures ---------------------------------------------------------{{{
