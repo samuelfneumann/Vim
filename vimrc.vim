@@ -5,10 +5,6 @@ set title " Set filename in window title bar
 colorscheme default
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
-" Set spell check on
-set spell spelllang=en_us
-
-
 " Commands ----------------------------------------------------------------{{{
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 "}}}
@@ -263,10 +259,25 @@ set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
-set undofile " Use an undofile
+set undofile " Use an undo file
 set magic " Use magic for escape characters
 set scrolloff=5 " Scroll 5 lines past cursor with mouse
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
+
+" Spelling -----------------------------------------------------------------{{{
+" Set spell check on
+set spell spelllang=en_us
+
+" Correct spelling on-the-fly with <c-l>
+" <leader>cs (correct spelling) corrects the last spelling mistake
+nnoremap <leader>cs mq[s1z=`q
+inoremap <leader>cs <esc>mq[s1z=`qa
+
+" Remap <leader><leader> to <leader>, so that if a conflict happens in insert
+" mode with a mapping and needing to write down <leader><some text>, we can use
+" <leader><leader><some text>
+inoremap <leader><leader> <leader>
+"}}}
 
 " Terminal settings --------------------------------------------------------{{{
 augroup TerminalSettings
