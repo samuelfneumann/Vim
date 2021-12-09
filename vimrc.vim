@@ -160,16 +160,20 @@ augroup CommentsAndTabs
 	autocmd FileType julia vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>cc :execute "normal!mqI// \e`q"<cr>
 	autocmd FileType go nnoremap <buffer> <localleader>cx :s!\v// {0,1}!!<cr>:nohlsearch<cr>
-	autocmd FileType go vnoremap <buffer> <localleader>cc :s!^!//<cr>:nohlsearch<cr>
-	autocmd Filetype go vnoremap <buffer> <localleader>cx :s!^//!  !<cr>:nohlsearch<cr>
+	autocmd FileType go vnoremap <buffer> <localleader>cc :s!^!// <cr>:nohlsearch<cr>
+	autocmd Filetype go vnoremap <buffer> <localleader>cx :s!\v^// {0,1}!!<cr>:nohlsearch<cr>
+	autocmd FileType snippets nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
+	autocmd Filetype snippets nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
+	autocmd FileType snippets vnoremap <buffer> <localleader>cc :s/^/# <cr>:nohlsearch<cr>
+	autocmd FileType snippets vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType python nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
 	autocmd Filetype python nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType python vnoremap <buffer> <localleader>cc :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>cx :s/^#/ /e<cr>:nohlsearch<cr>
+	autocmd FileType python vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
 	autocmd FileType vim nnoremap <buffer> <localleader>cc :execute "normal! mqI\" \e`q"<cr>
 	autocmd Filetype vim nnoremap <buffer> <localleader>cx :s/\v" {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>cc :s/^/"<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>cx :s/^"/ /e<cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>cc :s/^/" <cr>:nohlsearch<cr>
+	autocmd FileType vim vnoremap <buffer> <localleader>cx :s/\v^" {0,1}//e<cr>:nohlsearch<cr>
 augroup end
 "}}}
 "}}}
@@ -545,9 +549,11 @@ set colorcolumn=+1
 " Julia-vim Options --------------------------------------------------------{{{
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
 augroup LatexUnicode
-	" Don't allow autoexpand if a tex file has been opened in a buffer
+	" Don't allow autoexpand if a tex or snippet file has been opened in a
+	" buffer
 	autocmd!
 	autocmd FileType tex :let g:latex_to_unicode_auto=0
+	autocmd FileType snippets :let g:latex_to_unicode_auto=0
 augroup end
 let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
 let g:julia_blocks=0 " Don't allow the Julia block moving
@@ -570,11 +576,46 @@ let g:JuliaFormatter_use_sysimage=1
 
 " UltiSnips Options --------------------------------------------------------{{{
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader>na" " Next snippet arg
-let g:UltiSnipsJumpBackwardTrigger="<leader>pa" " Previous snippet arg
-" }}}
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>" " Next snippet arg
+let g:UltiSnipsJumpBackwardTrigger="<leader>p<tab>" " Previous snippet arg
+
+"" Only use snippets defined in my version of the vim-snippets repository, this
+"" will be for Ulti and snipMate snippets
+"let g:UltiSnipsSnippetDirectories=["~/.vim/pack/plugins/start/vim-snippets"]
+"
+"" Enable snipMate snippets
+"let g:UltiSnipsEnableSnipMate=1
 
 " }}}
+
+" Inkscape Figures ---------------------------------------------------------{{{
+" https://github.com/gillescastel/inkscape-figures
+" https://castel.dev/post/lecture-notes-2/
+"
+" Place this at top of LaTeχ file:
+"
+"	\usepackage{import}
+"	\usepackage{pdfpages}
+"	\usepackage{transparent}
+"	\usepackage{xcolor}
+"
+"	\newcommand{\incfig}[2][1]{%
+"		\def\svgwidth{#1\columnwidth}
+"		\import{./Figures/}{#2.pdf_tex}
+"	}
+"
+"	\pdfsuppresswarningpagegroup=1
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/Figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/Figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 " }}}
 
+" VimTex -------------------------------------------------------------------{{{
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+" }}}
+" }}}
+" }}}
 
