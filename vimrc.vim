@@ -272,11 +272,6 @@ set spell spelllang=en_us
 " <leader>cs (correct spelling) corrects the last spelling mistake
 nnoremap <leader>cs mq[s1z=`q
 inoremap <leader>cs <esc>mq[s1z=`qa
-
-" Remap <leader><leader> to <leader>, so that if a conflict happens in insert
-" mode with a mapping and needing to write down <leader><some text>, we can use
-" <leader><leader><some text>
-inoremap <leader><leader> <leader>
 "}}}
 
 " Terminal settings --------------------------------------------------------{{{
