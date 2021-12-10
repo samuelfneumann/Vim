@@ -6,7 +6,7 @@ colorscheme default
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+" command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 "}}}
 
 " Maps --------------------------------------------------------------------{{{
@@ -45,10 +45,15 @@ tnoremap <leader>tG <c-w>:tablast<cr>
 "}}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
+tnoremap <leader>+ <c-w>+
 noremap <leader>+ <c-w>+
+tnoremap <leader>- <c-w>-
 noremap <leader>- <c-w>-
+tnoremap <leader>> <c-w>>
 noremap <leader>> <c-w>>
+tnoremap <leader>< <c-w><
 noremap <leader>< <c-w><
+tnoremap <leader>= <c-w>=
 noremap <leader>= <c-w>=
 tnoremap <leader>ph <c-w>h
 noremap <leader>ph <c-w>h
