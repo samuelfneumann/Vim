@@ -10,8 +10,8 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 "}}}
 
 " Maps --------------------------------------------------------------------{{{
-:let mapleader="-"
-:let localleader="\\"
+let mapleader="-"
+let localleader="\\"
 
 " Terminal Navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
