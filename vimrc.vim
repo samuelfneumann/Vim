@@ -528,6 +528,9 @@ augroup ModifiedTextWidth
 
 	" Julia text width is 92 characters
 	autocmd FileType julia setlocal textwidth=92
+
+	" LaTeχ can have longer text width
+	autocmd FileType tex setlocal textwidth=120
 augroup end
 
 augroup TextFormatting
