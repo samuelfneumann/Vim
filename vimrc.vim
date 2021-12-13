@@ -590,8 +590,8 @@ let g:JuliaFormatter_use_sysimage=1
 
 " UltiSnips Options --------------------------------------------------------{{{
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>" " Next snippet arg
-let g:UltiSnipsJumpBackwardTrigger="<leader>p<tab>" " Previous snippet arg
+let g:UltiSnipsJumpForwardTrigger="<tab>" " Next snippet arg
+let g:UltiSnipsJumpBackwardTrigger="<leader><tab>" " Previous snippet arg
 
 let g:UltiSnipsNoPythonWarning=1
 
