@@ -592,7 +592,7 @@ let g:JuliaFormatter_use_sysimage=1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>" " Next snippet arg
 let g:UltiSnipsJumpBackwardTrigger="<leader><tab>" " Previous snippet arg
-
+let g:ultisnips_python_style="numpy"
 let g:UltiSnipsNoPythonWarning=1
 
 "" Only use snippets defined in my version of the vim-snippets repository, this
