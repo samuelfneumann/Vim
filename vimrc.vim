@@ -95,9 +95,9 @@ tnoremap <leader>spv <c-w>:vsplit<cr>
 nnoremap <leader>spv :vsplit<cr>
 
 " Remap the <esc> key
-inoremap jk <esc>
-vnoremap jk <esc>
-tnoremap jk <esc>
+inoremap JK <esc>
+vnoremap JK <esc>
+tnoremap JK <esc>
 
 " Edit and source vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -205,8 +205,8 @@ iabbrev _name Samuel Frederick Neumann
 " 	autocmd FileType julia iabbrev <buffer> for use_ffor_wwh
 " 	autocmd FileType julia iabbrev <buffer> ffor for<cr>end<up>
 " 	autocmd FileType julia iabbrev <buffer> wwh while<cr>end<up><right><right>
-" 	autocmd FileType go iabbrev <buffer> ffor for {<cr>}jkkg_i
-" 	autocmd FileType go iabbrev <buffer> wwh for {<cr>}jkkg_i
+" 	autocmd FileType go iabbrev <buffer> ffor for {<cr>}JKkg_i
+" 	autocmd FileType go iabbrev <buffer> wwh for {<cr>}JKkg_i
 " 	autocmd FileType go iabbrev <buffer> for use_ffor_wwh
 " 	autocmd FileType python iabbrev <buffer> for use_ffor_wwh
 " 	autocmd FileType python iabbrev <buffer> ffor for:<left>
@@ -219,26 +219,26 @@ iabbrev _name Samuel Frederick Neumann
 " augroup FuncAbbrev
 " 	autocmd!
 " 	autocmd FileType julia iabbrev <buffer> function use_ff
-" 	autocmd FileType julia iabbrev <buffer> ff function_()<cr>endjk?_<cr>jk:nohlsearch<cr>xi
-" 	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}jk?_<cr>xi
+" 	autocmd FileType julia iabbrev <buffer> ff function_()<cr>endJK?_<cr>JK:nohlsearch<cr>xi
+" 	autocmd FileType go iabbrev <buffer> ff func_() {<cr><cr>}JK?_<cr>xi
 " 	autocmd FileType go iabbrev <buffer> func use_ff
 " 	autocmd FileType python iabbrev <buffer> ff def:<left>
 " 	autocmd FileType python iabbrev <buffer> def use_ff
-" 	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunctionjk?_<cr>:nohlsearch<cr>xi
+" 	autocmd FileType vim iabbrev <buffer> ff function_()<cr>endfunctionJK?_<cr>:nohlsearch<cr>xi
 " 	autocmd FileType vim iabbrev <buffer> function use_ff
 " augroup end
 "
 " augroup ModuleAbbrev
 " 	autocmd!
-" 	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>jkA
+" 	autocmd FileType julia iabbrev <buffer> module module<cr>end<up>JKA
 " augroup end
 "
 " augroup StructAbbrev
 " 	autocmd!
-" 	autocmd FileType julia iabbrev <buffer> struct struct<cr>endjkkA
-" 	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endjkkA
-" 	autocmd FileType python iabbrev <buffer> def def:jki
-" 	autocmd FileType go iabbrev <buffer> type type{<cr>}jkkg_i
+" 	autocmd FileType julia iabbrev <buffer> struct struct<cr>endJKkA
+" 	autocmd FileType julia iabbrev <buffer> mutable mutable struct<cr>endJKkA
+" 	autocmd FileType python iabbrev <buffer> def def:JKi
+" 	autocmd FileType go iabbrev <buffer> type type{<cr>}JKkg_i
 " augroup end
 "
 " " Abbreviations for Python imports -----------------------------{{{
@@ -431,12 +431,13 @@ endif
 "}}}
 
 let g:currentmode={
-			\ 'n'  : 'NORMAL',
-			\ 'v'  : 'VISUAL',
+			\ 'n'  : 'Normal',
+			\ 'v'  : 'Visual',
 			\ 'V'  : 'V·Line',
 			\ "\<C-V>" : 'V·Block',
-			\ 'i'  : 'INSERT',
+			\ 'i'  : 'Insert',
 			\ 'R'  : 'R',
+			\ 'r'  : 'Replace',
 			\ 'Rv' : 'V·Replace',
 			\ 'c'  : 'Command',
 			\ 't'  : 'Terminal',
@@ -590,8 +591,8 @@ let g:JuliaFormatter_use_sysimage=1
 
 " UltiSnips Options --------------------------------------------------------{{{
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>" " Next snippet arg
-let g:UltiSnipsJumpBackwardTrigger="<leader><tab>" " Previous snippet arg
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>" " Next snippet arg
+let g:UltiSnipsJumpBackwardTrigger="<leader>p<tab>" " Previous snippet arg
 let g:ultisnips_python_style="numpy"
 let g:UltiSnipsNoPythonWarning=1
 
