@@ -258,7 +258,7 @@ iabbrev _name Samuel Frederick Neumann
 "}}}
 "}}}
 
-" General settings -------------------------------------------------{{{
+"
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
@@ -591,8 +591,8 @@ let g:JuliaFormatter_use_sysimage=1
 
 " UltiSnips Options --------------------------------------------------------{{{
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>" " Next snippet arg
-let g:UltiSnipsJumpBackwardTrigger="<leader>p<tab>" " Previous snippet arg
+let g:UltiSnipsJumpForwardTrigger="<tab>" " Next snippet arg
+let g:UltiSnipsJumpBackwardTrigger="<leader><tab>" " Previous snippet arg
 let g:ultisnips_python_style="numpy"
 let g:UltiSnipsNoPythonWarning=1
 
