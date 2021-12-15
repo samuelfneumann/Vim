@@ -106,7 +106,7 @@ git clone git@github.com:samuelfneumann/vim-snippets.git
 cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:lervag/vimtex.git
-`
+```
 
 ### NERDCommenter
 
