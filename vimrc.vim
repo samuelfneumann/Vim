@@ -2,9 +2,27 @@ set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
+
+" Lightline settings -------------------------------------------------------{{{
+" Needs to be set before the colourscheme
 let g:lightline = {
 			\ 'colorscheme': 'monterey',
 			\ }
+let g:lightline.mode_map = {
+		    \ 'n' : 'NORMAL',
+		    \ 'i' : 'INSERT',
+		    \ 'R' : 'REPLACE',
+		    \ 'v' : 'VISUAL',
+		    \ 'V' : 'V-LINE',
+		    \ "\<C-v>": 'V-BLOCK',
+		    \ 'c' : 'COMMAND',
+		    \ 's' : 'SELECT',
+		    \ 'S' : 'S-LINE',
+		    \ "\<C-s>": 'S-BLOCK',
+		    \ 't': 'TERMINAL',
+		    \ }
+" }}}
+
 colorscheme default
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
@@ -407,19 +425,22 @@ endif
 
 "}}}
 
-let g:currentmode={
-			\ 'n'  : 'Normal',
-			\ 'v'  : 'Visual',
-			\ 'V'  : 'V·Line',
-			\ "\<C-V>" : 'V·Block',
-			\ 'i'  : 'Insert',
-			\ 'R'  : 'R',
-			\ 'r'  : 'Replace',
-			\ 'Rv' : 'V·Replace',
-			\ 'c'  : 'Command',
-			\ 't'  : 'Terminal',
-			\ 's'  : 'Snippet',
-			\}
+let g:currentmode = {
+		    \ 'n' : 'NORMAL',
+		    \ 'i' : 'INSERT',
+		    \ 'r' : 'REPLACE',
+		    \ 'R' : 'REPLACE',
+		    \ 'Rv' : 'REPLACE',
+		    \ 'v' : 'VISUAL',
+		    \ 'V' : 'V-LINE',
+		    \ "\<C-v>": 'V-BLOCK',
+		    \ 'c' : 'COMMAND',
+		    \ 's' : 'SELECT',
+		    \ 'S' : 'S-LINE',
+		    \ "\<C-s>": 'S-BLOCK',
+		    \ 't': 'TERMINAL',
+		    \ }
+" }}}
 
 set statusline=
 set statusline+=\ %n		" buffer number
