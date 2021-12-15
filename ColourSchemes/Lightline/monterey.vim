@@ -15,7 +15,7 @@ let s:p = {'terminal': {}, 'normal': {}, 'inactive': {}, 'insert': {}, 'replace'
 if lightline#colorscheme#background() ==# 'light'
   " Light variant
   let s:fg     = '#ffffff' " Text colour active window
-  let s:bg     = '#ffffff' " Text colour inactive window
+  let s:bg     = '#cccccc' " Text colour inactive window
   let s:gray1  = '#8e8e93'
   let s:gray2  = '#8e8e93'
   let s:gray3  = '#8e8e93'
@@ -33,7 +33,7 @@ if lightline#colorscheme#background() ==# 'light'
 else
   " Dark variant
   let s:fg     = '#ffffff' " Text colour active window
-  let s:bg     = '#ffffff' " Text colour inactive window
+  let s:bg     = '#cccccc' " Text colour inactive window
   let s:gray1  = '#8e8e93'
   let s:gray2  = '#8e8e93'
   let s:gray3  = '#8e8e93'
@@ -60,16 +60,16 @@ let s:p.inactive.left   = [ [ s:bg,  s:gray1 ], [ s:bg, s:gray1 ] ]
 let s:p.inactive.middle = [ [ s:bg, s:gray2 ] ]
 let s:p.inactive.right  = [ [ s:bg, s:gray1 ], [ s:bg, s:gray1 ] ]
 
-let s:p.insert.left     = [ [ s:bg, s:green, 'bold' ], [ s:bg, s:gray3 ] ]
+let s:p.insert.left     = [ [ s:fg, s:green, 'bold' ], [ s:fg, s:gray3 ] ]
 let s:p.insert.right   = [ [ s:fg, s:green, 'bold' ], [ s:fg, s:green, 'bold' ] ]
 
-let s:p.replace.left    = [ [ s:bg, s:red1, 'bold' ], [ s:bg, s:gray3 ] ]
+let s:p.replace.left    = [ [ s:fg, s:red1, 'bold' ], [ s:fg, s:gray3 ] ]
 let s:p.replace.right  = [ [ s:fg, s:red1, 'bold' ], [ s:fg, s:red1, 'bold' ] ]
 
-let s:p.visual.left     = [ [ s:bg, s:purple, 'bold' ], [ s:bg, s:gray3 ] ]
+let s:p.visual.left     = [ [ s:fg, s:purple, 'bold' ], [ s:fg, s:gray3 ] ]
 let s:p.visual.right   = [ [ s:fg, s:purple, 'bold' ], [ s:fg, s:purple, 'bold' ] ]
 
-let s:p.terminal.left   = [ [ s:bg, s:orange, 'bold' ], [ s:bg, s:gray3 ] ]
+let s:p.terminal.left   = [ [ s:fg, s:orange, 'bold' ], [ s:fg, s:gray3 ] ]
 let s:p.terminal.right = [ [ s:fg, s:orange, 'bold' ], [ s:fg, s:orange, 'bold' ] ]
 
 let s:p.tabline.left   = [ [ s:fg, s:gray3 ] ]
