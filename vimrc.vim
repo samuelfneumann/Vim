@@ -3,28 +3,6 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-" Lightline settings -------------------------------------------------------{{{
-" Needs to be set before the colourscheme
-let g:lightline = {
-			\ 'colorscheme': 'monterey',
-			\ }
-let g:lightline.mode_map = {
-		    \ 'n' : 'NORMAL',
-		    \ 'i' : 'INSERT',
-		    \ 'R' : 'REPLACE',
-		    \ 'v' : 'VISUAL',
-		    \ 'V' : 'V-LINE',
-		    \ "\<C-v>": 'V-BLOCK',
-		    \ 'c' : 'COMMAND',
-		    \ 's' : 'SELECT',
-		    \ 'S' : 'S-LINE',
-		    \ "\<C-s>": 'S-BLOCK',
-		    \ 't': 'TERMINAL',
-		    \ }
-" }}}
-
-colorscheme default
-
 " VIMSCRIPT --------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
 " command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
@@ -252,6 +230,28 @@ iabbrev _name Samuel Frederick Neumann
 "}}}
 
 " General Settings ---------------------------------------------------------{{{
+
+" Lightline settings -------------------------------------------------------{{{
+" Needs to be set before colorscheme
+let g:lightline = {
+			\ 'colorscheme': 'monterey',
+			\ }
+let g:lightline.mode_map = {
+		    \ 'n' : 'NORMAL',
+		    \ 'i' : 'INSERT',
+		    \ 'R' : 'REPLACE',
+		    \ 'v' : 'VISUAL',
+		    \ 'V' : 'V-LINE',
+		    \ "\<C-v>": 'V-BLOCK',
+		    \ 'c' : 'COMMAND',
+		    \ 's' : 'SELECT',
+		    \ 'S' : 'S-LINE',
+		    \ "\<C-s>": 'S-BLOCK',
+		    \ 't': 'TERMINAL',
+		    \ }
+" }}}
+
+colorscheme default
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
@@ -350,6 +350,8 @@ set wildmode=list:longest " Behave similarly to bash completion
 "}}}
 
 " Ruler/StatusLine -------------------------------------------------------- {{{
+" If using lightline, these setting are overridden after this file runs. To
+" keep these default settings, remove lightline
 set ruler
 set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
@@ -440,7 +442,6 @@ let g:currentmode = {
 		    \ "\<C-s>": 'S-BLOCK',
 		    \ 't': 'TERMINAL',
 		    \ }
-" }}}
 
 set statusline=
 set statusline+=\ %n		" buffer number
@@ -454,11 +455,12 @@ set statusline+=%=%5l    	" current line
 set statusline+=/%L      	" total lines
 set statusline+=%4v\     	" virtual column number
 set laststatus=2
-
-"}}}
+" }}}
 
 " TabLine ------------------------------------------------------------------{{{
 " SetTabLine sets the tab line theme
+" If using lightline, these setting are overridden after this file runs. To
+" keep these default settings, remove lightline
 function SetTabLine()
 	hi clear TabLine
 	hi clear TabLineFill
@@ -495,7 +497,7 @@ set cursorline
 "}}}
 
 " Window Pane Splitter -----------------------------------------------------{{{
-hi VertSplit cterm=bold gui=bold term=bold ctermbg=magenta guibg=magenta
+hi VertSplit cterm=bold gui=bold term=bold ctermbg=yellow guibg=yellow
 "}}}
 
 " Tabbing ------------------------------------------------------------------{{{
@@ -665,4 +667,3 @@ let g:NERDAltDelims_python = 1
 " }}}
 " }}}
 " }}}
-
