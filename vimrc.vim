@@ -2,6 +2,9 @@ set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
 set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
+let g:lightline = {
+			\ 'colorscheme': 'monterey',
+			\ }
 colorscheme default
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
@@ -148,34 +151,6 @@ noremap <Down> <nop>
 noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
-"}}}
-
-" Comment shortcuts ----------------------------------------------------{{{
-" In any file, <localleader>cc creates a comment out of the line and
-" <localleader>cx uncomments line
-augroup CommentsAndTabs
-	autocmd!
-	autocmd FileType julia nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
-	autocmd FileType julia nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>cc :s/^/# <cr>:nohlsearch<cr>
-	autocmd FileType julia vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>cc :execute "normal!mqI// \e`q"<cr>
-	autocmd FileType go nnoremap <buffer> <localleader>cx :s!\v// {0,1}!!<cr>:nohlsearch<cr>
-	autocmd FileType go vnoremap <buffer> <localleader>cc :s!^!// <cr>:nohlsearch<cr>
-	autocmd Filetype go vnoremap <buffer> <localleader>cx :s!\v^// {0,1}!!<cr>:nohlsearch<cr>
-	autocmd FileType snippets nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
-	autocmd Filetype snippets nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType snippets vnoremap <buffer> <localleader>cc :s/^/# <cr>:nohlsearch<cr>
-	autocmd FileType snippets vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType python nnoremap <buffer> <localleader>cc :execute "normal! mqI# \e`q"<cr>
-	autocmd Filetype python nnoremap <buffer> <localleader>cx :s/\v# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>cc :s/^/#<cr>:nohlsearch<cr>
-	autocmd FileType python vnoremap <buffer> <localleader>cx :s/\v^# {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType vim nnoremap <buffer> <localleader>cc :execute "normal! mqI\" \e`q"<cr>
-	autocmd Filetype vim nnoremap <buffer> <localleader>cx :s/\v" {0,1}//e<cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>cc :s/^/" <cr>:nohlsearch<cr>
-	autocmd FileType vim vnoremap <buffer> <localleader>cx :s/\v^" {0,1}//e<cr>:nohlsearch<cr>
-augroup end
 "}}}
 "}}}
 
@@ -429,6 +404,7 @@ let s:uname = trim(system("uname"))
 if s:uname==?"Darwin"
 	call SetStatusLineColour()
 endif
+
 "}}}
 
 let g:currentmode={
@@ -442,7 +418,7 @@ let g:currentmode={
 			\ 'Rv' : 'V·Replace',
 			\ 'c'  : 'Command',
 			\ 't'  : 'Terminal',
-			\ 's'  : 'Snipped',
+			\ 's'  : 'Snippet',
 			\}
 
 set statusline=
@@ -486,7 +462,7 @@ endfunction
 " Only set tabline colour if on macOS (vim version >= 8.0.1630)
 let s:uname = trim(system("uname"))
 if s:uname==?"Darwin"
-	autocmd VimEnter * call SetTabLine()
+	call SetTabLine()
 endif
 "}}}
 
@@ -505,8 +481,8 @@ hi VertSplit cterm=bold gui=bold term=bold ctermbg=magenta guibg=magenta
 set noexpandtab
 augroup ModifiedExpandTab
 	autocmd!
-	autocmd FileType python set expandtab " PEP8 says to expand tabs
-	autocmd FileType julia set expandtab " Julia should have expanded tabs
+	autocmd FileType python setlocal expandtab " PEP8 says to expand tabs
+	autocmd FileType julia setlocal expandtab " Julia should have expanded tabs
 augroup end
 
 set smarttab
@@ -642,5 +618,30 @@ set conceallevel=2
 hi clear Conceal
 hi Conceal cterm=none gui=none
 " }}}
+
+" NerdCommenter ------------------------------------------------------------{{{
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Don't use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 0
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+" Remove trailing whitespace when uncommenting
+let g:NERDRemoveExtraSpace = 1
+
+" Set python's default comment delimiter not to include space, since a space
+" is already automatically included by the commenting plugin
+let g:NERDAltDelims_python = 1
 " }}}
 " }}}
+" }}}
+

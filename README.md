@@ -107,3 +107,27 @@ cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:lervag/vimtex.git
 `
+
+### NERDCommenter
+
+[NERDCommenter](https://github.com/preservim/nerdcommenter) is used to provide
+some nice commenting functionality. To install:
+
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:preservim/nerdcommenter.git
+```
+
+### Lightline
+
+[Lightline](https://github.com/itchyny/lightline.vim) is used for the status
+and tablines. If you use it, it will overwrite
+the default statusline and tabline included in `vimrc.vim`. If you don't use
+Lightline, then the default statusline and tabline will be used. To install:
+
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:itchyny/lightline.vim.git
+```

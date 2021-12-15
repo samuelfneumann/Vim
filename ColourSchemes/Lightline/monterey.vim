@@ -1,0 +1,87 @@
+" =============================================================================
+" Filename: autoload/lightline/colorscheme/monterey.vim
+" Author: Samuel Neumann adapted from Lokesh Krishna
+" Last Change: 2021/12/15 06:16:00
+"
+" Looks best if using the iTerm2 colour scheme included in my Dotfies GitHub
+" repository. These two colour schemes are based off Apple's human interface
+" design colour palette:A
+"
+" https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
+" =============================================================================
+
+" Common colors
+let s:fg     = '#ffffff'
+
+let s:p = {'terminal': {}, 'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+
+if lightline#colorscheme#background() ==# 'light'
+  " Light variant
+  let s:bg     = '#ffffff'
+  let s:gray1  = '#8e8e93'
+  let s:gray2  = '#8e8e93'
+  let s:gray3  = '#8e8e93'
+
+  let s:blue   = '#007bff'
+  let s:green  = '#28cd40'
+  let s:purple = '#af52de'
+  let s:red1   = '#ff3b30'
+  let s:red2   = '#ff3126'
+  let s:pink   = '#ff2d55'
+  let s:orange = '#ff9500'
+  let s:indigo = '#af52de'
+  let s:yellow = '#ffcc00'
+  let s:cyan   = '#55bff0'
+
+  let s:p.normal.left     = [ [ s:bg, s:blue, 'bold' ], [ s:gray1, s:gray3 ] ]
+  let s:p.normal.middle   = [ [ s:gray1, s:gray2 ] ]
+  let s:p.inactive.left   = [ [ s:bg,  s:gray3 ], [ s:bg, s:gray3 ] ]
+  let s:p.inactive.middle = [ [ s:gray3, s:gray2 ] ]
+  let s:p.inactive.right  = [ [ s:bg, s:gray3 ], [ s:bg, s:gray3 ] ]
+  let s:p.insert.left     = [ [ s:bg, s:green, 'bold' ], [ s:gray1, s:gray3 ] ]
+  let s:p.replace.left    = [ [ s:bg, s:red1, 'bold' ], [ s:gray1, s:gray3 ] ]
+  let s:p.visual.left     = [ [ s:bg, s:purple, 'bold' ], [ s:gray1, s:gray3 ] ]
+  let s:p.terminal.left   = [ [ s:bg, s:orange, 'bold' ], [ s:gray1, s:gray3 ] ]
+else
+  " Dark variant
+  let s:bg     = '#ffffff'
+  let s:gray1  = '#8e8e93'
+  let s:gray2  = '#8e8e93'
+  let s:gray3  = '#8e8e93'
+
+  let s:blue   = '#0a84ff'
+  let s:green  = '#32d74b'
+  let s:purple = '#bf5af2'
+  let s:red1   = '#ff443a'
+  let s:red2   = '#ff4f44'
+  let s:pink   = '#ff375f'
+  let s:orange = '#ff9f0a'
+  let s:indigo = '#bf5af2'
+  let s:yellow = '#ffd60a'
+  let s:cyan   = '#5ac9f5'
+
+  let s:p.normal.left     = [ [ s:bg, s:blue, 'bold' ], [ s:fg, s:gray3 ] ]
+  let s:p.normal.middle   = [ [ s:fg, s:gray2 ] ]
+  let s:p.inactive.left   = [ [ s:fg,  s:gray1 ], [ s:fg, s:gray1 ] ]
+  let s:p.inactive.middle = [ [ s:gray1, s:gray2 ] ]
+  let s:p.inactive.right  = [ [ s:fg, s:gray1 ], [ s:fg, s:gray1 ] ]
+  let s:p.insert.left     = [ [ s:bg, s:green, 'bold' ], [ s:fg, s:gray3 ] ]
+  let s:p.replace.left    = [ [ s:bg, s:red1, 'bold' ], [ s:fg, s:gray3 ] ]
+  let s:p.visual.left     = [ [ s:bg, s:purple, 'bold' ], [ s:fg, s:gray3 ] ]
+  let s:p.terminal.left   = [ [ s:bg, s:orange, 'bold' ], [ s:fg, s:gray3 ] ]
+endif
+
+" Common
+let s:p.normal.right   = [ [ s:bg, s:blue, 'bold' ], [ s:bg, s:blue, 'bold' ] ]
+let s:p.normal.error   = [ [ s:red2,   s:bg ] ]
+let s:p.normal.warning = [ [ s:yellow, s:bg ] ]
+let s:p.insert.right   = [ [ s:bg, s:green, 'bold' ], [ s:bg, s:green, 'bold' ] ]
+let s:p.replace.right  = [ [ s:bg, s:red1, 'bold' ], [ s:bg, s:red1, 'bold' ] ]
+let s:p.visual.right   = [ [ s:bg, s:purple, 'bold' ], [ s:bg, s:purple, 'bold' ] ]
+let s:p.terminal.right = [ [ s:bg, s:orange, 'bold' ], [ s:bg, s:orange, 'bold' ] ]
+let s:p.tabline.left   = [ [ s:fg, s:gray3 ] ]
+let s:p.tabline.tabsel = [ [ s:bg, s:purple, 'bold' ] ]
+let s:p.tabline.middle = [ [ s:gray3, s:gray2 ] ]
+let s:p.tabline.right  = [ [ s:bg, s:red1, 'bold' ] ]
+
+let g:lightline#colorscheme#monterey#palette = lightline#colorscheme#fill(s:p)
