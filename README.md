@@ -130,4 +130,7 @@ Lightline, then the default statusline and tabline will be used. To install:
 cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:itchyny/lightline.vim.git
+
+cd lightline.vim/autoload/lightline/colorscheme
+ln -s ../../../../../../../../ColourSchemes/Lightline/monterey.vim
 ```
