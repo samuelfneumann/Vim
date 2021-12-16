@@ -145,16 +145,13 @@ and tmux, as you can seamlessly go from a vim pane to a tmux pane, and back and
 forth. If using this plugin in vim, ensure it is also installed for tmux as
 well.
 
-Because remapping keys doesn't remap keys for vim terminal mode, the
-`<c-h/j/k/l>` keys are remapped to move between panes in terminal mode in the
-`vimrc.vim` file. There is a variable `using_tmux_vim_navigator` that should be
-set to `false`  in the `vimrc.vim` file if the tmux-vim-navigator plugin is not
-used. This variable ensures that the vim terminal mode mappings are set, for
-seamless integration of vim, tmux, and vim-terminal-mode.
+Actually, the above plugin does not work for vim's terminal mode. I have made a
+fork of that plugin that addresses this issue. Installing my fork will ensure
+that the tmux navigation works in all vim modes, including terminal mode.
 
 To install tmux-vim-navigator:
 ```bash
 cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
-git clone git@github.com:christoomey/vim-tmux-navigator.git
+git clone git@github.com:samuelfneumann/vim-tmux-navigator.git
 ```

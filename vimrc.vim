@@ -681,24 +681,6 @@ let g:NERDAltDelims_python = 1
 " Tmux-Vim-Navigator -------------------------------------------------------{{{
 " Disable tmux navigator when zooming the vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
-
-" Whether or not the vim-tmux-navigator plugin is used with tmux. This plugin
-" allows the <c-h/j/k/l> keys will move between vim and tmux panes seamlessly.
-" If true, this variable ensures that some extra maps for the vim terminal are
-" set so that we can also move between vim terminal panes with these hotkeys.
-"
-" https://github.com/christoomey/vim-tmux-navigator
-let using_vim_tmux_navigator = 1
-
-" If using vim-tmux-navigation, we need to manually set some movement keys for
-" the terminal to match movement between non-terminal panes in Vim
-if using_vim_tmux_navigator
-	tnoremap <c-h> <c-w>h
-	tnoremap <c-j> <c-w>j
-	tnoremap <c-k> <c-w>k
-	tnoremap <c-l> <c-w>l
-endif
 " }}}
-
 " }}}
 " }}}
