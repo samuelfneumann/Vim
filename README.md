@@ -134,3 +134,27 @@ git clone git@github.com:itchyny/lightline.vim.git
 cd lightline.vim/autoload/lightline/colorscheme
 ln -s ../../../../../../../../ColourSchemes/Lightline/monterey.vim
 ```
+
+### tmux-vim-navigator
+
+[tmux-vim-navigator](https://github.com/christoomey/vim-tmux-navigator)
+is used to allow seamless integration of vim and tmux. It
+remaps the `<c-h/j/k/l>` keys so that these keys allow for pane switching
+inside of tmux and inside of vim. This allows for seamless integration of vim
+and tmux, as you can seamlessly go from a vim pane to a tmux pane, and back and
+forth. If using this plugin in vim, ensure it is also installed for tmux as
+well.
+
+Because remapping keys doesn't remap keys for vim terminal mode, the
+`<c-h/j/k/l>` keys are remapped to move between panes in terminal mode in the
+`vimrc.vim` file. There is a variable `using_tmux_vim_navigator` that should be
+set to `false`  in the `vimrc.vim` file if the tmux-vim-navigator plugin is not
+used. This variable ensures that the vim terminal mode mappings are set, for
+seamless integration of vim, tmux, and vim-terminal-mode.
+
+To install tmux-vim-navigator:
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:christoomey/vim-tmux-navigator.git
+```

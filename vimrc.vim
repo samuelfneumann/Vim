@@ -44,6 +44,11 @@ tnoremap <leader>tG <c-w>:tablast<cr>
 "}}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
+" If using the vim-tmux-navigator plugin found here
+" https://github.com/christoomey/vim-tmux-navigator, the keys <C-h/j/k/l> will
+" also move the current pane.
+
+" Pane resizing
 tnoremap <leader>+ <c-w>+
 noremap <leader>+ <c-w>+
 tnoremap <leader>- <c-w>-
@@ -54,6 +59,8 @@ tnoremap <leader>< <c-w><
 noremap <leader>< <c-w><
 tnoremap <leader>= <c-w>=
 noremap <leader>= <c-w>=
+
+" Pane navigation
 tnoremap <leader>ph <c-w>h
 noremap <leader>ph <c-w>h
 tnoremap <leader>pj <c-w>j
@@ -62,6 +69,8 @@ tnoremap <leader>pk <c-w>k
 noremap <leader>pk <c-w>k
 tnoremap <leader>pl <c-w>l
 noremap <leader>pl <c-w>l
+
+" Pane swapping
 tnoremap <leader>pH <c-w>H
 noremap <leader>pH <c-w>H
 tnoremap <leader>pJ <c-w>J
@@ -131,7 +140,7 @@ vnoremap <leader>{} c{}<esc>P
 nnoremap <leader>a g_
 nnoremap <leader>i _
 
-" Place/remove semi-colon at line end without moving the curson
+" Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
 
@@ -155,6 +164,9 @@ noremap <right> <nop>
 iabbrev @@ samuelfneumann@gmail.com
 iabbrev u@@ sfneuman@ualberta.ca
 iabbrev _name Samuel Frederick Neumann
+iabbrev _fname Samuel
+iabbrev _lname Neumann
+iabbrev _mname Frederick
 "}}}
 
 " Syntax abbreviations --------------------------------------------------{{{
@@ -665,5 +677,28 @@ let g:NERDRemoveExtraSpace = 1
 " is already automatically included by the commenting plugin
 let g:NERDAltDelims_python = 1
 " }}}
+
+" Tmux-Vim-Navigator -------------------------------------------------------{{{
+" Disable tmux navigator when zooming the vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+" Whether or not the vim-tmux-navigator plugin is used with tmux. This plugin
+" allows the <c-h/j/k/l> keys will move between vim and tmux panes seamlessly.
+" If true, this variable ensures that some extra maps for the vim terminal are
+" set so that we can also move between vim terminal panes with these hotkeys.
+"
+" https://github.com/christoomey/vim-tmux-navigator
+let using_vim_tmux_navigator = 1
+
+" If using vim-tmux-navigation, we need to manually set some movement keys for
+" the terminal to match movement between non-terminal panes in Vim
+if using_vim_tmux_navigator
+	tnoremap <c-h> <c-w>h
+	tnoremap <c-j> <c-w>j
+	tnoremap <c-k> <c-w>k
+	tnoremap <c-l> <c-w>l
+endif
+" }}}
+
 " }}}
 " }}}
