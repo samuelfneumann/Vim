@@ -33,10 +33,11 @@ tnoremap <leader>N <c-w>N<cr>
 "}}}
 
 " Tab navigation ----------------------------------------------------------{{{
-noremap <leader>tn :tabn<cr>
-noremap <leader>tp :tabp<cr>
+noremap <leader>tn gt
+noremap <leader>tp gT
 noremap <leader>tg :tabfirst<cr>
 noremap <leader>tG :tablast<cr>
+noremap gr gT
 tnoremap <leader>tn <c-w>:tabn<cr>
 tnoremap <leader>tp <c-w>:tabp<cr>
 tnoremap <leader>tg <c-w>:tabfirst<cr>
