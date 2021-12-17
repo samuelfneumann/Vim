@@ -165,3 +165,12 @@ cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:samuelfneumann/vim-tmux-navigator.git
 ```
+
+### TroubeShooting
+
+If some of the plugins don't work, it sometimes helps to re-clone them:
+```bash
+cd vim/pack/plugins/start
+rm -rf problematicPlugin
+git clone problematicPlugin
+```
