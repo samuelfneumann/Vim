@@ -565,12 +565,6 @@ augroup ModifiedTextWidth
 	" LaTeχ can have longer text width
 	autocmd FileType tex setlocal textwidth=120
 augroup end
-
-augroup TextFormatting
-	autocmd!
-	" Automatic formatting of paragraphs
-	autocmd FileType text setlocal formatoptions+=a
-augroup end
 "}}}
 
 " Format options -----------------------------------------------------------{{{
