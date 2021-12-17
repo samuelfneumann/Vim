@@ -1,0 +1,27 @@
+[submodule "vim/pack/plugins/start/julia-vim"]
+	path = vim/pack/plugins/start/julia-vim
+	url = git@github.com:JuliaEditorSupport/julia-vim.git
+[submodule "vim/pack/plugins/start/lightline.vim"]
+	path = vim/pack/plugins/start/lightline.vim
+	url = git@github.com:itchyny/lightline.vim.git
+[submodule "vim/pack/plugins/start/JuliaFormatter.vim"]
+	path = vim/pack/plugins/start/JuliaFormatter.vim
+	url = git@github.com:kdheepak/JuliaFormatter.vim.git
+[submodule "vim/pack/plugins/start/nerdcommenter"]
+	path = vim/pack/plugins/start/nerdcommenter
+	url = git@github.com:preservim/nerdcommenter.git
+[submodule "vim/pack/plugins/start/tmuxline.vim"]
+	path = vim/pack/plugins/start/tmuxline.vim
+	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule "vim/pack/plugins/start/ultisnips"]
+	path = vim/pack/plugins/start/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule "vim/pack/plugins/start/vim-snippets"]
+	path = vim/pack/plugins/start/vim-snippets
+	url = git@github.com:samuelfneumann/vim-snippets.git
+[submodule "vim/pack/plugins/start/vim-tmux-navigator"]
+	path = vim/pack/plugins/start/vim-tmux-navigator
+	url = git@github.com:samuelfneumann/vim-tmux-navigator.git
+[submodule "vim/pack/plugins/start/vimtex"]
+	path = vim/pack/plugins/start/vimtex
+	url = git@github.com:lervag/vimtex.git
