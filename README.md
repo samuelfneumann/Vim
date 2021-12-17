@@ -1,5 +1,9 @@
 # vim
-Configuration files for vim
+Configuration files for vim.
+
+This repository is structured in a way that if you clone it and rename the
+appropriate files (outlined below), then your vim should be configured to work
+exactly as outlined in this readme. No further adjustments should be necessary.
 
 ## Installation
 
@@ -12,7 +16,7 @@ ln -s vimrc.vim ~/.vimrc
 ```
 
 Then, if desired, install the plugins as outlined in the `Plugins` section
-below.
+below. The plugins use git submodules, so most should come for free.
 
 ## Shortcuts
 - Provide hotkeys here
@@ -124,7 +128,7 @@ git clone git@github.com:preservim/nerdcommenter.git
 [Lightline](https://github.com/itchyny/lightline.vim) is used for the status
 and tablines. If you use it, it will overwrite
 the default statusline and tabline included in `vimrc.vim`. If you don't use
-Lightline, then the default statusline and tabline will be used. To install:
+Lightline, then the default status line and tabling will be used. To install:
 
 ```bash
 cd ~/.vim
@@ -135,7 +139,11 @@ cd ~/.vim/autoload/lightline/colorscheme
 ln -s pathToThisRepo/vim/autoload/lightline/colorscheme/monterey.vim .
 ```
 
-
+This will also install the included lightline theme, called "Monterey" which
+is based off the colours of the terminal. This theme file is located at:
+```
+vim/autoload/lightline/colorscheme/monterey.vim
+```
 
 ### tmux-vim-navigator
 
