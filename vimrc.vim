@@ -275,16 +275,6 @@ set magic " Use magic for escape characters
 set scrolloff=5 " Scroll 5 lines past cursor with mouse
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
 
-" Spelling -----------------------------------------------------------------{{{
-" Set spell check on
-set spell spelllang=en_us
-
-" Correct spelling on-the-fly with <c-l>
-" <leader>cs (correct spelling) corrects the last spelling mistake
-nnoremap <leader>cs mq[s1z=`q
-inoremap <leader>cs <esc>mq[s1z=`qa
-"}}}
-
 " Terminal settings --------------------------------------------------------{{{
 augroup TerminalSettings
 	autocmd!
@@ -683,5 +673,26 @@ let g:NERDAltDelims_python = 1
 " Disable tmux navigator when zooming the vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
+
+" Spelling -----------------------------------------------------------------{{{
+" Set spell check on
+set spell spelllang=en_us
+
+" Correct spelling on-the-fly with <c-l>
+" <leader>cs (correct spelling) corrects the last spelling mistake
+nnoremap <leader>fs mq[s1z=`q
+inoremap <leader>fs <esc>mq[s1z=`qa
+
+" Change the spelling highlight groups
+highlight clear SpellBad
+highlight SpellBad cterm=underline gui=undercurl
+highlight clear SpellCap
+highlight SpellCap ctermbg=blue ctermfg=white guibg=blue guifg=white
+highlight clear SpellLocal
+highlight SpellLocal ctermbg=magenta ctermfg=white guibg=magenta guifg=white
+highlight clear SpellRare
+highlight SpellRare ctermbg=green ctermfg=white guibg=green guifg=white
+"}}}
+
 " }}}
 " }}}
