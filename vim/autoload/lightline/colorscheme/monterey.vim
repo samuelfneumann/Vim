@@ -4,8 +4,8 @@
 " Last Change: 2021/12/15 06:16:00
 "
 " Looks best if using the iTerm2 colour scheme included in my Dotfies GitHub
-" repository. These two colour schemes are based off Apple's human interface
-" design colour palette:A
+" repository and the monterey tmux theme. These colour schemes are based off
+" Apple's human interface design colour palette
 "
 " https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
 " =============================================================================
