@@ -131,9 +131,11 @@ cd ~/.vim
 mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:itchyny/lightline.vim.git
 
-cd lightline.vim/autoload/lightline/colorscheme
-ln -s ../../../../../../../../ColourSchemes/Lightline/monterey.vim
+cd ~/.vim/autoload/lightline/colorscheme
+ln -s pathToThisRepo/vim/autoload/lightline/colorscheme/monterey.vim .
 ```
+
+
 
 ### tmux-vim-navigator
 
