@@ -5,7 +5,7 @@
 *.go
 
 # Ignore plugins
-/vim/pack/plugins/
+#/vim/pack/plugins/
 
 # Ignore vim files
 vim/.netrwhist
