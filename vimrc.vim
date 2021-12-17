@@ -3,12 +3,40 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
+" Functions -----------------------------------------------------------------{{{
+" LightOrDark returns if the operating system appearance on macOS is light
+" (true) or dark (false)
+function LightOrDark()
+
+	" Dynamic colour on macOS
+	let l:uname = trim(system("uname"))
+	if l:uname==?"Darwin"
+		let output =  system("defaults read -g AppleInterfaceStyle")
+
+		" Set if OS appearance is light or dark
+		let light_not_dark=1
+		if v:shell_error != 0
+			" Light theme
+			let light_not_dark=1
+		else
+			" Dark theme
+			let light_not_dark=0
+		endif
+
+		return light_not_dark
+	endif
+
+	return 0 " Default to dark
+endfunction
+
+"}}}
+
 " VIMSCRIPT --------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
 " command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 "}}}
 
-" Maps --------------------------------------------------------------------{{{
+" Maps ---------------------------------------------------------------------{{{
 let mapleader="-"
 let localleader="\\"
 
@@ -32,12 +60,16 @@ nnoremap <leader>T :tab term ++close<cr>
 tnoremap <leader>N <c-w>N<cr>
 "}}}
 
-" Tab navigation ----------------------------------------------------------{{{
+" Tab navigation -----------------------------------------------------------{{{
+noremap <leader>tn :tabnew<cr>
+noremap <leader>te :tabedit
 noremap <c-p> gt
 noremap <c-o> gT
 noremap <leader><c-o> :tabfirst<cr>
 noremap <leader><c-p> :tablast<cr>
 
+tnoremap <leader>tn <c-w>:tabnew<cr>
+tnoremap <leader>te <c-w>:tabedit
 tnoremap <c-p> <c-w>:tabn<cr>
 tnoremap <c-o> <c-w>:tabp<cr>
 tnoremap <leader><c-p> <c-w>:tabfirst<cr>
@@ -244,27 +276,6 @@ iabbrev _mname Frederick
 
 " General Settings ---------------------------------------------------------{{{
 
-" Lightline settings -------------------------------------------------------{{{
-" Needs to be set before colorscheme
-let g:lightline = {
-			\ 'colorscheme': 'monterey',
-			\ }
-let g:lightline.mode_map = {
-		    \ 'n' : 'NORMAL',
-		    \ 'i' : 'INSERT',
-		    \ 'R' : 'REPLACE',
-		    \ 'v' : 'VISUAL',
-		    \ 'V' : 'V-LINE',
-		    \ "\<C-v>": 'V-BLOCK',
-		    \ 'c' : 'COMMAND',
-		    \ 's' : 'SELECT',
-		    \ 'S' : 'S-LINE',
-		    \ "\<C-s>": 'S-BLOCK',
-		    \ 't': 'TERMINAL',
-		    \ }
-" }}}
-
-colorscheme default
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
@@ -351,33 +362,43 @@ set wildmenu " Enable auto completion after pressing tab
 set wildmode=list:longest " Behave similarly to bash completion
 "}}}
 
-" Ruler/StatusLine -------------------------------------------------------- {{{
+" Ruler/StatusLine/Lightline ---------------------------------------------- {{{
 " If using lightline, these setting are overridden after this file runs. To
 " keep these default settings, remove lightline
 set ruler
 set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
-" Set colour of statusLine based on macOS appearance -----------------------{{{
+" Lightline settings -------------------------------------------------------{{{
+" If weird things happen, place this before setting the colourscheme
+let g:lightline = {
+			\ 'colorscheme': 'monterey',
+			\ }
+let g:lightline.mode_map = {
+		    \ 'n' : 'NORMAL',
+		    \ 'i' : 'INSERT',
+		    \ 'R' : 'REPLACE',
+		    \ 'v' : 'VISUAL',
+		    \ 'V' : 'V-LINE',
+		    \ "\<C-v>": 'V-BLOCK',
+		    \ 'c' : 'COMMAND',
+		    \ 's' : 'SELECT',
+		    \ 'S' : 'S-LINE',
+		    \ "\<C-s>": 'S-BLOCK',
+		    \ 't': 'TERMINAL',
+		    \ }
 
-" LightOrDark returns if the operating system appearance on macOS is light
-" (true) or dark (false)
-function LightOrDark()
-	let output =  system("defaults read -g AppleInterfaceStyle")
+" Enable the lightline status and tab lines
+let g:lightline.enable = {
+		    \ 'statusline': 1,
+		    \ 'tabline': 1
+		    \ }
 
-	" Set if OS appearance is light or dark
-	let light_not_dark=1
-	if v:shell_error != 0
-		" Light theme
-		let light_not_dark=1
-	else
-		" Dark theme
-		let light_not_dark=0
-	endif
-	return light_not_dark
-endfunction
+" }}}
 
-" SetStatusLineColour sets the status line colour based on the appearance of
-" the operating system
+" Function: Colour statusLine based on macOS appearance --------------------{{{
+" SetStatusLineColour sets the status line theme based on the appearance of
+" macOS - light or dark. If not on macOS, then the dark theme is used by
+" default.
 function SetStatusLineColour()
 	hi clear StatusLine " Clear status line of current window
 	hi clear StatusLineNC " Clear status line of non-current window
@@ -420,49 +441,52 @@ function SetStatusLineColour()
 		return
 	endif
 endfunction
-
-" Only set statusline colour if on macOS (vim version >= 8.0.1630)
-let s:uname = trim(system("uname"))
-if s:uname==?"Darwin"
-	call SetStatusLineColour()
-endif
-
 "}}}
 
-let g:currentmode = {
-		    \ 'n' : 'NORMAL',
-		    \ 'i' : 'INSERT',
-		    \ 'r' : 'REPLACE',
-		    \ 'R' : 'REPLACE',
-		    \ 'Rv' : 'REPLACE',
-		    \ 'v' : 'VISUAL',
-		    \ 'V' : 'V-LINE',
-		    \ "\<C-v>": 'V-BLOCK',
-		    \ 'c' : 'COMMAND',
-		    \ 's' : 'SELECT',
-		    \ 'S' : 'S-LINE',
-		    \ "\<C-s>": 'S-BLOCK',
-		    \ 't': 'TERMINAL',
-		    \ }
+" If lightline is disabled, theme the statusline with the default theme
+if !g:lightline.enable.statusline
+	" Theme the statusline
+	call SetStatusLineColour()
 
-set statusline=
-set statusline+=\ %n		" buffer number
-set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
-set statusline+=\ %{&ff}	" file format
-set statusline+=%y			" file type
-set statusline+=\ %<%F		" full path
-set statusline+=%-5m		" modified flag
-set statusline+=%V       	" right align
-set statusline+=%=%5l    	" current line
-set statusline+=/%L      	" total lines
-set statusline+=%4v\     	" virtual column number
+	let g:currentmode = {
+				\ 'n' : 'NORMAL',
+				\ 'i' : 'INSERT',
+				\ 'r' : 'REPLACE',
+				\ 'R' : 'REPLACE',
+				\ 'Rv' : 'REPLACE',
+				\ 'v' : 'VISUAL',
+				\ 'V' : 'V-LINE',
+				\ "\<C-v>": 'V-BLOCK',
+				\ 'c' : 'COMMAND',
+				\ 's' : 'SELECT',
+				\ 'S' : 'S-LINE',
+				\ "\<C-s>": 'S-BLOCK',
+				\ 't': 'TERMINAL',
+				\ }
+
+	set statusline=
+	set statusline+=\ %n		" buffer number
+	set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
+	set statusline+=\ %{&ff}	" file format
+	set statusline+=%y			" file type
+	set statusline+=\ %<%F		" full path
+	set statusline+=%-5m		" modified flag
+	set statusline+=%V       	" right align
+	set statusline+=%=%5l    	" current line
+	set statusline+=/%L      	" total lines
+	set statusline+=%4v\     	" virtual column number
+endif
+
+" Show the statusline
 set laststatus=2
+
 " }}}
 
 " TabLine ------------------------------------------------------------------{{{
-" SetTabLine sets the tab line theme
-" If using lightline, these setting are overridden after this file runs. To
-" keep these default settings, remove lightline
+
+" Function: Colour tabline based on macOS appearance ------------------------{{{
+" SetTabLine sets the tab line theme based on the theme of macOS - light or
+" dark. If not on macOS, then the dark theme is used by default
 function SetTabLine()
 	hi clear TabLine
 	hi clear TabLineFill
@@ -483,12 +507,12 @@ function SetTabLine()
 		return
 	endif
 endfunction
+" }}}
 
-" Only set tabline colour if on macOS (vim version >= 8.0.1630)
-let s:uname = trim(system("uname"))
-if s:uname==?"Darwin"
+if !g:lightline.enable.tabline
 	call SetTabLine()
 endif
+
 "}}}
 
 " Cursorline -------------------------------------------------------{{{
