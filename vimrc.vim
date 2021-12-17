@@ -33,15 +33,15 @@ tnoremap <leader>N <c-w>N<cr>
 "}}}
 
 " Tab navigation ----------------------------------------------------------{{{
-noremap <leader>tn gt
-noremap <leader>tp gT
-noremap <leader>tg :tabfirst<cr>
-noremap <leader>tG :tablast<cr>
-noremap gr gT
-tnoremap <leader>tn <c-w>:tabn<cr>
-tnoremap <leader>tp <c-w>:tabp<cr>
-tnoremap <leader>tg <c-w>:tabfirst<cr>
-tnoremap <leader>tG <c-w>:tablast<cr>
+noremap <c-p> gt
+noremap <c-o> gT
+noremap <leader><c-o> :tabfirst<cr>
+noremap <leader><c-p> :tablast<cr>
+
+tnoremap <c-p> <c-w>:tabn<cr>
+tnoremap <c-o> <c-w>:tabp<cr>
+tnoremap <leader><c-p> <c-w>:tabfirst<cr>
+tnoremap <leader><c-o> <c-w>:tablast<cr>
 "}}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
@@ -62,37 +62,37 @@ tnoremap <leader>= <c-w>=
 noremap <leader>= <c-w>=
 
 " Pane navigation
-tnoremap <leader>ph <c-w>h
-noremap <leader>ph <c-w>h
-tnoremap <leader>pj <c-w>j
-noremap <leader>pj <c-w>j
-tnoremap <leader>pk <c-w>k
-noremap <leader>pk <c-w>k
-tnoremap <leader>pl <c-w>l
-noremap <leader>pl <c-w>l
+tnoremap <c-h> <c-w>h
+noremap <c-h> <c-w>h
+tnoremap <c-j> <c-w>j
+noremap <c-j> <c-w>j
+tnoremap <c-k> <c-w>k
+noremap <c-k> <c-w>k
+tnoremap <c-l> <c-w>l
+noremap <c-l> <c-w>l
 
 " Pane swapping
-tnoremap <leader>pH <c-w>H
-noremap <leader>pH <c-w>H
-tnoremap <leader>pJ <c-w>J
-noremap <leader>pJ <c-w>J
-tnoremap <leader>pK <c-w>K
-noremap <leader>pK <c-w>K
-tnoremap <leader>pL <c-w>L
-noremap <leader>pL <c-w>L
+tnoremap <leader><c-h> <c-w>H
+noremap <leader><c-h> <c-w>H
+tnoremap <leader><c-j> <c-w>J
+noremap <leader><c-j> <c-w>J
+tnoremap <leader><c-k> <c-w>K
+noremap <leader><c-k> <c-w>K
+tnoremap <leader><c-l> <c-w>L
+noremap <leader><c-l> <c-w>L
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
 tnoremap <leader>bd <c-w>:bd
 nnoremap <leader>bd :bd
-tnoremap <leader>bn <c-w>:bnext<cr>
-noremap <leader>bn :bnext<cr>
-tnoremap <leader>bp <c-w>:bprev<cr>
-noremap <leader>bp :bprev<cr>
-tnoremap <leader>bg <c-w>:bfirst<cr>
-noremap <leader>bg :bfirst<cr>
-tnoremap <leader>bG <c-w>:blast<cr>
-noremap <leader>bG :blast<cr>
+tnoremap <c-i> <c-w>:bnext<cr>
+noremap <c-i> :bnext<cr>
+tnoremap <c-u> <c-w>:bprev<cr>
+noremap <c-u> :bprev<cr>
+tnoremap <leader><c-i> <c-w>:bfirst<cr>
+noremap <leader><c-i> :bfirst<cr>
+tnoremap <leader><c-u> <c-w>:blast<cr>
+noremap <leader><c-u> :blast<cr>
 tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
 "}}}
@@ -301,8 +301,7 @@ syntax on
 set number
 "}}}
 
-" Auto read when files are changed outside vim -----------------------------{{{
-"set autoread
+" Auto read when files are changed outside vim -----------------------------{{{ set autoread
 "au FocusGained,BufEnter * checktime
 ""}}}
 
@@ -664,9 +663,11 @@ let g:NERDToggleCheckAllLines = 1
 " Remove trailing whitespace when uncommenting
 let g:NERDRemoveExtraSpace = 1
 
-" Set python's default comment delimiter not to include space, since a space
-" is already automatically included by the commenting plugin
-let g:NERDAltDelims_python = 1
+" Set the default comments of Python and Julia to not include a space
+let g:NERDCustomDelimiters = {
+			\ 'python' : { 'left': '#' },
+			\ 'julia'  : { 'left': '#' },
+			\ }
 " }}}
 
 " Tmux-Vim-Navigator -------------------------------------------------------{{{
