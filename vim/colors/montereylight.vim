@@ -17,14 +17,14 @@ let s:indigo      = { "gui": "#5856d6", "cterm": "none" }
 let s:orange      = { "gui": "#ff9500", "cterm": "none" }
 let s:pink		  = { "gui": "#ff2d55", "cterm": "none" }
 let s:gray        = { "gui": "#8e8e93", "cterm": "none" }
-let s:teal   = { "gui": "#59adc4", "cterm": "none" }
+let s:teal        = { "gui": "#59adc4", "cterm": "none" }
 
-let s:fg          = s:gray
+let s:fg          = s:black
 let s:bg          = { "gui": "#ececec", "cterm": "none" }
 
 let s:comment_fg  = { "gui": "#8e8e93", "cterm": "none", "attr": "" }
 let s:linenr_bg   = s:bg
-let s:linenr_fg   = { "gui": "#ffcc00", "cterm": "none", "attr": "bold"}
+let s:linenr_fg   = { "gui": "#8e8e93", "cterm": "none", "attr": "bold"}
 let s:non_text    = s:indigo
 
 let s:cursor_line = { "gui": "#ececec", "cterm": "none", "attr": "bold" }
@@ -121,13 +121,13 @@ call s:h("Comment", s:comment_fg, "", s:comment_fg.attr)
 call s:h("Constant", s:cyan, "", "")
 call s:h("String", s:green, "", "")
 call s:h("Character", s:purple, "", "")
-call s:h("Number", s:yellow, "", "")
+call s:h("Number", s:orange, "", "")
 call s:h("Boolean", s:pink, "", "")
 call s:h("Float", s:indigo, "", "")
 
-call s:h("Identifier", s:cyan, "", "")
+call s:h("Identifier", s:purple, "", "")
 call s:h("Function", s:blue, "", "")
-call s:h("Statement", s:yellow, "", "")
+call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:purple, "", "")
@@ -142,10 +142,10 @@ call s:h("Define", s:purple, "", "")
 call s:h("Macro", s:purple, "", "")
 call s:h("PreCondit", s:yellow, "", "")
 
-call s:h("Type", s:yellow, "", "")
-call s:h("StorageClass", s:yellow, "", "")
-call s:h("Structure", s:yellow, "", "")
-call s:h("Typedef", s:yellow, "", "")
+call s:h("Type", s:orange, "", "")
+call s:h("StorageClass", s:orange, "", "")
+call s:h("Structure", s:orange, "", "")
+call s:h("Typedef", s:orange, "", "")
 
 call s:h("Special", s:pink, "", "")
 call s:h("SpecialChar", s:fg, "", "")
