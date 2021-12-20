@@ -31,6 +31,52 @@ endfunction
 
 "}}}
 
+" Color options ------------------------------------------------------------{{{
+"
+" Idea: set the colours here as in lightline monterey theme. Then set all
+" colours below based on this map alone. Set termguicolors. Then use these
+" colours in the monterey vim theme.
+"
+" If the colourscheme is not default, then we shouldn't set any colours in this
+" file
+
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+if LightOrDark() " Light theme
+	let s:black       = { "gui": "#000000", "cterm": "none" }
+	let s:red         = { "gui": "#ff3b30", "cterm": "none" }
+	let s:green       = { "gui": "#28cd40", "cterm": "none" }
+	let s:yellow      = { "gui": "#ffcc00", "cterm": "none" }
+	let s:blue        = { "gui": "#007bff", "cterm": "none" }
+	let s:purple      = { "gui": "#af52de", "cterm": "none" }
+	let s:cyan        = { "gui": "#55bff0", "cterm": "none" }
+	let s:white       = { "gui": "#ffffff", "cterm": "none" }
+	let s:indigo      = { "gui": "#5856d6", "cterm": "none" }
+	let s:orange      = { "gui": "#ff9500", "cterm": "none" }
+	let s:pink		  = { "gui": "#ff2d55", "cterm": "none" }
+	let s:gray        = { "gui": "#8e8e93", "cterm": "none" }
+	let s:teal        = { "gui": "#59adc4", "cterm": "none" }
+else " Dark theme
+	let s:black       = { "gui": "#000000", "cterm": "none" }
+	let s:red         = { "gui": "#ff443a", "cterm": "none" }
+	let s:green       = { "gui": "#32d74b", "cterm": "none" }
+	let s:yellow      = { "gui": "#ffd60a", "cterm": "none" }
+	let s:blue        = { "gui": "#0c84ff", "cterm": "none" }
+	let s:purple      = { "gui": "#bf5af2", "cterm": "none" }
+	let s:cyan        = { "gui": "#5ac9f5", "cterm": "none" }
+	let s:white       = { "gui": "#eeeeee", "cterm": "none" }
+	let s:indigo      = { "gui": "#5e5ce6", "cterm": "none" }
+	let s:orange      = { "gui": "#ff9f0a", "cterm": "none" }
+	let s:pink		  = { "gui": "#ff375f", "cterm": "none" }
+	let s:gray        = { "gui": "#98989d", "cterm": "none" }
+	let s:teal        = { "gui": "#6ac3dc", "cterm": "none" }
+endif
+
+
+" }}}
+
 " VIMSCRIPT --------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
 " command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
@@ -112,6 +158,16 @@ tnoremap <leader><c-k> <c-w>K
 noremap <leader><c-k> <c-w>K
 tnoremap <leader><c-l> <c-w>L
 noremap <leader><c-l> <c-w>L
+
+" Pane splitting
+"
+" These hotkeys are similar to those defined for tmux in tmux.conf
+" - for horizontal split
+" \ for vertical split
+tnoremap <leader>sp- <c-w>:split<cr>
+nnoremap <leader>sp- :split<cr>
+tnoremap <leader>sp\ <c-w>:vsplit<cr>
+nnoremap <leader>sp\ :vsplit<cr>
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
@@ -128,12 +184,6 @@ noremap <leader><c-u> :blast<cr>
 tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
 "}}}
-
-" Splitting the window
-tnoremap <leader>sph <c-w>:split<cr>
-nnoremap <leader>sph :split<cr>
-tnoremap <leader>spv <c-w>:vsplit<cr>
-nnoremap <leader>spv :vsplit<cr>
 
 " Remap the <esc> key
 inoremap jk <esc>
@@ -331,7 +381,13 @@ set number
 " If the below lines are used instead of those above, then trailing whitespace
 " is not matched whilst typing.
 autocmd Colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
-colorscheme default
+
+if LightOrDark()
+	colorscheme montereylight
+else
+	colorscheme montereydark
+endif
+
 match ExtraWhitespace /\s\+$/
 augroup TrailingWhiteSpace
 	autocmd!
@@ -466,7 +522,12 @@ if !g:lightline.enable.statusline
 
 	set statusline=
 	set statusline+=\ %n		" buffer number
-	set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
+
+	if g:colors_name ==? "default"
+		set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
+	else
+		set statusline+=\ ==%{toupper(g:currentmode[mode()])}==" mode
+	endif
 	set statusline+=\ %{&ff}	" file format
 	set statusline+=%y			" file type
 	set statusline+=\ %<%F		" full path

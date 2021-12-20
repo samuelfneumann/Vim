@@ -17,6 +17,7 @@ let s:indigo      = { "gui": "#5e5ce6", "cterm": "none" }
 let s:orange      = { "gui": "#ff9f0a", "cterm": "none" }
 let s:pink		  = { "gui": "#ff375f", "cterm": "none" }
 let s:gray        = { "gui": "#98989d", "cterm": "none" }
+let s:teal        = { "gui": "#6ac3dc", "cterm": "none" }
 
 let s:fg          = s:white
 let s:bg          = { "gui": "#292332", "cterm": "none" }
@@ -27,7 +28,10 @@ let s:linenr_fg   = { "gui": "#98989d", "cterm": "none", "attr": "bold" }
 let s:non_text    = s:indigo
 
 let s:cursor_line = { "gui": "#292332", "cterm": "none", "attr": "bold" }
-let s:color_col   = { "gui": "#6ac3dc", "cterm": "none" } " teal
+let s:color_col   = s:teal
+
+let s:status_line = { "gui": "#98989d", "cterm": "none" }
+let s:status_line_nc = { "gui": "#66666b", "cterm": "none" }
 
 let s:selection   = { "gui": "#4b3c53", "cterm": "none" }
 let s:vertsplit   = s:pink
@@ -87,11 +91,11 @@ call s:h("SpellCap", s:blue, "", "")
 call s:h("SpellLocal", s:indigo, "", "")
 call s:h("SpellRare", s:orange, "", "")
 
-call s:h("StatusLine", s:blue, s:cursor_line, "")
-call s:h("StatusLineNC", s:comment_fg, s:cursor_line, "")
-call s:h("TabLine", s:comment_fg, s:cursor_line, "")
-call s:h("TabLineFill", s:comment_fg, s:cursor_line, "")
-call s:h("TabLineSel", s:fg, s:bg, "")
+call s:h("StatusLine", s:fg, s:status_line, "")
+call s:h("StatusLineNC", s:fg, s:status_line_nc, "")
+call s:h("TabLine", s:fg, s:status_line, "")
+call s:h("TabLineFill", s:fg, s:status_line, "")
+call s:h("TabLineSel", s:fg, s:bg, "bold")
 
 call s:h("Visual", "", s:selection, "")
 call s:h("VisualNOS", "", s:selection, "")
@@ -108,6 +112,8 @@ call s:h("MatchParen", s:blue, "", "underline")
 call s:h("SpecialKey", s:fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
+
+call s:h("Folded", s:indigo, "", "italic")
 " }
 
 
