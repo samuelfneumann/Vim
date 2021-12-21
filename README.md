@@ -174,3 +174,13 @@ cd vim/pack/plugins/start
 rm -rf problematicPlugin
 git clone problematicPlugin
 ```
+
+## Themes
+Monterey dark/light requires termguicolours. There is a matching Tmux and
+lightline theme for this.
+
+Otherwise, the included modified dim theme works based on the terminal colours
+alone.
+
+## ToDo
+- [ ] Make theme for vim and lightline based only on term colours

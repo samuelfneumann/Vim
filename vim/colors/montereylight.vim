@@ -5,19 +5,22 @@ syntax reset
 let g:colors_name="montereylight"
 let colors_name="montereylight"
 
-let s:black       = { "gui": "#000000", "cterm": "none" }
-let s:red         = { "gui": "#ff3b30", "cterm": "none" }
-let s:green       = { "gui": "#28cd40", "cterm": "none" }
-let s:yellow      = { "gui": "#ffcc00", "cterm": "none" }
-let s:blue        = { "gui": "#007bff", "cterm": "none" }
-let s:purple      = { "gui": "#af52de", "cterm": "none" }
-let s:cyan        = { "gui": "#55bff0", "cterm": "none" }
-let s:white       = { "gui": "#ffffff", "cterm": "none" }
-let s:indigo      = { "gui": "#5856d6", "cterm": "none" }
-let s:orange      = { "gui": "#ff9500", "cterm": "none" }
-let s:pink		  = { "gui": "#ff2d55", "cterm": "none" }
-let s:gray        = { "gui": "#8e8e93", "cterm": "none" }
-let s:teal        = { "gui": "#59adc4", "cterm": "none" }
+let s:black       = { "gui": "#000000", "cterm": "0" }
+let s:red         = { "gui": "#ff3b30", "cterm": "1" }
+let s:green       = { "gui": "#28cd40", "cterm": "2" }
+let s:yellow      = { "gui": "#ffcc00", "cterm": "3" }
+let s:blue        = { "gui": "#007bff", "cterm": "4" }
+let s:purple      = { "gui": "#af52de", "cterm": "5" }
+let s:cyan        = { "gui": "#55bff0", "cterm": "6" }
+let s:gray        = { "gui": "#8e8e93", "cterm": "7" }
+let s:darkgray    = { "gui": "#000000", "cterm": "8" } " Unused
+let s:pink		  = { "gui": "#ff2d55", "cterm": "9" }
+let s:brown		  = { "gui": "#000000", "cterm": "10" } " Unused
+let s:orange      = { "gui": "#ff9500", "cterm": "11" }
+let s:teal        = { "gui": "#59adc4", "cterm": "12" }
+let s:indigo      = { "gui": "#5856d6", "cterm": "13" }
+let s:mint        = { "gui": "#000000", "cterm": "14" } " Unused
+let s:white       = { "gui": "#ffffff", "cterm": "15" }
 
 let s:fg          = s:black
 let s:bg          = { "gui": "#ececec", "cterm": "none" }

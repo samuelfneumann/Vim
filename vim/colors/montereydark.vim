@@ -5,19 +5,22 @@ syntax reset
 let g:colors_name="montereydark"
 let colors_name="montereydark"
 
-let s:black       = { "gui": "#000000", "cterm": "none" }
-let s:red         = { "gui": "#ff443a", "cterm": "none" }
-let s:green       = { "gui": "#32d74b", "cterm": "none" }
-let s:yellow      = { "gui": "#ffd60a", "cterm": "none" }
-let s:blue        = { "gui": "#0c84ff", "cterm": "none" }
-let s:purple      = { "gui": "#bf5af2", "cterm": "none" }
-let s:cyan        = { "gui": "#5ac9f5", "cterm": "none" }
-let s:white       = { "gui": "#eeeeee", "cterm": "none" }
-let s:indigo      = { "gui": "#5e5ce6", "cterm": "none" }
-let s:orange      = { "gui": "#ff9f0a", "cterm": "none" }
-let s:pink		  = { "gui": "#ff375f", "cterm": "none" }
-let s:gray        = { "gui": "#98989d", "cterm": "none" }
-let s:teal        = { "gui": "#6ac3dc", "cterm": "none" }
+let s:black       = { "gui": "#000000", "cterm": "0" }
+let s:red         = { "gui": "#ff443a", "cterm": "1" }
+let s:green       = { "gui": "#32d74b", "cterm": "2" }
+let s:yellow      = { "gui": "#ffd60a", "cterm": "3" }
+let s:blue        = { "gui": "#0c84ff", "cterm": "4" }
+let s:purple      = { "gui": "#bf5af2", "cterm": "5" }
+let s:cyan        = { "gui": "#5ac9f5", "cterm": "6" }
+let s:gray        = { "gui": "#98989d", "cterm": "7" }
+let s:darkgray    = { "gui": "#000000", "cterm": "8" } " Unused
+let s:pink		  = { "gui": "#ff375f", "cterm": "9" }
+let s:brown		  = { "gui": "#000000", "cterm": "10" } " Unused
+let s:orange      = { "gui": "#ff9f0a", "cterm": "11" }
+let s:teal        = { "gui": "#6ac3dc", "cterm": "12" }
+let s:indigo      = { "gui": "#5e5ce6", "cterm": "13" }
+let s:mint        = { "gui": "#000000", "cterm": "14" } " Unused
+let s:white       = { "gui": "#eeeeee", "cterm": "15" }
 
 let s:fg          = s:white
 let s:bg          = { "gui": "#292332", "cterm": "none" }
@@ -85,8 +88,8 @@ call s:h("DiffChange", s:yellow, "", "")
 call s:h("DiffDelete", s:red, "", "")
 call s:h("DiffText", s:blue, "", "")
 
-call s:h("IncSearch", s:bg, s:yellow, "")
-call s:h("Search", s:bg, s:yellow, "")
+call s:h("IncSearch", s:fg, s:yellow, "")
+call s:h("Search", s:fg, s:yellow, "")
 
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
@@ -139,13 +142,13 @@ call s:h("Comment", s:comment_fg, "", s:comment_fg.attr)
 call s:h("Constant", s:cyan, "", "")
 call s:h("String", s:green, "", "")
 call s:h("Character", s:purple, "", "")
-call s:h("Number", s:yellow, "", "")
+call s:h("Number", s:orange, "", "")
 call s:h("Boolean", s:pink, "", "")
 call s:h("Float", s:indigo, "", "")
 
-call s:h("Identifier", s:cyan, "", "")
+call s:h("Identifier", s:purple, "", "")
 call s:h("Function", s:blue, "", "")
-call s:h("Statement", s:yellow, "", "")
+call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:purple, "", "")
@@ -160,10 +163,10 @@ call s:h("Define", s:purple, "", "")
 call s:h("Macro", s:purple, "", "")
 call s:h("PreCondit", s:yellow, "", "")
 
-call s:h("Type", s:yellow, "", "")
-call s:h("StorageClass", s:yellow, "", "")
-call s:h("Structure", s:yellow, "", "")
-call s:h("Typedef", s:yellow, "", "")
+call s:h("Type", s:orange, "", "")
+call s:h("StorageClass", s:orange, "", "")
+call s:h("Structure", s:orange, "", "")
+call s:h("Typedef", s:orange, "", "")
 
 call s:h("Special", s:pink, "", "")
 call s:h("SpecialChar", s:fg, "", "")
@@ -199,7 +202,7 @@ call s:h("gitcommitBranch", s:purple, "", "")
 call s:h("gitcommitDiscardedType", s:red, "", "")
 call s:h("gitcommitSelectedType", s:green, "", "")
 call s:h("gitcommitHeader", s:fg, "", "")
-call s:h("gitcommitUntrackedFile", s:orange, "", "")
+call s:h("gitcommitUntrackedFile", s:cyan, "", "")
 call s:h("gitcommitDiscardedFile", s:red, "", "")
 call s:h("gitcommitSelectedFile", s:green, "", "")
 call s:h("gitcommitUnmergedFile", s:yellow, "", "")
