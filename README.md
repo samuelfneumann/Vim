@@ -176,11 +176,9 @@ git clone problematicPlugin
 ```
 
 ## Themes
-Monterey dark/light requires termguicolours. There is a matching Tmux and
-lightline theme for this.
-
-Otherwise, the included modified dim theme works based on the terminal colours
-alone.
+Monterey - uses Apple colours if `termguicolors` set, otherwise uses terminal
+colours. To get monterey colours in vim without `termguicolors` set, use the
+`iTerm` theme in the `Dotfiles` repo.
 
 ## ToDo
 - [ ] Make theme for vim and lightline based only on term colours
