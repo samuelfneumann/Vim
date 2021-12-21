@@ -86,7 +86,7 @@ call s:h("PmenuSel", s:fg, s:blue, "")
 call s:h("PmenuSbar", "", s:selection, "")
 call s:h("PmenuThumb", "", s:fg, "")
 
-call s:h("SpellBad", s:red, "", "underline")
+call s:h("SpellBad", "", "", "underline")
 call s:h("SpellCap", s:blue, "", "")
 call s:h("SpellLocal", s:indigo, "", "")
 call s:h("SpellRare", s:orange, "", "")
