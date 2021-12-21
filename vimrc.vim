@@ -38,7 +38,8 @@ endfunction
 " colours in the monterey vim theme.
 "
 " If the colourscheme is not default, then we shouldn't set any colours in this
-" file
+" file. If the user has set a theme, then this file will not alter any colours.
+" If the user has not set a theme, then this file will alter colours.
 
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -84,7 +85,7 @@ endif
 
 " Maps ---------------------------------------------------------------------{{{
 let mapleader="-"
-let localleader="\\"
+let localleader='\'
 
 " Terminal Navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -355,9 +356,6 @@ set smartcase " Use case insensitive search unless capital in search pattern
 "}}}
 
 " Syntax highlighting and line numbers -------------------------------------{{{
-highlight Comment ctermfg=white ctermbg=black
-highlight goString ctermfg=white ctermbg=blue
-highlight Conditional ctermfg=black ctermbg=red
 syntax on
 set number
 "}}}
@@ -468,10 +466,6 @@ function SetStatusLineColour()
 		hi StatusLineNC cterm=none gui=none term=none ctermbg=gray
 					\ ctermfg=white guibg=gray guifg=white
 
-		" Set User1 colour, used for the current mode in the statusline
-		hi User1 cterm=bold term=bold gui=bold ctermbg=darkgray ctermfg=white
-					\ guibg=darkgray guifg=white
-
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
 		hi StatusLineTerm cterm=none gui=none term=none ctermbg=darkgreen
@@ -485,9 +479,6 @@ function SetStatusLineColour()
 		hi StatusLineNC cterm=none gui=none term=none ctermbg=darkgray
 					\ ctermfg=black guibg=darkgray guifg=black
 
-		" Set User1 colour, used for the current mode in the statusline
-		hi User1 cterm=bold term=bold gui=bold ctermbg=gray ctermfg=black
-
 		"Manually set the statusline for the terminal, since still in beta in
 		" vim 8.1
 		hi StatusLineTerm cterm=none gui=none term=none ctermbg=blue
@@ -499,10 +490,12 @@ function SetStatusLineColour()
 endfunction
 "}}}
 
-" If lightline is disabled, theme the statusline with the default theme
+" If lightline is disabled, set the statusline
 if !g:lightline.enable.statusline
 	" Theme the statusline
-	call SetStatusLineColour()
+	if g:colors_name ==? "default"
+		call SetStatusLineColour()
+	endif
 
 	let g:currentmode = {
 				\ 'n' : 'NORMAL',
@@ -523,11 +516,7 @@ if !g:lightline.enable.statusline
 	set statusline=
 	set statusline+=\ %n		" buffer number
 
-	if g:colors_name ==? "default"
-		set statusline+=\ %1*==%{toupper(g:currentmode[mode()])}==\%*" mode
-	else
-		set statusline+=\ ==%{toupper(g:currentmode[mode()])}==" mode
-	endif
+	set statusline+=\ ==%{toupper(g:currentmode[mode()])}==" mode
 	set statusline+=\ %{&ff}	" file format
 	set statusline+=%y			" file type
 	set statusline+=\ %<%F		" full path
@@ -570,16 +559,18 @@ function SetTabLine()
 endfunction
 " }}}
 
-if !g:lightline.enable.tabline
+if !g:lightline.enable.tabline && g.colors_name ==? "default"
 	call SetTabLine()
 endif
 
 "}}}
 
 " Cursorline -------------------------------------------------------{{{
-hi clear CursorLine
-highlight CursorLineNR cterm=bold term=bold gui=bold
-highlight CursorLine cterm=bold term=bold gui=bold
+if g:colors_name ==? "default"
+	hi clear CursorLine
+	highlight CursorLineNR cterm=bold term=bold gui=bold
+	highlight CursorLine cterm=bold term=bold gui=bold
+endif
 set cursorline
 "}}}
 
@@ -639,7 +630,9 @@ set formatoptions+=q " Allow formatting of comments with "gq"
 "}}}
 
 " Colorcolumn --------------------------------------------------------------{{{
-highlight ColorColumn ctermbg=cyan guibg=cyan
+if g:colors_name ==? "default"
+	highlight ColorColumn ctermbg=cyan guibg=cyan
+endif
 set colorcolumn=+1
 "}}}
 
@@ -763,16 +756,18 @@ set spell spelllang=en_us
 nnoremap <leader>fs mq[s1z=`q
 inoremap <leader>fs <esc>mq[s1z=`qa
 
-" Change the spelling highlight groups
-highlight clear SpellBad
-highlight SpellBad cterm=underline gui=undercurl
-highlight clear SpellCap
-highlight SpellCap ctermbg=blue ctermfg=white guibg=blue guifg=white
-highlight clear SpellLocal
-highlight SpellLocal ctermbg=magenta ctermfg=white guibg=magenta guifg=white
-highlight clear SpellRare
-highlight SpellRare ctermbg=green ctermfg=white guibg=green guifg=white
-"}}}
+" " Change the spelling highlight groups
+if g:colors_name ==? "default"
+	highlight clear SpellBad
+	highlight SpellBad cterm=underline gui=undercurl
+	highlight clear SpellCap
+	highlight SpellCap ctermbg=blue ctermfg=white guibg=blue guifg=white
+	highlight clear SpellLocal
+	highlight SpellLocal ctermbg=magenta ctermfg=white guibg=magenta guifg=white
+	highlight clear SpellRare
+	highlight SpellRare ctermbg=green ctermfg=white guibg=green guifg=white
+endif
+" }}}
 
 " }}}
 " }}}

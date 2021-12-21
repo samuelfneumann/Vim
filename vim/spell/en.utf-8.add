@@ -45,3 +45,8 @@ Monterey
 MacOS
 subdirectories
 config
+repo
+gui
+cterm
+filename
+Encodings
