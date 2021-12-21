@@ -27,7 +27,7 @@ let s:linenr_bg   = s:bg
 let s:linenr_fg   = { "gui": "#98989d", "cterm": "none", "attr": "bold" }
 let s:non_text    = s:indigo
 
-let s:cursor_line = { "gui": "#292332", "cterm": "none", "attr": "bold" }
+let s:cursor_line = { "gui": "#362e42", "cterm": "none", "attr": "bold" }
 let s:color_col   = s:teal
 
 let s:status_line = { "gui": "#98989d", "cterm": "none" }
@@ -178,6 +178,7 @@ call s:h("diffRemoved", s:red, "", "")
 
 
 " Git {
+call s:h("gitcommitSummary", s:pink, "", "")
 call s:h("gitcommitComment", s:comment_fg, "", "")
 call s:h("gitcommitUnmerged", s:red, "", "")
 call s:h("gitcommitOnBranch", s:fg, "", "")
@@ -185,7 +186,7 @@ call s:h("gitcommitBranch", s:purple, "", "")
 call s:h("gitcommitDiscardedType", s:red, "", "")
 call s:h("gitcommitSelectedType", s:green, "", "")
 call s:h("gitcommitHeader", s:fg, "", "")
-call s:h("gitcommitUntrackedFile", s:cyan, "", "")
+call s:h("gitcommitUntrackedFile", s:orange, "", "")
 call s:h("gitcommitDiscardedFile", s:red, "", "")
 call s:h("gitcommitSelectedFile", s:green, "", "")
 call s:h("gitcommitUnmergedFile", s:yellow, "", "")
