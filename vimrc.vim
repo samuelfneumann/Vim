@@ -31,51 +31,18 @@ endfunction
 
 "}}}
 
-" Color options ------------------------------------------------------------{{{
-"
-" Idea: set the colours here as in lightline monterey theme. Then set all
-" colours below based on this map alone. Set termguicolors. Then use these
-" colours in the monterey vim theme.
-"
-" If the colourscheme is not default, then we shouldn't set any colours in this
-" file. If the user has set a theme, then this file will not alter any colours.
-" If the user has not set a theme, then this file will alter colours.
-
+" Theme options ------------------------------------------------------------{{{
+" Set termguicolours so that iTerm uses the fancy gui colours in the terminal
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-if LightOrDark() " Light theme
-	let s:black       = { "gui": "#000000", "cterm": "none" }
-	let s:red         = { "gui": "#ff3b30", "cterm": "none" }
-	let s:green       = { "gui": "#28cd40", "cterm": "none" }
-	let s:yellow      = { "gui": "#ffcc00", "cterm": "none" }
-	let s:blue        = { "gui": "#007bff", "cterm": "none" }
-	let s:purple      = { "gui": "#af52de", "cterm": "none" }
-	let s:cyan        = { "gui": "#55bff0", "cterm": "none" }
-	let s:white       = { "gui": "#ffffff", "cterm": "none" }
-	let s:indigo      = { "gui": "#5856d6", "cterm": "none" }
-	let s:orange      = { "gui": "#ff9500", "cterm": "none" }
-	let s:pink		  = { "gui": "#ff2d55", "cterm": "none" }
-	let s:gray        = { "gui": "#8e8e93", "cterm": "none" }
-	let s:teal        = { "gui": "#59adc4", "cterm": "none" }
-else " Dark theme
-	let s:black       = { "gui": "#000000", "cterm": "none" }
-	let s:red         = { "gui": "#ff443a", "cterm": "none" }
-	let s:green       = { "gui": "#32d74b", "cterm": "none" }
-	let s:yellow      = { "gui": "#ffd60a", "cterm": "none" }
-	let s:blue        = { "gui": "#0c84ff", "cterm": "none" }
-	let s:purple      = { "gui": "#bf5af2", "cterm": "none" }
-	let s:cyan        = { "gui": "#5ac9f5", "cterm": "none" }
-	let s:white       = { "gui": "#eeeeee", "cterm": "none" }
-	let s:indigo      = { "gui": "#5e5ce6", "cterm": "none" }
-	let s:orange      = { "gui": "#ff9f0a", "cterm": "none" }
-	let s:pink		  = { "gui": "#ff375f", "cterm": "none" }
-	let s:gray        = { "gui": "#98989d", "cterm": "none" }
-	let s:teal        = { "gui": "#6ac3dc", "cterm": "none" }
+" Set the theme
+if LightOrDark()
+	colorscheme montereylight
+else
+	colorscheme montereydark
 endif
-
-
 " }}}
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
@@ -292,38 +259,6 @@ set number
 " Auto read when files are changed outside vim -----------------------------{{{ set autoread
 "au FocusGained,BufEnter * checktime
 ""}}}
-
-" Highlight trailing whitespace --------------------------------------------{{{
-" Choose only one option from this folding for highlighting trailing spaces
-
-" === Option 1 ===
-" When using syntax, this will only work if syntax highlighting is enabled
-" for the current file type
-"augroup TrailingWhiteSpace
-"	autocmd VimEnter * highlight ExtraWhitespace ctermbg=red guibg=red
-"	autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-"augroup end
-
-" === Option 2 ===
-" If the below lines are used instead of those above, then trailing whitespace
-" is not matched whilst typing.
-autocmd Colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
-
-if LightOrDark()
-	colorscheme montereylight
-else
-	colorscheme montereydark
-endif
-
-match ExtraWhitespace /\s\+$/
-augroup TrailingWhiteSpace
-	autocmd!
-	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-	autocmd BufWinLeave * call clearmatches()
-augroup end
-" }}}
 
 " On Save -----------------------------------------------------------------{{{
 function RemoveTrailingWhitespace()

@@ -38,6 +38,19 @@ let s:vertsplit   = s:pink
 
 let s:gutter_bg   = s:bg
 
+
+" Highlight trailing whitespace
+exec "hi _MontereyExtraWhitespace" . " guibg=" . s:red.gui . " ctermbg=" . s:red.cterm
+match _MontereyExtraWhitespace /\s\+$/
+augroup TrailingWhiteSpace
+	autocmd!
+	autocmd BufWinEnter * match _MontereyExtraWhitespace /\s\+$/
+	autocmd InsertEnter * match _MontereyExtraWhitespace /\s\+\%#\@<!$/
+	autocmd InsertLeave * match _MontereyExtraWhitespace /\s\+$/
+	autocmd BufWinLeave * call clearmatches()
+augroup end
+
+
 function! s:h(group, fg, bg, attr)
   if type(a:fg) == type({})
     exec "hi " . a:group . " guifg=" . a:fg.gui . " ctermfg=" . a:fg.cterm
