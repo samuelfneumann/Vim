@@ -51,31 +51,31 @@ else
 endif
 
 " Set colours
-let s:p.normal.left     = [ [ s:fg, s:blue, 'bold' ], [ s:fg, s:gray3 ] ]
-let s:p.normal.middle   = [ [ s:fg, s:gray2 ] ]
-let s:p.normal.right   = [ [ s:fg, s:blue, 'bold' ], [ s:fg, s:blue, 'bold' ] ]
-let s:p.normal.error   = [ [ s:red2,   s:fg ] ]
-let s:p.normal.warning = [ [ s:yellow, s:fg ] ]
+let s:p.normal.left     = [ [ s:fg, s:blue, 15, 4, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.normal.middle   = [ [ s:fg, s:gray2, 15, 7 ] ]
+let s:p.normal.right   = [ [ s:fg, s:blue, 15, 4, 'bold' ], [ s:fg, s:blue, 15, 4, 'bold' ] ]
+let s:p.normal.error   = [ [ s:red2,   s:fg, 1, 11 ] ]
+let s:p.normal.warning = [ [ s:yellow, s:fg, 3, 15 ] ]
 
 let s:p.inactive.left   = [ [ s:bg,  s:gray1 ], [ s:bg, s:gray1 ] ]
-let s:p.inactive.middle = [ [ s:bg, s:gray2 ] ]
-let s:p.inactive.right  = [ [ s:bg, s:gray1 ], [ s:bg, s:gray1 ] ]
+let s:p.inactive.middle = [ [ s:bg, s:gray2, 251, 7] ]
+let s:p.inactive.right  = [ [ s:bg, s:gray1, 251, 7 ], [ s:bg, s:gray1, 251, 7 ] ]
 
-let s:p.insert.left     = [ [ s:fg, s:green, 'bold' ], [ s:fg, s:gray3 ] ]
-let s:p.insert.right   = [ [ s:fg, s:green, 'bold' ], [ s:fg, s:green, 'bold' ] ]
+let s:p.insert.left     = [ [ s:fg, s:green, 15, 2, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.insert.right   = [ [ s:fg, s:green, 15, 2, 'bold' ], [ s:fg, s:green, 15, 2, 'bold' ] ]
 
-let s:p.replace.left    = [ [ s:fg, s:red1, 'bold' ], [ s:fg, s:gray3 ] ]
-let s:p.replace.right  = [ [ s:fg, s:red1, 'bold' ], [ s:fg, s:red1, 'bold' ] ]
+let s:p.replace.left    = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.replace.right  = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:red1, 15, 7, 'bold' ] ]
 
-let s:p.visual.left     = [ [ s:fg, s:purple, 'bold' ], [ s:fg, s:gray3 ] ]
-let s:p.visual.right   = [ [ s:fg, s:purple, 'bold' ], [ s:fg, s:purple, 'bold' ] ]
+let s:p.visual.left     = [ [ s:fg, s:purple, 15, 5, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.visual.right   = [ [ s:fg, s:purple, 15, 5, 'bold' ], [ s:fg, s:purple, 15, 5, 'bold' ] ]
 
-let s:p.terminal.left   = [ [ s:fg, s:orange, 'bold' ], [ s:fg, s:gray3 ] ]
-let s:p.terminal.right = [ [ s:fg, s:orange, 'bold' ], [ s:fg, s:orange, 'bold' ] ]
+let s:p.terminal.left   = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:gray3, 15, 7 ] ]
+let s:p.terminal.right = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:orange, 15, 11, 'bold' ] ]
 
-let s:p.tabline.left   = [ [ s:fg, s:gray3 ] ]
-let s:p.tabline.tabsel = [ [ s:fg, s:pink, 'bold' ] ]
-let s:p.tabline.middle = [ [ s:fg, s:gray2 ] ]
-let s:p.tabline.right  = [ [ s:fg, s:red1, 'bold' ] ]
+let s:p.tabline.left   = [ [ s:fg, s:gray3, 15, 7 ] ]
+let s:p.tabline.tabsel = [ [ s:fg, s:pink, 15, 9, 'bold' ] ]
+let s:p.tabline.middle = [ [ s:fg, s:gray2, 15, 7 ] ]
+let s:p.tabline.right  = [ [ s:fg, s:red1, 15, 1, 'bold' ] ]
 
 let g:lightline#colorscheme#monterey#palette = lightline#colorscheme#fill(s:p)
