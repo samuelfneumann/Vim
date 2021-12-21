@@ -25,18 +25,18 @@ let s:white       = { "gui": "#eeeeee", "cterm": "15" }
 let s:fg          = s:white
 let s:bg          = { "gui": "#292332", "cterm": "none" }
 
-let s:comment_fg  = { "gui": "#98989d", "cterm": "none", "attr": "" }
+let s:comment_fg  = { "gui": "#98989d", "cterm": "7", "attr": "" }
 let s:linenr_bg   = s:bg
-let s:linenr_fg   = { "gui": "#98989d", "cterm": "none", "attr": "bold" }
+let s:linenr_fg   = { "gui": "#98989d", "cterm": "8", "attr": "bold" }
 let s:non_text    = s:indigo
 
 let s:cursor_line = { "gui": "#362e42", "cterm": "none", "attr": "bold" }
 let s:color_col   = s:teal
 
-let s:status_line = { "gui": "#98989d", "cterm": "none" }
-let s:status_line_nc = { "gui": "#66666b", "cterm": "none" }
+let s:status_line = { "gui": "#98989d", "cterm": "8" }
+let s:status_line_nc = { "gui": "#66666b", "cterm": "7" }
 
-let s:selection   = { "gui": "#4b3c53", "cterm": "none" }
+let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
 let s:vertsplit   = s:pink
 
 let s:gutter_bg   = s:bg
