@@ -288,9 +288,18 @@ set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
 " Lightline settings -------------------------------------------------------{{{
 " If weird things happen, place this before setting the colourscheme
-let g:lightline = {
-			\ 'colorscheme': 'monterey',
-			\ }
+if has('gui_running') || (has('termguicolors') && &termguicolors)
+	let g:lightline = {
+				\ 'colorscheme': 'monterey',
+				\ }
+else
+	" If not using termguicolours, use the terminal colours by default
+	" (monterey theme also does this, but using termcolours to be explicit)
+	let g:lightline = {
+				\ 'colorscheme': 'termcolours',
+				\ }
+endif
+
 let g:lightline.mode_map = {
 		    \ 'n' : 'NORMAL',
 		    \ 'i' : 'INSERT',

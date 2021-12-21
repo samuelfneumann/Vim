@@ -9,7 +9,6 @@
 "
 " https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
 " =============================================================================
-
 let s:p = {'terminal': {}, 'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
 if lightline#colorscheme#background() ==# 'light'
@@ -57,7 +56,7 @@ let s:p.normal.right   = [ [ s:fg, s:blue, 15, 4, 'bold' ], [ s:fg, s:blue, 15, 
 let s:p.normal.error   = [ [ s:red2,   s:fg, 1, 11 ] ]
 let s:p.normal.warning = [ [ s:yellow, s:fg, 3, 15 ] ]
 
-let s:p.inactive.left   = [ [ s:bg,  s:gray1 ], [ s:bg, s:gray1 ] ]
+let s:p.inactive.left   = [ [ s:bg,  s:gray1, 251, 7 ], [ s:bg, s:gray1, 251, 7 ] ]
 let s:p.inactive.middle = [ [ s:bg, s:gray2, 251, 7] ]
 let s:p.inactive.right  = [ [ s:bg, s:gray1, 251, 7 ], [ s:bg, s:gray1, 251, 7 ] ]
 

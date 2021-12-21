@@ -113,8 +113,14 @@ call s:h("TabLine", s:fg, s:status_line, "")
 call s:h("TabLineFill", s:fg, s:status_line, "")
 call s:h("TabLineSel", s:fg, s:bg, "bold")
 
-call s:h("Visual", "", s:selection, "")
-call s:h("VisualNOS", "", s:selection, "")
+if has('gui_running') || (has('termguicolors') && &termguicolors)
+	call s:h("Visual", "", s:selection, "")
+	call s:h("VisualNOS", "", s:selection, "")
+else
+	call s:h("Visual", s:white, s:selection, "")
+	call s:h("VisualNOS", s:white, s:selection, "")
+endif
+
 
 call s:h("ColorColumn", "", s:color_col, "")
 call s:h("Conceal", s:fg, "", "")
