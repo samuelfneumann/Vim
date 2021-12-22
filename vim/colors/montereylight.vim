@@ -13,13 +13,13 @@ let s:blue        = { "gui": "#007bff", "cterm": "4" }
 let s:purple      = { "gui": "#af52de", "cterm": "5" }
 let s:cyan        = { "gui": "#55bff0", "cterm": "6" }
 let s:gray        = { "gui": "#8e8e93", "cterm": "7" }
-let s:darkgray    = { "gui": "#000000", "cterm": "8" } " Unused
+let s:darkgray    = { "gui": "#4c4c4c", "cterm": "8" } " Unused
 let s:pink		  = { "gui": "#ff2d55", "cterm": "9" }
-let s:brown		  = { "gui": "#000000", "cterm": "10" } " Unused
+let s:brown		  = { "gui": "#a2845d", "cterm": "10" } " Unused
 let s:orange      = { "gui": "#ff9500", "cterm": "11" }
 let s:teal        = { "gui": "#59adc4", "cterm": "12" }
 let s:indigo      = { "gui": "#5856d6", "cterm": "13" }
-let s:mint        = { "gui": "#000000", "cterm": "14" } " Unused
+let s:mint        = { "gui": "#02c7be", "cterm": "14" } " Unused
 let s:white       = { "gui": "#ffffff", "cterm": "15" }
 
 let s:fg          = s:black
@@ -88,8 +88,8 @@ call s:h("DiffChange", s:yellow, "", "")
 call s:h("DiffDelete", s:red, "", "")
 call s:h("DiffText", s:blue, "", "")
 
-call s:h("IncSearch", s:fg, s:yellow, "")
-call s:h("Search", s:fg, s:yellow, "")
+call s:h("IncSearch", s:black, s:yellow, "")
+call s:h("Search", s:black, s:yellow, "")
 
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
@@ -117,9 +117,10 @@ if has('gui_running') || (has('termguicolors') && &termguicolors)
 	call s:h("Visual", "", s:selection, "")
 	call s:h("VisualNOS", "", s:selection, "")
 else
-	call s:h("Visual", s:black, s:selection, "")
-	call s:h("VisualNOS", s:black, s:selection, "")
+	call s:h("Visual", s:white, s:selection, "")
+	call s:h("VisualNOS", s:white, s:selection, "")
 endif
+
 
 call s:h("ColorColumn", "", s:color_col, "")
 call s:h("Conceal", s:fg, "", "")
@@ -156,11 +157,11 @@ call s:h("Function", s:blue, "", "")
 call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
-call s:h("Repeat", s:purple, "", "")
+call s:h("Repeat", s:brown, "", "")
 call s:h("Label", s:purple, "", "")
 call s:h("Operator", s:fg, "", "")
-call s:h("Keyword", s:red, "", "")
-call s:h("Exception", s:purple, "", "")
+call s:h("Keyword", s:pink, "", "")
+call s:h("Exception", s:brown, "", "")
 
 call s:h("PreProc", s:yellow, "", "")
 call s:h("Include", s:purple, "", "")

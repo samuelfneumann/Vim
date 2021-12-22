@@ -13,13 +13,13 @@ let s:blue        = { "gui": "#0c84ff", "cterm": "4" }
 let s:purple      = { "gui": "#bf5af2", "cterm": "5" }
 let s:cyan        = { "gui": "#5ac9f5", "cterm": "6" }
 let s:gray        = { "gui": "#98989d", "cterm": "7" }
-let s:darkgray    = { "gui": "#000000", "cterm": "8" } " Unused
+let s:darkgray    = { "gui": "#676767", "cterm": "8" }
 let s:pink		  = { "gui": "#ff375f", "cterm": "9" }
-let s:brown		  = { "gui": "#000000", "cterm": "10" } " Unused
+let s:brown		  = { "gui": "#ac8e68", "cterm": "10" }
 let s:orange      = { "gui": "#ff9f0a", "cterm": "11" }
 let s:teal        = { "gui": "#6ac3dc", "cterm": "12" }
 let s:indigo      = { "gui": "#5e5ce6", "cterm": "13" }
-let s:mint        = { "gui": "#000000", "cterm": "14" } " Unused
+let s:mint        = { "gui": "#66c4df", "cterm": "14" }
 let s:white       = { "gui": "#eeeeee", "cterm": "15" }
 
 let s:fg          = s:white
@@ -88,8 +88,8 @@ call s:h("DiffChange", s:yellow, "", "")
 call s:h("DiffDelete", s:red, "", "")
 call s:h("DiffText", s:blue, "", "")
 
-call s:h("IncSearch", s:fg, s:yellow, "")
-call s:h("Search", s:fg, s:yellow, "")
+call s:h("IncSearch", s:black, s:yellow, "")
+call s:h("Search", s:black, s:yellow, "")
 
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
@@ -157,11 +157,11 @@ call s:h("Function", s:blue, "", "")
 call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
-call s:h("Repeat", s:purple, "", "")
+call s:h("Repeat", s:brown, "", "")
 call s:h("Label", s:purple, "", "")
 call s:h("Operator", s:fg, "", "")
-call s:h("Keyword", s:red, "", "")
-call s:h("Exception", s:purple, "", "")
+call s:h("Keyword", s:pink, "", "")
+call s:h("Exception", s:brown, "", "")
 
 call s:h("PreProc", s:yellow, "", "")
 call s:h("Include", s:purple, "", "")
