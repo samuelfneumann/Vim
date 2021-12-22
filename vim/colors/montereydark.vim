@@ -148,7 +148,7 @@ call s:h("NonText", s:non_text, "", "")
 call s:h("Comment", s:comment_fg, "", s:comment_fg.attr)
 call s:h("Constant", s:cyan, "", "")
 call s:h("String", s:green, "", "")
-call s:h("Character", s:purple, "", "")
+call s:h("Character", s:teal, "", "")
 call s:h("Number", s:orange, "", "")
 call s:h("Boolean", s:pink, "", "")
 call s:h("Float", s:indigo, "", "")
@@ -160,15 +160,15 @@ call s:h("Statement", s:indigo, "", "")
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
 call s:h("Label", s:mint, "", "")
-call s:h("Operator", s:blue, "", "")
+call s:h("Operator", s:teal, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
 
-call s:h("PreProc", s:yellow, "", "")
+call s:h("PreProc", s:cyan, "", "")
 call s:h("Include", s:purple, "", "")
 call s:h("Define", s:pink, "", "")
 call s:h("Macro", s:teal, "", "")
-call s:h("PreCondit", s:yellow, "", "")
+call s:h("PreCondit", s:mint, "", "")
 
 call s:h("Type", s:orange, "", "")
 call s:h("StorageClass", s:orange, "", "")
@@ -185,6 +185,10 @@ call s:h("Underlined", s:fg, "", "")
 call s:h("Ignore", s:fg, "", "")
 call s:h("Error", s:red, s:gutter_bg, "")
 call s:h("Todo", s:purple, "", "")
+
+" Python syntax
+call s:h("pythonDecoratorName", s:indigo, "", "")
+
 " }
 
 
