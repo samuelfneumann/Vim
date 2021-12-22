@@ -55,6 +55,7 @@ augroup end
 
 
 function! s:h(group, fg, bg, attr)
+	exec "hi clear " . a:group
   if type(a:fg) == type({})
     exec "hi " . a:group . " guifg=" . a:fg.gui . " ctermfg=" . a:fg.cterm
   else
@@ -158,15 +159,15 @@ call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
-call s:h("Label", s:purple, "", "")
-call s:h("Operator", s:fg, "", "")
+call s:h("Label", s:mint, "", "")
+call s:h("Operator", s:blue, "", "")
 call s:h("Keyword", s:pink, "", "")
-call s:h("Exception", s:brown, "", "")
+call s:h("Exception", s:orange, "", "")
 
 call s:h("PreProc", s:yellow, "", "")
 call s:h("Include", s:purple, "", "")
-call s:h("Define", s:purple, "", "")
-call s:h("Macro", s:purple, "", "")
+call s:h("Define", s:pink, "", "")
+call s:h("Macro", s:teal, "", "")
 call s:h("PreCondit", s:yellow, "", "")
 
 call s:h("Type", s:orange, "", "")

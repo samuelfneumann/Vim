@@ -13,13 +13,13 @@ let s:blue        = { "gui": "#007bff", "cterm": "4" }
 let s:purple      = { "gui": "#af52de", "cterm": "5" }
 let s:cyan        = { "gui": "#55bff0", "cterm": "6" }
 let s:gray        = { "gui": "#8e8e93", "cterm": "7" }
-let s:darkgray    = { "gui": "#4c4c4c", "cterm": "8" } " Unused
+let s:darkgray    = { "gui": "#4c4c4c", "cterm": "8" }
 let s:pink		  = { "gui": "#ff2d55", "cterm": "9" }
-let s:brown		  = { "gui": "#a2845d", "cterm": "10" } " Unused
+let s:brown		  = { "gui": "#a2845d", "cterm": "10" }
 let s:orange      = { "gui": "#ff9500", "cterm": "11" }
 let s:teal        = { "gui": "#59adc4", "cterm": "12" }
 let s:indigo      = { "gui": "#5856d6", "cterm": "13" }
-let s:mint        = { "gui": "#02c7be", "cterm": "14" } " Unused
+let s:mint        = { "gui": "#02c7be", "cterm": "14" }
 let s:white       = { "gui": "#ffffff", "cterm": "15" }
 
 let s:fg          = s:black
@@ -55,6 +55,7 @@ augroup end
 
 
 function! s:h(group, fg, bg, attr)
+	exec "hi clear " . a:group
   if type(a:fg) == type({})
     exec "hi " . a:group . " guifg=" . a:fg.gui . " ctermfg=" . a:fg.cterm
   else
@@ -158,15 +159,15 @@ call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
-call s:h("Label", s:purple, "", "")
-call s:h("Operator", s:fg, "", "")
+call s:h("Label", s:mint, "", "")
+call s:h("Operator", s:blue, "", "")
 call s:h("Keyword", s:pink, "", "")
-call s:h("Exception", s:brown, "", "")
+call s:h("Exception", s:orange, "", "")
 
 call s:h("PreProc", s:yellow, "", "")
 call s:h("Include", s:purple, "", "")
-call s:h("Define", s:purple, "", "")
-call s:h("Macro", s:purple, "", "")
+call s:h("Define", s:pink, "", "")
+call s:h("Macro", s:teal, "", "")
 call s:h("PreCondit", s:yellow, "", "")
 
 call s:h("Type", s:orange, "", "")
