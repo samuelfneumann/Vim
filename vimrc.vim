@@ -50,6 +50,12 @@ endif
 " VIMSCRIPT --------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
 " command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+
+com! CheckHighlightUnderCursor echo {l,c,n ->
+        \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
+        \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
+        \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
+        \ }(line("."), col("."), "name")
 "}}}
 
 " Maps ---------------------------------------------------------------------{{{
@@ -258,8 +264,9 @@ syntax on
 set number
 "}}}
 
-" Auto read when files are changed outside vim -----------------------------{{{ set autoread
-"au FocusGained,BufEnter * checktime
+" Auto read when files are changed outside vim -----------------------------{{{
+set autoread
+au CursorHold,FocusGained,BufEnter * checktime
 ""}}}
 
 " On Save -----------------------------------------------------------------{{{
