@@ -37,7 +37,7 @@ let s:status_line = { "gui": "#98989d", "cterm": "8" }
 let s:status_line_nc = { "gui": "#66666b", "cterm": "7" }
 
 let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
-let s:vertsplit   = s:pink
+let s:vertsplit   = s:gray
 
 let s:gutter_bg   = s:bg
 

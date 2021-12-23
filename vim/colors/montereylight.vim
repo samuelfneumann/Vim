@@ -37,7 +37,7 @@ let s:status_line = { "gui": "#8e8e93", "cterm": "8" }
 let s:status_line_nc = { "gui": "#c3c3c6", "cterm": "7" }
 
 let s:selection   = { "gui": "#d4d4d4", "cterm": "7" }
-let s:vertsplit   = s:pink
+let s:vertsplit   = s:gray
 
 let s:gutter_bg   = s:bg
 
@@ -121,7 +121,6 @@ else
 	call s:h("Visual", s:white, s:selection, "")
 	call s:h("VisualNOS", s:white, s:selection, "")
 endif
-
 
 call s:h("ColorColumn", "", s:color_col, "")
 call s:h("Conceal", s:fg, "", "")

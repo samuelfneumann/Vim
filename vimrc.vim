@@ -45,6 +45,7 @@ if LightOrDark()
 else
 	colorscheme montereydark
 endif
+
 " }}}
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
@@ -309,20 +310,6 @@ else
 				\ }
 endif
 
-let g:lightline.mode_map = {
-		    \ 'n' : 'NORMAL',
-		    \ 'i' : 'INSERT',
-		    \ 'R' : 'REPLACE',
-		    \ 'v' : 'VISUAL',
-		    \ 'V' : 'V-LINE',
-		    \ "\<C-v>": 'V-BLOCK',
-		    \ 'c' : 'COMMAND',
-		    \ 's' : 'SELECT',
-		    \ 'S' : 'S-LINE',
-		    \ "\<C-s>": 'S-BLOCK',
-		    \ 't': 'TERMINAL',
-		    \ }
-
 " Enable the lightline status and tab lines
 let g:lightline.enable = {
 		    \ 'statusline': 1,
@@ -456,10 +443,6 @@ endif
 set cursorline
 "}}}
 
-" Window Pane Splitter -----------------------------------------------------{{{
-hi VertSplit cterm=bold gui=bold term=bold ctermbg=yellow guibg=yellow
-"}}}
-
 " Tabbing ------------------------------------------------------------------{{{
 set noexpandtab
 augroup ModifiedExpandTab
@@ -519,16 +502,38 @@ set colorcolumn=+1
 "}}}
 
 " Julia-vim Options --------------------------------------------------------{{{
+" " Manually control LaTeΧ to Unicode if you want completefunc to work properly
+" " in this case, uncomment these lines and comment out the blacklist line
+" " below
+" function! LaTeXUnicodeOff()
+"     if &ft ==# "tex"
+"         call LaTeXtoUnicode#Disable()
+"     elseif &ft ==# "snippets"
+"         call LaTeXtoUnicode#Disable()
+"     endif
+" endfunction
+
+" function! LaTeXUnicodeOn()
+"     if &ft ==# "tex"
+"         call LaTeXtoUnicode#Enable()
+"     elseif &ft ==# "snippets"
+"         call LaTeXtoUnicode#Enable()
+"     endif
+" endfunction
+
+" augroup LatexUnicode
+"     " Don't allow autoexpand if a tex or snippet file has been opened in a
+"     " buffer, because the g:latex_to_unicode_file_types doesn't work
+"     autocmd!
+"     autocmd BufEnter * call LaTeXUnicodeOff()
+"     autocmd BufLeave * call LaTeXUnicodeOn()
+" augroup end
+
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
-augroup LatexUnicode
-	" Don't allow autoexpand if a tex or snippet file has been opened in a
-	" buffer
-	autocmd!
-	autocmd FileType tex :let g:latex_to_unicode_auto=0
-	autocmd FileType snippets :let g:latex_to_unicode_auto=0
-augroup end
-let g:latex_to_unicode_file_types=".*" " Allow LaTeX in all file types
+let g:latex_to_unicode_file_types='.*'
+let g:latex_to_unicode_file_types_blacklist = ["tex", "snippets"]
 let g:julia_blocks=0 " Don't allow the Julia block moving
+
 "}}}
 
 " Julia-formatter Options --------------------------------------------------{{{

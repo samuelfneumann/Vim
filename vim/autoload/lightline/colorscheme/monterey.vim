@@ -33,9 +33,9 @@ else
   " Dark variant
   let s:fg     = '#ffffff' " Text colour active window
   let s:bg     = '#cccccc' " Text colour inactive window
-  let s:gray1  = '#8e8e93'
-  let s:gray2  = '#8e8e93'
-  let s:gray3  = '#8e8e93'
+  let s:gray1  = '#98989d'
+  let s:gray2  = '#98989d'
+  let s:gray3  = '#98989d'
 
   let s:blue   = '#0a84ff'
   let s:green  = '#32d74b'
