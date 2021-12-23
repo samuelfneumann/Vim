@@ -150,7 +150,7 @@ nnoremap <leader>sp\ :vsplit<cr>
 " Buffer navigation --------------------------------------------------------{{{
 tnoremap <leader>bd <c-w>:bd
 nnoremap <leader>bd :bd
-tnoremap <c-i> <c-w>:bnext<cr>
+" tnoremap <c-i> <c-w>:bnext<cr> " Not sure why but this blocks tab auto-complete in the terminal
 noremap <c-i> :bnext<cr>
 tnoremap <c-u> <c-w>:bprev<cr>
 noremap <c-u> :bprev<cr>
@@ -638,7 +638,6 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Set spell check on
 set spell spelllang=en_us
 
-" Correct spelling on-the-fly with <c-l>
 " <leader>cs (correct spelling) corrects the last spelling mistake
 nnoremap <leader>fs mq[s1z=`q
 inoremap <leader>fs <esc>mq[s1z=`qa
