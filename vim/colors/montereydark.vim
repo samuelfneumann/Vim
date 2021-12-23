@@ -29,16 +29,12 @@ let s:comment_fg  = { "gui": "#98989d", "cterm": "7", "attr": "" }
 let s:linenr_bg   = s:bg
 let s:linenr_fg   = { "gui": "#98989d", "cterm": "8", "attr": "bold" }
 let s:non_text    = s:indigo
-
 let s:cursor_line = { "gui": "#362e42", "cterm": "none", "attr": "bold" }
 let s:color_col   = s:teal
-
 let s:status_line = { "gui": "#98989d", "cterm": "8" }
 let s:status_line_nc = { "gui": "#66666b", "cterm": "7" }
-
 let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
 let s:vertsplit   = s:gray
-
 let s:gutter_bg   = s:bg
 
 
@@ -53,7 +49,29 @@ augroup TrailingWhiteSpace
 	autocmd BufWinLeave * call clearmatches()
 augroup end
 
+" Set the terminal colours if termguicolors is set or in a GUI
+if has('gui_running') || has('termguicolors')
+	let g:terminal_ansi_colors = [
+				\ s:black.gui,
+				\ s:red.gui,
+				\ s:green.gui,
+				\ s:yellow.gui,
+				\ s:blue.gui,
+				\ s:purple.gui,
+				\ s:cyan.gui,
+				\ s:gray.gui,
+				\ s:darkgray.gui,
+				\ s:pink.gui,
+				\ s:brown.gui,
+				\ s:orange.gui,
+				\ s:teal.gui,
+				\ s:indigo.gui,
+				\ s:mint.gui,
+				\ s:white.gui,
+				\]
+endif
 
+" Function to auto-highlight
 function! s:h(group, fg, bg, attr)
 	exec "hi clear " . a:group
   if type(a:fg) == type({})
@@ -73,7 +91,7 @@ function! s:h(group, fg, bg, attr)
   endif
 endfun
 
-
+" Theme settings
 " User interface colors {
 call s:h("Normal", s:fg, s:bg, "")
 
@@ -121,7 +139,6 @@ else
 	call s:h("Visual", s:white, s:selection, "")
 	call s:h("VisualNOS", s:white, s:selection, "")
 endif
-
 
 call s:h("ColorColumn", "", s:color_col, "")
 call s:h("Conceal", s:fg, "", "")
