@@ -198,7 +198,6 @@ function SetStatusLineColour()
 	endif
 endfunction
 "}}}
-
 " If lightline is disabled, set the statusline
 if !g:lightline.enable.statusline
 	" Theme the statusline
@@ -474,6 +473,14 @@ let g:NERDCustomDelimiters = {
 let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
 
+" WinResizer ---------------------------------------------------------------{{{
+" Use same map to start winresizer for GUI and terminal
+let g:winresizer_gui_start_key = '<c-e>'
+
+" Disable in GUI since I never use a GUI
+let g:winresizer_gui_enable = 0
+"}}}
+
 " Spelling -----------------------------------------------------------------{{{
 " Set spell check on
 set spell spelllang=en_us
@@ -494,7 +501,6 @@ if g:colors_name ==? "default"
 	highlight SpellRare ctermbg=green ctermfg=white guibg=green guifg=white
 endif
 " }}}
-
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
@@ -541,16 +547,6 @@ tnoremap <leader><c-o> <c-w>:tablast<cr>
 " If using the vim-tmux-navigator plugin found here
 " https://github.com/christoomey/vim-tmux-navigator, the keys <C-h/j/k/l> will
 " also move the current pane.
-
-" Pane resizing
-tnoremap <c-s> :execute "resize +3"<cr>
-tnoremap <c-d> :execute "resize -3"<cr>
-tnoremap <c-f> :execute "vertical resize +3"<cr>
-tnoremap <c-a> :execute "vertical resize -3"<cr>
-noremap <c-s> :execute "resize +3"<cr>
-noremap <c-d> :execute "resize -3"<cr>
-noremap <c-f> :execute "vertical resize +3"<cr>
-noremap <c-a> :execute "vertical resize -3"<cr>
 
 " Pane navigation
 tnoremap <c-h> <c-w>h

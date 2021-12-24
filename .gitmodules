@@ -25,3 +25,6 @@
 [submodule "vim/pack/plugins/start/vimtex"]
 	path = vim/pack/plugins/start/vimtex
 	url = git@github.com:lervag/vimtex.git
+[submodule "vim/pack/plugins/start/winresizer"]
+	path = vim/pack/plugins/start/winresizer
+	url = git@github.com:samuelfneumann/winresizer.git

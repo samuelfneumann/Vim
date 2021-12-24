@@ -166,7 +166,21 @@ mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:samuelfneumann/vim-tmux-navigator.git
 ```
 
-### TroubeShooting
+### WinResizer
+[WinResizer](https://github.com/samuelfneumann/winresizer) is used to
+make resizing windows and panes a breeze! You simply
+start the resize mode with `<c-e>` and then use `h/j/k/l` to resize panes. You
+can even change the mode from `resize` to `move` or `focus` to alter where
+panes are located or to choose a different pane to resize/move.
+
+To install:
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:samuelfneumann/winresizer.git
+```
+
+### TroubleShooting
 
 If some of the plugins don't work, it sometimes helps to re-clone them:
 ```bash
