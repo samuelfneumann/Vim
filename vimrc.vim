@@ -59,166 +59,6 @@ com! CheckHighlightUnderCursor echo {l,c,n ->
         \ }(line("."), col("."), "name")
 "}}}
 
-" Maps ---------------------------------------------------------------------{{{
-let mapleader="-"
-let localleader='\'
-
-" Terminal Navigation ----------------------------------------------------{{{
-" Open the terminal using -[tT]
-" <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
-" respectively
-" <leader>T opens a terminal in a new tab
-" <leader>tx exits the terminal
-tnoremap <leader>tx <c-w>:q!<cr>
-nnoremap <leader>th :term ++close<cr><c-w>H
-nnoremap <leader>tl :term ++close<cr><c-w>L
-nnoremap <leader>tk :term ++close<cr><c-w>K
-nnoremap <leader>tj :term ++close<cr><c-w>J
-tnoremap <leader>th <c-w>:term ++close<cr><c-w>H
-tnoremap <leader>tl <c-w>:term ++close<cr><c-w>L
-tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
-tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
-vnoremap <leader>T :tab term ++close<cr>
-nnoremap <leader>T :tab term ++close<cr>
-tnoremap <leader>N <c-w>N<cr>
-"}}}
-
-" Tab navigation -----------------------------------------------------------{{{
-noremap <leader>tn :tabnew<cr>
-noremap <leader>te :tabedit
-noremap <c-p> gt
-noremap <c-o> gT
-noremap <leader><c-o> :tabfirst<cr>
-noremap <leader><c-p> :tablast<cr>
-
-tnoremap <leader>tn <c-w>:tabnew<cr>
-tnoremap <leader>te <c-w>:tabedit
-tnoremap <c-p> <c-w>:tabn<cr>
-tnoremap <c-o> <c-w>:tabp<cr>
-tnoremap <leader><c-p> <c-w>:tabfirst<cr>
-tnoremap <leader><c-o> <c-w>:tablast<cr>
-"}}}
-
-" Window/Pane navigation ---------------------------------------------------{{{
-" If using the vim-tmux-navigator plugin found here
-" https://github.com/christoomey/vim-tmux-navigator, the keys <C-h/j/k/l> will
-" also move the current pane.
-
-" Pane resizing
-tnoremap <leader>+ <c-w>+
-noremap <leader>+ <c-w>+
-tnoremap <leader>- <c-w>-
-noremap <leader>- <c-w>-
-tnoremap <leader>> <c-w>>
-noremap <leader>> <c-w>>
-tnoremap <leader>< <c-w><
-noremap <leader>< <c-w><
-tnoremap <leader>= <c-w>=
-noremap <leader>= <c-w>=
-
-" Pane navigation
-tnoremap <c-h> <c-w>h
-noremap <c-h> <c-w>h
-tnoremap <c-j> <c-w>j
-noremap <c-j> <c-w>j
-tnoremap <c-k> <c-w>k
-noremap <c-k> <c-w>k
-tnoremap <c-l> <c-w>l
-noremap <c-l> <c-w>l
-
-" Pane swapping
-tnoremap <leader><c-h> <c-w>H
-noremap <leader><c-h> <c-w>H
-tnoremap <leader><c-j> <c-w>J
-noremap <leader><c-j> <c-w>J
-tnoremap <leader><c-k> <c-w>K
-noremap <leader><c-k> <c-w>K
-tnoremap <leader><c-l> <c-w>L
-noremap <leader><c-l> <c-w>L
-
-" Pane splitting
-"
-" These hotkeys are similar to those defined for tmux in tmux.conf
-" - for horizontal split
-" \ for vertical split
-tnoremap <leader>sp- <c-w>:split<cr>
-nnoremap <leader>sp- :split<cr>
-tnoremap <leader>sp\ <c-w>:vsplit<cr>
-nnoremap <leader>sp\ :vsplit<cr>
-"}}}
-
-" Buffer navigation --------------------------------------------------------{{{
-tnoremap <leader>bd <c-w>:bd
-nnoremap <leader>bd :bd
-" tnoremap <c-i> <c-w>:bnext<cr> " Not sure why but this blocks tab auto-complete in the terminal
-noremap <c-i> :bnext<cr>
-tnoremap <c-u> <c-w>:bprev<cr>
-noremap <c-u> :bprev<cr>
-tnoremap <leader><c-i> <c-w>:bfirst<cr>
-noremap <leader><c-i> :bfirst<cr>
-tnoremap <leader><c-u> <c-w>:blast<cr>
-noremap <leader><c-u> :blast<cr>
-tnoremap <leader>bls <c-w>:ls<cr>
-noremap <leader>bls :ls<cr>
-"}}}
-
-" Remap the <esc> key
-inoremap jk <esc>
-vnoremap jk <esc>
-tnoremap jk <esc>
-
-" Edit and source vimrc
-nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Wrap text in `, ", ', (), [], or {} --------------------------------------{{{
-
-" In visual mode <leader><symbol><symbol> wraps the selection in <symbol> from
-" the beginning of the first selected line to the end of the last selected
-" line. <leader><symbol> wraps only the selection (not the selected lines)
-" in <symbol>
-"
-" In normal mode, <leader><symbol> wraps the current word in <symbol>
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
-nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
-nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
-nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
-nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
-vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
-vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
-vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
-vnoremap <leader>"" c""<esc>P
-vnoremap <leader>'' c''<esc>P
-vnoremap <leader>`` c``<esc>P
-vnoremap <leader>() c()<esc>P
-vnoremap <leader>[] c[]<esc>P
-vnoremap <leader>{} c{}<esc>P
-"}}}
-
-" Move to beginning or end of line
-nnoremap <leader>a g_
-nnoremap <leader>i _
-
-" Place/remove semi-colon at line end without moving the cursor
-nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
-nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
-
-" Remove trailing whitespace, leaving cursor in-place
-nnoremap <leader><space><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
-nnoremap <leader><space>x mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
-vnoremap <leader><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
-
-" Remove arrow keys and esc ------------{{{
-inoremap <esc> <nop>
-vnoremap <esc> <nop>
-noremap <Down> <nop>
-noremap <Up> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-"}}}
-"}}}
-
 " Abbreviations ------------------------------------------------------------{{{
 " Contact abbreviations -----------{{{
 iabbrev @@ samuelfneumann@gmail.com
@@ -656,4 +496,162 @@ endif
 " }}}
 
 " }}}
+
+" Maps ---------------------------------------------------------------------{{{
+let mapleader="-"
+let localleader='\'
+
+" Terminal Navigation ----------------------------------------------------{{{
+" Open the terminal using -[tT]
+" <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
+" respectively
+" <leader>T opens a terminal in a new tab
+" <leader>tx exits the terminal
+tnoremap <leader>tx <c-w>:q!<cr>
+nnoremap <leader>th :term ++close<cr><c-w>H
+nnoremap <leader>tl :term ++close<cr><c-w>L
+nnoremap <leader>tk :term ++close<cr><c-w>K
+nnoremap <leader>tj :term ++close<cr><c-w>J
+tnoremap <leader>th <c-w>:term ++close<cr><c-w>H
+tnoremap <leader>tl <c-w>:term ++close<cr><c-w>L
+tnoremap <leader>tk <c-w>:term ++close<cr><c-w>K
+tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
+vnoremap <leader>T :tab term ++close<cr>
+nnoremap <leader>T :tab term ++close<cr>
+tnoremap <leader>N <c-w>N<cr>
+"}}}
+
+" Tab navigation -----------------------------------------------------------{{{
+noremap <leader>tn :tabnew<cr>
+noremap <leader>te :tabedit
+noremap <c-p> gt
+noremap <c-o> gT
+noremap <leader><c-o> :tabfirst<cr>
+noremap <leader><c-p> :tablast<cr>
+
+tnoremap <leader>tn <c-w>:tabnew<cr>
+tnoremap <leader>te <c-w>:tabedit
+tnoremap <c-p> <c-w>:tabn<cr>
+tnoremap <c-o> <c-w>:tabp<cr>
+tnoremap <leader><c-p> <c-w>:tabfirst<cr>
+tnoremap <leader><c-o> <c-w>:tablast<cr>
+"}}}
+
+" Window/Pane navigation ---------------------------------------------------{{{
+" If using the vim-tmux-navigator plugin found here
+" https://github.com/christoomey/vim-tmux-navigator, the keys <C-h/j/k/l> will
+" also move the current pane.
+
+" Pane resizing
+tnoremap <c-s> :execute "resize +3"<cr>
+tnoremap <c-d> :execute "resize -3"<cr>
+tnoremap <c-f> :execute "vertical resize +3"<cr>
+tnoremap <c-a> :execute "vertical resize -3"<cr>
+noremap <c-s> :execute "resize +3"<cr>
+noremap <c-d> :execute "resize -3"<cr>
+noremap <c-f> :execute "vertical resize +3"<cr>
+noremap <c-a> :execute "vertical resize -3"<cr>
+
+" Pane navigation
+tnoremap <c-h> <c-w>h
+noremap <c-h> <c-w>h
+tnoremap <c-j> <c-w>j
+noremap <c-j> <c-w>j
+tnoremap <c-k> <c-w>k
+noremap <c-k> <c-w>k
+tnoremap <c-l> <c-w>l
+noremap <c-l> <c-w>l
+
+" Pane swapping
+tnoremap <leader><c-h> <c-w>H
+noremap <leader><c-h> <c-w>H
+tnoremap <leader><c-j> <c-w>J
+noremap <leader><c-j> <c-w>J
+tnoremap <leader><c-k> <c-w>K
+noremap <leader><c-k> <c-w>K
+tnoremap <leader><c-l> <c-w>L
+noremap <leader><c-l> <c-w>L
+
+" Pane splitting
+"
+" These hotkeys are similar to those defined for tmux in tmux.conf
+" - for horizontal split
+" \ for vertical split
+tnoremap <leader>sp- <c-w>:split<cr>
+nnoremap <leader>sp- :split<cr>
+tnoremap <leader>sp\ <c-w>:vsplit<cr>
+nnoremap <leader>sp\ :vsplit<cr>
+"}}}
+
+" Buffer navigation --------------------------------------------------------{{{
+tnoremap <leader>bd <c-w>:bd
+nnoremap <leader>bd :bd
+" tnoremap <c-i> <c-w>:bnext<cr> " Not sure why but this blocks tab auto-complete in the terminal
+noremap <c-i> :bnext<cr>
+tnoremap <c-u> <c-w>:bprev<cr>
+noremap <c-u> :bprev<cr>
+tnoremap <leader><c-i> <c-w>:bfirst<cr>
+noremap <leader><c-i> :bfirst<cr>
+tnoremap <leader><c-u> <c-w>:blast<cr>
+noremap <leader><c-u> :blast<cr>
+tnoremap <leader>bls <c-w>:ls<cr>
+noremap <leader>bls :ls<cr>
+"}}}
+
+" Remap the <esc> key
+inoremap jk <esc>
+vnoremap jk <esc>
+tnoremap jk <esc>
+
+" Edit and source vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Wrap text in `, ", ', (), [], or {} --------------------------------------{{{
+
+" In visual mode <leader><symbol><symbol> wraps the selection in <symbol> from
+" the beginning of the first selected line to the end of the last selected
+" line. <leader><symbol> wraps only the selection (not the selected lines)
+" in <symbol>
+"
+" In normal mode, <leader><symbol> wraps the current word in <symbol>
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
+nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
+nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
+nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
+nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
+vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
+vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
+vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
+vnoremap <leader>"" c""<esc>P
+vnoremap <leader>'' c''<esc>P
+vnoremap <leader>`` c``<esc>P
+vnoremap <leader>() c()<esc>P
+vnoremap <leader>[] c[]<esc>P
+vnoremap <leader>{} c{}<esc>P
+"}}}
+
+" Move to beginning or end of line
+nnoremap <leader>a g_
+nnoremap <leader>i _
+
+" Place/remove semi-colon at line end without moving the cursor
+nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
+nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
+
+" Remove trailing whitespace, leaving cursor in-place
+nnoremap <leader><space><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+nnoremap <leader><space>x mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
+vnoremap <leader><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+
+" Remove arrow keys and esc ------------{{{
+inoremap <esc> <nop>
+vnoremap <esc> <nop>
+noremap <Down> <nop>
+noremap <Up> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+"}}}
+"}}}
 " }}}
