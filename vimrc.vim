@@ -525,11 +525,12 @@ tnoremap <leader>tj <c-w>:term ++close<cr><c-w>J
 vnoremap <leader>T :tab term ++close<cr>
 nnoremap <leader>T :tab term ++close<cr>
 tnoremap <leader>N <c-w>N<cr>
+tnoremap <c-N> <c-w>N<cr>
 "}}}
 
 " Tab navigation -----------------------------------------------------------{{{
 noremap <leader>tn :tabnew<cr>
-noremap <leader>te :tabedit
+noremap <leader>te :tabedit<space>
 noremap <c-p> gt
 noremap <c-o> gT
 noremap <leader><c-o> :tabfirst<cr>
