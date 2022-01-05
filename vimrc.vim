@@ -475,7 +475,8 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 " WinResizer ---------------------------------------------------------------{{{
 " Use same map to start winresizer for GUI and terminal
-let g:winresizer_gui_start_key = '<c-e>'
+let g:winresizer_start_key = '<c-a>'
+let g:winresizer_gui_start_key = g:winresizer_start_key
 
 " Disable in GUI since I never use a GUI
 let g:winresizer_gui_enable = 0
@@ -545,11 +546,10 @@ tnoremap <leader><c-o> <c-w>:tablast<cr>
 "}}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
-" If using the vim-tmux-navigator plugin found here
-" https://github.com/christoomey/vim-tmux-navigator, the keys <C-h/j/k/l> will
-" also move the current pane.
 
 " Pane navigation
+" Use hotkeys similar to vim-tmux-navigator if the plugin is not used. If the
+" plugin is used, these will be overridden
 tnoremap <c-h> <c-w>h
 noremap <c-h> <c-w>h
 tnoremap <c-j> <c-w>j
@@ -560,18 +560,9 @@ tnoremap <c-l> <c-w>l
 noremap <c-l> <c-w>l
 
 " Pane swapping
-tnoremap <leader><c-h> <c-w>H
-noremap <leader><c-h> <c-w>H
-tnoremap <leader><c-j> <c-w>J
-noremap <leader><c-j> <c-w>J
-tnoremap <leader><c-k> <c-w>K
-noremap <leader><c-k> <c-w>K
-tnoremap <leader><c-l> <c-w>L
-noremap <leader><c-l> <c-w>L
+" Taken care of by WinResizer plugin
 
 " Pane splitting
-"
-" These hotkeys are similar to those defined for tmux in tmux.conf
 " - for horizontal split
 " \ for vertical split
 tnoremap <leader>sp- <c-w>:split<cr>
@@ -604,7 +595,7 @@ tnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Wrap text in `, ", ', (), [], or {} --------------------------------------{{{
+" Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
 
 " In visual mode <leader><symbol><symbol> wraps the selection in <symbol> from
 " the beginning of the first selected line to the end of the last selected
@@ -612,21 +603,23 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " in <symbol>
 "
 " In normal mode, <leader><symbol> wraps the current word in <symbol>
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
-nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
+nnoremap <leader>"" viw<esc>a"<esc>bi"<esc>lell
+nnoremap <leader>`` viw<esc>a`<esc>bi`<esc>lell
+nnoremap <leader>'' viw<esc>a'<esc>bi'<esc>lell
 nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
-vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
-vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
-vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
+nnoremap <leader>$$ viw<esc>a$<esc>bi$<esc>lell
+" vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
+" vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
+" vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
 vnoremap <leader>'' c''<esc>P
 vnoremap <leader>`` c``<esc>P
 vnoremap <leader>() c()<esc>P
 vnoremap <leader>[] c[]<esc>P
 vnoremap <leader>{} c{}<esc>P
+vnoremap <leader>$$ c$$<esc>P
 "}}}
 
 " Move to beginning or end of line
