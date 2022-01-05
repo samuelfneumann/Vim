@@ -532,17 +532,17 @@ tnoremap <c-N> <c-w>N<cr>
 " Tab navigation -----------------------------------------------------------{{{
 noremap <leader>tn :tabnew<cr>
 noremap <leader>te :tabedit<space>
-noremap <c-p> gt
-noremap <c-o> gT
-noremap <leader><c-o> :tabfirst<cr>
-noremap <leader><c-p> :tablast<cr>
+noremap <c-m> gt
+noremap <c-n> gT
+noremap <leader><c-n> :tabfirst<cr>
+noremap <leader><c-m> :tablast<cr>
 
 tnoremap <leader>tn <c-w>:tabnew<cr>
 tnoremap <leader>te <c-w>:tabedit
-tnoremap <c-p> <c-w>:tabn<cr>
-tnoremap <c-o> <c-w>:tabp<cr>
-tnoremap <leader><c-p> <c-w>:tabfirst<cr>
-tnoremap <leader><c-o> <c-w>:tablast<cr>
+tnoremap <c-m> <c-w>:tabn<cr>
+tnoremap <c-n> <c-w>:tabp<cr>
+tnoremap <leader><c-m> <c-w>:tabfirst<cr>
+tnoremap <leader><c-n> <c-w>:tablast<cr>
 "}}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
