@@ -72,6 +72,11 @@ iabbrev _mname Frederick
 
 " General Settings ---------------------------------------------------------{{{
 
+" Leaders ------------------------------------------------------------------{{{
+let mapleader="-"
+let localleader='\'
+" }}}
+
 set nocompatible
 set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
@@ -480,7 +485,11 @@ let g:winresizer_gui_start_key = g:winresizer_start_key
 
 " Disable in GUI since I never use a GUI
 let g:winresizer_gui_enable = 0
-"}}}
+
+" Number of points when resizing
+let g:winresizer_vert_resize=5
+let g:winresizer_horiz_resize=3
+" }}}
 
 " Spelling -----------------------------------------------------------------{{{
 " Set spell check on
@@ -490,7 +499,7 @@ set spell spelllang=en_us
 nnoremap <leader>fs mq[s1z=`q
 inoremap <leader>fs <esc>mq[s1z=`qa
 
-" " Change the spelling highlight groups
+" Change the spelling highlight groups
 if g:colors_name ==? "default"
 	highlight clear SpellBad
 	highlight SpellBad cterm=underline gui=undercurl
@@ -505,8 +514,6 @@ endif
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
-let mapleader="-"
-let localleader='\'
 
 " Terminal Navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -530,20 +537,20 @@ tnoremap <c-N> <c-w>N<cr>
 "}}}
 
 " Tab navigation -----------------------------------------------------------{{{
-noremap <leader>tn :tabnew<cr>
-noremap <leader>te :tabedit<space>
-noremap <c-m> gt
-noremap <c-n> gT
-noremap <leader><c-n> :tabfirst<cr>
-noremap <leader><c-m> :tablast<cr>
+nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>te :tabedit<space>
+nnoremap <c-p> gt
+nnoremap <c-o> gT
+noremap <leader><c-o> :tabfirst<cr>
+noremap <leader><c-p> :tablast<cr>
 
 tnoremap <leader>tn <c-w>:tabnew<cr>
 tnoremap <leader>te <c-w>:tabedit
-tnoremap <c-m> <c-w>:tabn<cr>
-tnoremap <c-n> <c-w>:tabp<cr>
-tnoremap <leader><c-m> <c-w>:tabfirst<cr>
-tnoremap <leader><c-n> <c-w>:tablast<cr>
-"}}}
+tnoremap <c-p> <c-w>:tabn<cr>
+tnoremap <c-o> <c-w>:tabp<cr>
+tnoremap <leader><c-p> <c-w>:tabfirst<cr>
+tnoremap <leader><c-o> <c-w>:tablast<cr>
+" }}}
 
 " Window/Pane navigation ---------------------------------------------------{{{
 
