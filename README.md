@@ -180,6 +180,18 @@ mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:samuelfneumann/winresizer.git
 ```
 
+## Vim-Go
+[Vim-Go](git@github.com:samuelfneumann/winresizer.git) is used to get
+awesome Go stuff in Vim, such as better snippets with
+Ultisnips, functions for running/testing within Vim, etc.
+
+To install:
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git clone git@github.com:fatih/vim-go.git
+```
+
 ### TroubleShooting
 
 If some of the plugins don't work, it sometimes helps to re-clone them:
