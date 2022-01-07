@@ -3,11 +3,14 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
+" Get the OS type
+let s:os = trim(system("uname")) " Get the OS name
+let s:darwin = s:os==?"Darwin"
+
 " Functions -----------------------------------------------------------------{{{
 " LightOrDark returns if the operating system appearance on macOS is light
 " (true) or dark (false)
 function LightOrDark()
-
 	" Dynamic colour on macOS
 	let l:uname = trim(system("uname"))
 	if l:uname==?"Darwin"
@@ -33,7 +36,7 @@ endfunction
 
 " Theme options ------------------------------------------------------------{{{
 " Set termguicolours so that iTerm uses the fancy gui colours in the terminal
-if has('gui_running') || has('termguicolors')
+if has('gui_running') || (has('termguicolors') && s:darwin)
 	set termguicolors
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -143,7 +146,7 @@ set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
 " Lightline settings -------------------------------------------------------{{{
 " If weird things happen, place this before setting the colourscheme
-if has('gui_running') || (has('termguicolors') && &termguicolors)
+if has('gui_running') || (has('termguicolors') && s:darwin)
 	let g:lightline = {
 				\ 'colorscheme': 'monterey',
 				\ }
