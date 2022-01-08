@@ -27,7 +27,7 @@ let s:bg          = { "gui": "#ececec", "cterm": "none" }
 
 let s:comment_fg  = { "gui": "#8e8e93", "cterm": "7", "attr": "" }
 let s:linenr_bg   = s:bg
-let s:linenr_fg   = { "gui": "#8e8e93", "cterm": "7", "attr": "bold"}
+let s:linenr_fg   = { "gui": "#8e8e93", "cterm": "8", "attr": "bold"}
 let s:non_text    = s:indigo
 let s:cursor_line = { "gui": "#e0e0e0", "cterm": "7", "attr": "bold" }
 let s:color_col   = s:teal
