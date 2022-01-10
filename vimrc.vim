@@ -632,9 +632,14 @@ vnoremap <leader>{} c{}<esc>P
 vnoremap <leader>$$ c$$<esc>P
 "}}}
 
-" Move to beginning or end of line
-nnoremap <leader>a g_
-nnoremap <leader>i _
+" Page up and page down ----------------------------------------------------{{{
+" Backward full screen, backward half screen
+" forward full screen, forward half screen
+nnoremap <c-b> <c-b>
+nnoremap <c-n> <c-u>
+nnoremap <c-f> <c-f>
+nnoremap <c-g> <c-d>
+"}}}
 
 " Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
@@ -654,4 +659,4 @@ noremap <left> <nop>
 noremap <right> <nop>
 "}}}
 "}}}
-" }}}
+"}}}
