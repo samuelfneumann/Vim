@@ -3,6 +3,8 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
+set timeoutlen=250
+
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
 let s:darwin = s:os==?"Darwin"
@@ -53,7 +55,7 @@ endif
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
 " Commands ----------------------------------------------------------------{{{
-" command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit! " :W sudo saves file
 
 com! CheckHighlightUnderCursor echo {l,c,n ->
         \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
@@ -642,6 +644,11 @@ nnoremap <c-f> <c-f>
 nnoremap <c-g> <c-d>
 "}}}
 
+" Join and move lines ------------------------------------------------------{{{
+nnoremap doc K
+nnoremap K kJ
+"}}}
+
 " Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
@@ -658,6 +665,7 @@ noremap <Down> <nop>
 noremap <Up> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+noremap <Down> <nop>
 "}}}
 "}}}
 "}}}
