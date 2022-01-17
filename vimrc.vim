@@ -3,7 +3,7 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-set timeoutlen=250
+set timeoutlen=500
 
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
@@ -517,6 +517,17 @@ if g:colors_name ==? "default"
 	highlight SpellRare ctermbg=green ctermfg=white guibg=green guifg=white
 endif
 " }}}
+
+" Syntastic ----------------------------------------------------------------{{{
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Toggle Syntastic
+nnoremap -synt :SyntasticToggleMode<cr>
+" }}}
+
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
