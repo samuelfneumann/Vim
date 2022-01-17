@@ -107,8 +107,12 @@ set showmatch " Show matching brackets when cursor is over them
 " Searching ----------------------------------------------------------------{{{
 set hlsearch " Use highlighting when searching
 set incsearch " Highlight matching characters as you type
-set smartcase " Use case insensitive search unless capital in search pattern
 nnoremap -nhs :nohlsearch<cr>
+
+" Ignore case when search term contains only lowercase letters. Only take case
+" into account when the search term has uppercase letters.
+set ignorecase
+set smartcase " Use case insensitive search unless capital in search pattern
 "}}}
 
 " Syntax highlighting and line numbers -------------------------------------{{{
