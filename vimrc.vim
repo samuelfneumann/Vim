@@ -623,6 +623,10 @@ tnoremap jk <esc>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Marks
+" Remap jump-to-mark to be closer to make-mark map
+nnoremap , `
+
 " Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
 
 " In visual mode <leader><symbol><symbol> wraps the selection in <symbol> from
