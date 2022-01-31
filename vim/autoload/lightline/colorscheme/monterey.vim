@@ -26,7 +26,7 @@ if lightline#colorscheme#background() ==# 'light'
   let s:red2   = '#ff3126'
   let s:pink   = '#ff2d55'
   let s:orange = '#ff9500'
-  let s:indigo = '#af52de'
+  let s:indigo = '#5856d6'
   let s:yellow = '#ffcc00'
   let s:cyan   = '#55bff0'
 else
@@ -44,7 +44,7 @@ else
   let s:red2   = '#ff4f44'
   let s:pink   = '#ff375f'
   let s:orange = '#ff9f0a'
-  let s:indigo = '#bf5af2'
+  let s:indigo = '5d5ce6'
   let s:yellow = '#ffd60a'
   let s:cyan   = '#5ac9f5'
 endif
@@ -66,8 +66,8 @@ let s:p.insert.right   = [ [ s:fg, s:green, 15, 2, 'bold' ], [ s:fg, s:green, 15
 let s:p.replace.left    = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
 let s:p.replace.right  = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:red1, 15, 7, 'bold' ] ]
 
-let s:p.visual.left     = [ [ s:fg, s:purple, 15, 5, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
-let s:p.visual.right   = [ [ s:fg, s:purple, 15, 5, 'bold' ], [ s:fg, s:purple, 15, 5, 'bold' ] ]
+let s:p.visual.left     = [ [ s:fg, s:cyan, 15, 5, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.visual.right   = [ [ s:fg, s:cyan, 15, 5, 'bold' ], [ s:fg, s:cyan, 15, 5, 'bold' ] ]
 
 let s:p.terminal.left   = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:gray3, 15, 7 ] ]
 let s:p.terminal.right = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:orange, 15, 11, 'bold' ] ]

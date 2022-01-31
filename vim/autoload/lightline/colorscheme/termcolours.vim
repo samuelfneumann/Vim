@@ -26,8 +26,8 @@ let s:p.insert.right   = [ [ 15, 2, 'bold' ], [ 15, 2, 'bold' ] ]
 let s:p.replace.left    = [ [ 15, 1, 'bold' ], [ 15, 7] ]
 let s:p.replace.right  = [ [ 15, 1, 'bold' ], [ 15, 7, 'bold' ] ]
 
-let s:p.visual.left     = [ [ 15, 5, 'bold' ], [ 15, 7] ]
-let s:p.visual.right   = [ [ 15, 5, 'bold' ], [ 15, 5, 'bold' ] ]
+let s:p.visual.left     = [ [ 15, 6, 'bold' ], [ 15, 7] ]
+let s:p.visual.right   = [ [ 15, 6, 'bold' ], [ 15, 6, 'bold' ] ]
 
 let s:p.terminal.left   = [ [ 15, 11, 'bold' ], [ 15, 7 ] ]
 let s:p.terminal.right = [ [ 15, 11, 'bold' ], [ 15, 11, 'bold' ] ]
