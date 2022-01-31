@@ -3,7 +3,7 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-set timeoutlen=500
+set timeoutlen=350
 
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
@@ -68,7 +68,7 @@ com! CheckHighlightUnderCursor echo {l,c,n ->
 " Contact abbreviations -----------{{{
 iabbrev @@ samuelfneumann@gmail.com
 iabbrev u@@ sfneuman@ualberta.ca
-iabbrev _name Samuel Frederick Neumann
+iabbrev _fullname Samuel Frederick Neumann
 iabbrev _fname Samuel
 iabbrev _lname Neumann
 iabbrev _mname Frederick
@@ -138,6 +138,11 @@ augroup OnSave
 	" Remove all trailing whitespace on save
 	autocmd BufWritePre * call RemoveTrailingWhitespace()
 augroup end
+
+" Remove trailing whitespace, leaving cursor in-place
+nnoremap <leader><space><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
+nnoremap <leader><space>x mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
+vnoremap <leader><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
 " }}}
 
 " Wildmenu -----------------------------------------------------------------{{{
@@ -560,8 +565,20 @@ tnoremap <c-N> <c-w>N<cr>
 " Tab navigation -----------------------------------------------------------{{{
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>te :tabedit<space>
-nnoremap <c-p> gt
-nnoremap <c-o> gT
+nnoremap <c-p> :tabn<cr>
+nnoremap <c-o> :tabp<cr>
+if s:os ==? "Darwin"
+	nnoremap ø :tabm -1<cr>
+	nnoremap π :tabm +1<cr>
+elseif s:os ==? "Linux"
+	" See :help map-alt-keys or https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
+	" rxvt needs to be started with the --meta8 option or you can put
+	" xterm*metaSendsEscape: true or rxvt*metaSendsEscape: true into
+	" ~/.Xdefaults
+	nnoremap <A-o> :tabm -1<cr>
+	nnoremap <A-p> :tabm +1<cr>
+endif
+
 noremap <leader><c-o> :tabfirst<cr>
 noremap <leader><c-p> :tablast<cr>
 
@@ -603,13 +620,13 @@ nnoremap <leader>sp\ :vsplit<cr>
 tnoremap <leader>bd <c-w>:bd
 nnoremap <leader>bd :bd
 " tnoremap <c-i> <c-w>:bnext<cr> " Not sure why but this blocks tab auto-complete in the terminal
-noremap <c-i> :bnext<cr>
-tnoremap <c-u> <c-w>:bprev<cr>
-noremap <c-u> :bprev<cr>
-tnoremap <leader><c-i> <c-w>:bfirst<cr>
-noremap <leader><c-i> :bfirst<cr>
-tnoremap <leader><c-u> <c-w>:blast<cr>
-noremap <leader><c-u> :blast<cr>
+" noremap <c-i> :bnext<cr>
+" tnoremap <c-u> <c-w>:bprev<cr>
+" noremap <c-u> :bprev<cr>
+" tnoremap <leader><c-i> <c-w>:bfirst<cr>
+" noremap <leader><c-i> :bfirst<cr>
+" tnoremap <leader><c-u> <c-w>:blast<cr>
+" noremap <leader><c-u> :blast<cr>
 tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
 "}}}
@@ -626,6 +643,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Marks
 " Remap jump-to-mark to be closer to make-mark map
 nnoremap , `
+nnoremap ,, ``
 
 " Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
 
@@ -665,17 +683,13 @@ nnoremap <c-g> <c-d>
 
 " Join and move lines ------------------------------------------------------{{{
 nnoremap doc K
+vnoremap K <nop>
 nnoremap K kJ
 "}}}
 
 " Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
-
-" Remove trailing whitespace, leaving cursor in-place
-nnoremap <leader><space><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
-nnoremap <leader><space>x mq:%s/\v\s+$//e<cr>:nohlsearch<cr>`q
-vnoremap <leader><space>x mq:s/\v\s+$//e<cr>:nohlsearch<cr>`q
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
