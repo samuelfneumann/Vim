@@ -572,11 +572,15 @@ if s:os ==? "Darwin"
 	nnoremap π :tabm +1<cr>
 elseif s:os ==? "Linux"
 	" See :help map-alt-keys or https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
-	" rxvt needs to be started with the --meta8 option or you can put
-	" xterm*metaSendsEscape: true or rxvt*metaSendsEscape: true into
+	" URxvt/rxvt needs to be started with the --meta8 option or you can put
+	" xterm*metaSendsEscape: false or rxvt*metaSendsEscape: false into
 	" ~/.Xdefaults
-	nnoremap <A-o> :tabm -1<cr>
-	nnoremap <A-p> :tabm +1<cr>
+	nnoremap <m-o> :tabm -1<cr>
+	nnoremap <m-p> :tabm +1<cr>
+
+	" Needed for URxvt which sends accented characters with alt instead
+	" of the character with the 8th bit set
+	set termencoding=latin1
 endif
 
 noremap <leader><c-o> :tabfirst<cr>
