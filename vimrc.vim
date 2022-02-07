@@ -571,15 +571,24 @@ if s:os ==? "Darwin"
 	nnoremap ø :tabm -1<cr>
 	nnoremap π :tabm +1<cr>
 elseif s:os ==? "Linux"
-	" See :help map-alt-keys or https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
+	" See :help map-alt-keys
+	" https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
+	" http://www.leonerd.org.uk/hacks/fixterms/
+	"
 	" URxvt/rxvt needs to be started with the --meta8 option or you can put
 	" xterm*metaSendsEscape: false or rxvt*metaSendsEscape: false into
 	" ~/.Xdefaults
-	" For this to work in URxvt, we need set termencoding=latin1
-	nnoremap <m-o> :tabm -1<cr>
-	nnoremap <m-p> :tabm +1<cr>
-
-
+	"
+	" For this to work in URxvt, we need set termencoding=latin1, then the
+	" following lines will work:
+	" nnoremap <m-o> :tabm -1<cr>
+	" nnoremap <m-p> :tabm +1<cr>
+	"
+	" Otherwise, if ~/.Xresources is configured as in my Dotfiles repo the
+	" following will work with URxvt. Note that i3 should not capute the alt+o
+	" and alt+p keybindings
+	nnoremap [28~o :tabm -1<cr>
+	nnoremap [28~p :tabm +1<cr>
 endif
 
 noremap <leader><c-o> :tabfirst<cr>
