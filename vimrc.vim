@@ -575,12 +575,11 @@ elseif s:os ==? "Linux"
 	" URxvt/rxvt needs to be started with the --meta8 option or you can put
 	" xterm*metaSendsEscape: false or rxvt*metaSendsEscape: false into
 	" ~/.Xdefaults
+	" For this to work in URxvt, we need set termencoding=latin1
 	nnoremap <m-o> :tabm -1<cr>
 	nnoremap <m-p> :tabm +1<cr>
 
-	" Needed for URxvt which sends accented characters with alt instead
-	" of the character with the 8th bit set
-	set termencoding=latin1
+
 endif
 
 noremap <leader><c-o> :tabfirst<cr>
