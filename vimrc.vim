@@ -452,6 +452,7 @@ let g:UltiSnipsEnableSnipMate=0
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/Figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/Figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 " }}}
+" }}}
 
 " VimTex -------------------------------------------------------------------{{{
 let g:tex_flavor='latex'
@@ -544,11 +545,8 @@ let g:syntastic_check_on_wq = 0
 nnoremap -synt :SyntasticToggleMode<cr>
 " }}}
 
-" }}}
-
 " Maps ---------------------------------------------------------------------{{{
-
-" Terminal Navigation ----------------------------------------------------{{{
+" Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
 " <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
 " respectively
@@ -649,6 +647,11 @@ nnoremap <leader>bd :bd
 tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
 "}}}
+
+" Line navigation ----------------------------------------------------------{{{
+nnoremap gA g_i
+nnoremap gI _a
+" }}}
 
 " Remap the <esc> key
 inoremap jk <esc>
