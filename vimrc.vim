@@ -303,8 +303,8 @@ endif
 " Cursorline -------------------------------------------------------{{{
 if g:colors_name ==? "default"
 	hi clear CursorLine
-	highlight CursorLineNR cterm=bold term=bold gui=bold
-	highlight CursorLine cterm=bold term=bold gui=bold
+	highlight CursorLineNR cterm=bold term=bold gui=bold ctermbg=8 guibg=8
+	highlight CursorLine cterm=bold term=bold gui=bold ctermbg=8 guibg=8
 endif
 set cursorline
 "}}}
