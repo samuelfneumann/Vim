@@ -180,7 +180,7 @@ let g:lightline.enable = {
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 
-# Set the default tabline spearator
+" Set the default tabline spearator
 let g:lightline.tabline_subseparator = g:lightline.subseparator
 let g:lightline.tabline_separator = g:lightline.separator
 " }}}
