@@ -8,6 +8,7 @@ set timeoutlen=350
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
 let s:darwin = s:os==?"Darwin"
+let s:linux = s:os==?"Linux"
 
 " Functions -----------------------------------------------------------------{{{
 " LightOrDark returns if the operating system appearance on macOS is light
@@ -45,9 +46,11 @@ if has('gui_running') || (has('termguicolors') && s:darwin)
 endif
 
 " Set the theme
-if LightOrDark()
+if s:linux
+	colorscheme ubuntu
+elseif s:darwin && LightOrDark()
 	colorscheme montereylight
-else
+elseif s:darwin
 	colorscheme montereydark
 endif
 
@@ -158,9 +161,13 @@ set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 
 " Lightline settings -------------------------------------------------------{{{
 " If weird things happen, place this before setting the colourscheme
-if has('gui_running') || (has('termguicolors') && s:darwin)
+if has('termguicolors') && s:darwin && &termguicolors
 	let g:lightline = {
 				\ 'colorscheme': 'monterey',
+				\ }
+elseif has('termguicolors') && s:linux && &termguicolors
+	let g:lightline = {
+				\ 'colorscheme': 'ubuntu',
 				\ }
 else
 	" If not using termguicolours, use the terminal colours by default
