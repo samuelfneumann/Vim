@@ -587,20 +587,28 @@ elseif s:os ==? "Linux"
 	" https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
 	" http://www.leonerd.org.uk/hacks/fixterms/
 	"
-	" URxvt/rxvt needs to be started with the --meta8 option or you can put
-	" xterm*metaSendsEscape: false or rxvt*metaSendsEscape: false into
-	" ~/.Xdefaults
+	" The following maps will work if your terminal emulator sends a key with
+	" the 8th bit set when modifying the key with <Alt>. Most terminal
+	" emulators do not do this by default, but instead send an <Esc> before the
+	" key when modifying it with <Alt>. URxvt and xterm both support both
+	" behaviours of <Alt>, but the <Esc> prefix is default.
 	"
-	" For this to work in URxvt, we need set termencoding=latin1, then the
-	" following lines will work:
+	" For the following maps to work in URxvt, we need set
+	" termencoding=latin1 and the --meta8 flag to be set.
 	" nnoremap <m-o> :tabm -1<cr>
 	" nnoremap <m-p> :tabm +1<cr>
 	"
 	" Otherwise, if ~/.Xresources is configured as in my Dotfiles repo the
-	" following will work with URxvt. Note that i3 should not capute the alt+o
-	" and alt+p keybindings
+	" following will work with URxvt. Note that i3/sway should not capture
+	" the alt+o and alt+p keybindings
 	nnoremap [28~o :tabm -1<cr>
 	nnoremap [28~p :tabm +1<cr>
+
+	" If not using the ~/.Xresources file, then the following lines should work
+	" for most terminal emulators that prefix a key with <Esc> when modifying
+	" that key with <Alt>.
+	nnoremap o :tabm -1<cr>
+	nnoremap p :tabm +1<cr>
 endif
 
 noremap <leader><c-o> :tabfirst<cr>
