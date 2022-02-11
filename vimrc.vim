@@ -405,7 +405,17 @@ set colorcolumn=+1
 let g:latex_to_unicode_auto=1 " Allow some symbols to be auto-expanded
 let g:latex_to_unicode_file_types='.*'
 let g:latex_to_unicode_file_types_blacklist = ["tex", "snippets"]
-let g:julia_blocks=0 " Don't allow the Julia block moving
+let g:julia_blocks=1 " Don't allow the Julia block moving
+let g:julia_indent_align_brackets=0
+let g:julia_indent_align_funcargs=0
+let g:julia_highlight_operators=1
+let g:julia_spellcheck_comments=1
+let g:julia_spellcheck_docstrings=1
+
+" Use extra highlight groups
+highlight link juliaParDelim Delimiter
+highlight link juliaSemicolon Operator
+highlight link juliaFunctionCall Identifier
 
 "}}}
 
