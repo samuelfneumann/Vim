@@ -92,13 +92,15 @@ endfun
 
 " Theme settings
 " User interface colors {
-call s:h("Normal", s:fg, s:bg, "")
+" call s:h("Normal", s:fg, s:bg, "")
+call s:h("Normal", s:fg, "", "")
 
 call s:h("Cursor", s:bg, s:blue, "")
 call s:h("CursorColumn", "", s:cursor_line, "")
 call s:h("CursorLine", "", s:cursor_line, s:cursor_line.attr)
 
-call s:h("LineNr", s:linenr_fg, s:linenr_bg, "")
+" call s:h("LineNr", s:linenr_fg, s:linenr_bg, "")
+call s:h("LineNr", s:linenr_fg, "", "")
 call s:h("CursorLineNr", s:fg, "", s:linenr_fg.attr)
 
 call s:h("DiffAdd", s:green, "", "")
@@ -135,8 +137,8 @@ if has('gui_running') || (has('termguicolors') && &termguicolors)
 	call s:h("Visual", "", s:selection, "")
 	call s:h("VisualNOS", "", s:selection, "")
 else
-	call s:h("Visual", s:white, s:selection, "")
-	call s:h("VisualNOS", s:white, s:selection, "")
+	call s:h("Visual", "", s:selection, "")
+	call s:h("VisualNOS", "", s:selection, "")
 endif
 
 call s:h("ColorColumn", "", s:color_col, "")
@@ -147,7 +149,7 @@ call s:h("Folded", s:fg, "", "")
 call s:h("FoldColumn", s:fg, "", "")
 call s:h("SignColumn", s:fg, "", "")
 
-call s:h("MatchParen", s:blue, "", "underline")
+call s:h("MatchParen", s:green, "", "underline")
 call s:h("SpecialKey", s:fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
@@ -164,19 +166,19 @@ call s:h("NonText", s:non_text, "", "")
 call s:h("Comment", s:comment_fg, "", s:comment_fg.attr)
 call s:h("Constant", s:cyan, "", "")
 call s:h("String", s:green, "", "")
-call s:h("Character", s:teal, "", "")
-call s:h("Number", s:orange, "", "")
+call s:h("Character", s:orange, "", "")
+call s:h("Number", s:yellow, "", "")
 call s:h("Boolean", s:pink, "", "")
 call s:h("Float", s:indigo, "", "")
 
 call s:h("Identifier", s:purple, "", "")
-call s:h("Function", s:blue, "", "")
+call s:h("Function", s:cyan, "", "")
 call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
 call s:h("Label", s:mint, "", "")
-call s:h("Operator", s:teal, "", "")
+call s:h("Operator", s:mint, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
 
@@ -219,9 +221,12 @@ call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
 " Julia-vim
 call s:h("juliaFunctionCall", s:blue, "", "")
-call s:h("juliaSemicolon", s:orange, "", "")
-call s:h("juliaParDelim", s:yellow, "", "")
+call s:h("juliaSemicolon", s:mint, "", "")
+call s:h("juliaColon", s:mint, "", "")
+call s:h("juliaParDelim", s:teal, "", "")
+call s:h("juliaRangeKeyword", s:yellow, "", "")
 " }
+
 
 
 " Git {
@@ -269,3 +274,4 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
+
