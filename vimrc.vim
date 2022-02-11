@@ -39,7 +39,7 @@ endfunction
 
 " Theme options ------------------------------------------------------------{{{
 " Set termguicolours so that iTerm uses the fancy gui colours in the terminal
-if has('gui_running') || (has('termguicolors'))
+if has('gui_running') || (has('termguicolors') && s:darwin)
 	set termguicolors
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -171,7 +171,8 @@ elseif has('termguicolors') && s:linux && &termguicolors
 				\ }
 else
 	" If not using termguicolours, use the terminal colours by default
-	" (monterey theme also does this, but using termcolours to be explicit)
+	" (monterey and ubuntu themes also do this, but using termcolours to be
+	" explicit)
 	let g:lightline = {
 				\ 'colorscheme': 'termcolours',
 				\ }

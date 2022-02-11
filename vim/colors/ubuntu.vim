@@ -50,7 +50,7 @@ augroup TrailingWhiteSpace
 augroup end
 
 " Set the terminal colours if termguicolors is set or in a GUI
-if has('gui_running') || has('termguicolors')
+if has('gui_running') || has('termguicolors') && &termguicolors
 	let g:terminal_ansi_colors = [
 				\ s:black.gui,
 				\ s:red.gui,
