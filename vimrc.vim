@@ -509,25 +509,25 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
 
 " WinResizer ---------------------------------------------------------------{{{
-" Use same map to start winresizer for GUI and terminal
+" Use same map to start wince sizer for GUI and terminal
 let g:winresizer_start_key = '<c-a>'
 let g:winresizer_gui_start_key = g:winresizer_start_key
 
 " Disable in GUI since I never use a GUI
 let g:winresizer_gui_enable = 0
 
-" Number of points when resizing
+" Number of points when residing
 let g:winresizer_vert_resize=5
 let g:winresizer_horiz_resize=3
 " }}}
 
 " Spelling -----------------------------------------------------------------{{{
 " Set spell check on
-set spell spelllang=en_us
+set spell spelllang=en_ca
 
 " <leader>cs (correct spelling) corrects the last spelling mistake
 nnoremap <leader>fs mq[s1z=`q
-inoremap <leader>fs <esc>mq[s1z=`qa
+inoremap <leader>fs <esc>[s1z=A
 
 " Change the spelling highlight groups
 if g:colors_name ==? "default"
