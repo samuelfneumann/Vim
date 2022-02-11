@@ -413,11 +413,6 @@ let g:julia_highlight_operators=1
 let g:julia_spellcheck_comments=1
 let g:julia_spellcheck_docstrings=1
 
-" Use extra highlight groups
-highlight link juliaParDelim Delimiter
-highlight link juliaSemicolon Operator
-highlight link juliaFunctionCall Identifier
-
 "}}}
 
 " Julia-formatter Options --------------------------------------------------{{{

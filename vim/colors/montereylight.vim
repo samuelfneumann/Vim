@@ -217,6 +217,10 @@ call s:h("GitGutterChangeDelete", s:red, s:gutter_bg, "")
 " Fugitive
 call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
+" Julia-vim
+call s:h("juliaFunctionCall", s:blue, "", "")
+call s:h("juliaSemicolon", s:orange, "", "")
+call s:h("juliaParDelim", s:yellow, "", "")
 " }
 
 

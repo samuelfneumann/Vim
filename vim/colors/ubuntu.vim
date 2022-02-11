@@ -173,7 +173,7 @@ call s:h("Boolean", s:pink, "", "")
 call s:h("Float", s:indigo, "", "")
 
 call s:h("Identifier", s:purple, "", "")
-call s:h("Function", s:blue, "", "")
+call s:h("Function", s:cyan, "", "")
 call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
@@ -220,7 +220,12 @@ call s:h("GitGutterChangeDelete", s:red, s:gutter_bg, "")
 " Fugitive
 call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
+" Julia-vim
+call s:h("juliaFunctionCall", s:blue, "", "")
+call s:h("juliaSemicolon", s:orange, "", "")
+call s:h("juliaParDelim", s:yellow, "", "")
 " }
+
 
 
 " Git {
