@@ -149,7 +149,7 @@ call s:h("Folded", s:fg, "", "")
 call s:h("FoldColumn", s:fg, "", "")
 call s:h("SignColumn", s:fg, "", "")
 
-call s:h("MatchParen", s:green, "", "underline")
+call s:h("MatchParen", s:orange, "", "underline")
 call s:h("SpecialKey", s:fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
@@ -223,7 +223,7 @@ call s:h("diffRemoved", s:red, "", "")
 call s:h("juliaFunctionCall", s:blue, "", "")
 call s:h("juliaSemicolon", s:mint, "", "")
 call s:h("juliaColon", s:mint, "", "")
-call s:h("juliaParDelim", s:teal, "", "")
+call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
 " }
 
