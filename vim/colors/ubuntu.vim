@@ -138,8 +138,8 @@ if has('gui_running') || (has('termguicolors') && &termguicolors)
 	call s:h("Visual", "", s:selection, "")
 	call s:h("VisualNOS", "", s:selection, "")
 else
-	call s:h("Visual", s:white, s:selection, "")
-	call s:h("VisualNOS", s:white, s:selection, "")
+	call s:h("Visual", "", s:selection, "")
+	call s:h("VisualNOS", "", s:selection, "")
 endif
 
 call s:h("ColorColumn", "", s:color_col, "")
