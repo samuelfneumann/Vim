@@ -178,7 +178,7 @@ call s:h("Statement", s:indigo, "", "")
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
 call s:h("Label", s:mint, "", "")
-call s:h("Operator", s:mint, "", "")
+call s:h("Operator", s:orange, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
 
