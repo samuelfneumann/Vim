@@ -192,6 +192,19 @@ mkdir -p pack/plugins/start && cd pack/plugins/start
 git clone git@github.com:fatih/vim-go.git
 ```
 
+## Python-Mode
+[Python-Mode](https://github.com/python-mode/python-mode) is used to get syntax
+highlighting and awesome functionality for Python in vim.
+
+To install:
+```bash
+cd ~/.vim
+mkdir -p pack/plugins/start && cd pack/plugins/start
+git submodule add git@github.com:python-mode/python-mode.git
+cd python-mode
+git submodule update --init --recursive
+```
+
 ### TroubleShooting
 
 If some of the plugins don't work, it sometimes helps to re-clone them:
@@ -202,9 +215,12 @@ git clone problematicPlugin
 ```
 
 ## Themes
+
+This section needs an update
+
 Monterey - uses Apple colours if `termguicolors` set, otherwise uses terminal
 colours. To get monterey colours in vim without `termguicolors` set, use the
-`iTerm` theme in the `Dotfiles` repo.
+`iTerm` theme in the `Dotfiles`.
 
 ## ToDo
 - [ ] Make theme for vim and lightline based only on term colours

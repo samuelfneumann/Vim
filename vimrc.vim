@@ -481,6 +481,11 @@ let g:vimtex_syntax_conceal_cites = {
 set conceallevel=2
 hi clear Conceal
 hi Conceal cterm=none gui=none
+
+" Set PDF viewer
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_automatic_xwin = 0
+
 " }}}
 
 " NerdCommenter ------------------------------------------------------------{{{
@@ -514,6 +519,12 @@ let g:NERDCustomDelimiters = {
 let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
 
+" Python-Mode --------------------------------------------------------------{{{
+" Turn on syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+" }}}
+
 " WinResizer ---------------------------------------------------------------{{{
 " Use same map to start wince sizer for GUI and terminal
 let g:winresizer_start_key = '<c-a>'
@@ -533,7 +544,7 @@ set spell spelllang=en_ca
 
 " <leader>cs (correct spelling) corrects the last spelling mistake
 nnoremap <leader>fs mq[s1z=`q
-inoremap <leader>fs <esc>[s1z=A
+inoremap <leader>fs <esc>mq[s1z=`q
 
 " Change the spelling highlight groups
 if g:colors_name ==? "default"
