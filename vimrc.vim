@@ -523,6 +523,13 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Turn on syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+
+" Python documentation
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'doc'
+
+let g:pymode_lint=1
+let g:pymode_lint_checkers = ['pep8']
 " }}}
 
 " WinResizer ---------------------------------------------------------------{{{
@@ -560,13 +567,14 @@ endif
 " }}}
 
 " Syntastic ----------------------------------------------------------------{{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-" Toggle Syntastic
-nnoremap -synt :SyntasticToggleMode<cr>
+" " Toggle Syntastic
+" nnoremap -synt :SyntasticToggleMode<cr>
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{

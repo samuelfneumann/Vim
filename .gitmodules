@@ -31,9 +31,6 @@
 [submodule "vim/pack/plugins/start/vim-go"]
 	path = vim/pack/plugins/start/vim-go
 	url = git@github.com:fatih/vim-go.git
-[submodule "vim/pack/plugins/start/syntastic"]
-	path = vim/pack/plugins/start/syntastic
-	url = git@github.com:vim-syntastic/syntastic.git
 [submodule "vim/pack/plugins/start/python-mode"]
 	path = vim/pack/plugins/start/python-mode
 	url = https://github.com/python-mode/python-mode.git
