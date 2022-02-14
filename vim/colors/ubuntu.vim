@@ -234,8 +234,9 @@ call s:h("pythonBuiltinType", s:yellow, "", "")
 call s:h("pythonBuiltinFunc", s:cyan, "", "")
 call s:h("pythonFunction", s:cyan, "", "")
 call s:h("pythonExtraOperator", s:cyan, "", "")
-call s:h("pythonParam", s:mint, "", "")
+call s:h("pythonParam", s:slate, "", "")
 call s:h("pythonClassParameters", s:slate, "", "")
+call s:h("pythonInclude", s:orange, "", "")
 " }
 
 
