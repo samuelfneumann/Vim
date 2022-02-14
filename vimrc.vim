@@ -523,11 +523,17 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Turn on syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_syntax_builtin_objs = 1
+let g:pymode_syntax_builtin_types = 1
+let g:pymode_highlight_execptions = 1
+let g:pymode_syntax_docstrings = 1
 
 " Python documentation
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'doc'
 
+" Linting
 let g:pymode_lint=1
 let g:pymode_lint_checkers = ['pep8']
 " }}}
