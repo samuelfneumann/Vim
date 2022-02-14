@@ -17,9 +17,9 @@ let s:darkgray    = { "gui": "#4e4e4e", "cterm": "8" }
 let s:pink		  = { "gui": "#f35ca5", "cterm": "9" }
 let s:brown		  = { "gui": "#b19069", "cterm": "10" }
 let s:orange      = { "gui": "#ec7a26", "cterm": "11" }
-let s:teal        = { "gui": "#33deab", "cterm": "12" }
+let s:mint        = { "gui": "#33deab", "cterm": "12" }
 let s:indigo      = { "gui": "#835cb1", "cterm": "13" }
-let s:mint        = { "gui": "#5ad9d1", "cterm": "14" }
+let s:slate       = { "gui": "#7295b8", "cterm": "14" }
 let s:white       = { "gui": "#ffffff", "cterm": "15" }
 
 let s:fg		  = { "gui": "#f6f6f5", "cterm": "15" }
@@ -30,7 +30,7 @@ let s:linenr_bg   = s:bg
 let s:linenr_fg   = { "gui": "#6a6a6a", "cterm": "7", "attr": "bold" }
 let s:non_text    = s:indigo
 let s:cursor_line = { "gui": "#4e4e4e", "cterm": "8", "attr": "bold" }
-let s:color_col   = s:teal
+let s:color_col   = s:mint
 let s:status_line = s:darkgray
 let s:status_line_nc = s:gray
 let s:selection   = s:darkgray
@@ -64,9 +64,9 @@ if has('gui_running') || has('termguicolors') && &termguicolors
 				\ s:pink.gui,
 				\ s:brown.gui,
 				\ s:orange.gui,
-				\ s:teal.gui,
-				\ s:indigo.gui,
 				\ s:mint.gui,
+				\ s:indigo.gui,
+				\ s:slate.gui,
 				\ s:white.gui,
 				\]
 endif
@@ -178,7 +178,7 @@ call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
-call s:h("Label", s:mint, "", "")
+call s:h("Label", s:slate, "", "")
 call s:h("Operator", s:cyan, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
@@ -186,8 +186,8 @@ call s:h("Exception", s:orange, "", "")
 call s:h("PreProc", s:cyan, "", "")
 call s:h("Include", s:purple, "", "")
 call s:h("Define", s:pink, "", "")
-call s:h("Macro", s:teal, "", "")
-call s:h("PreCondit", s:mint, "", "")
+call s:h("Macro", s:mint, "", "")
+call s:h("PreCondit", s:slate, "", "")
 
 call s:h("Type", s:indigo, "", "")
 call s:h("StorageClass", s:purple, "", "")
@@ -222,10 +222,20 @@ call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
 " Julia-vim
 call s:h("juliaFunctionCall", s:blue, "", "")
-call s:h("juliaSemicolon", s:mint, "", "")
-call s:h("juliaColon", s:mint, "", "")
+call s:h("juliaSemicolon", s:slate, "", "")
+call s:h("juliaColon", s:slate, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
+" Python-mode
+call s:h("pythonClass", s:yellow, "", "")
+call s:h("pythonBuiltinObj", s:pink, "", "")
+call s:h("pythonSelf", s:yellow, "", "")
+call s:h("pythonBuiltinType", s:yellow, "", "")
+call s:h("pythonBuiltinFunc", s:cyan, "", "")
+call s:h("pythonFunction", s:cyan, "", "")
+call s:h("pythonExtraOperator", s:cyan, "", "")
+call s:h("pythonParam", s:mint, "", "")
+call s:h("pythonClassParameters", s:slate, "", "")
 " }
 
 
