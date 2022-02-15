@@ -185,7 +185,7 @@ call s:h("Exception", s:orange, "", "")
 call s:h("PreProc", s:cyan, "", "")
 call s:h("Include", s:purple, "", "")
 call s:h("Define", s:pink, "", "")
-call s:h("Macro", s:teal, "", "")
+call s:h("Macro", s:mint, "", "")
 call s:h("PreCondit", s:mint, "", "")
 
 call s:h("Type", s:indigo, "", "")
@@ -225,6 +225,18 @@ call s:h("juliaSemicolon", s:mint, "", "")
 call s:h("juliaColon", s:mint, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
+" Python-mode
+call s:h("pythonClass", s:yellow, "", "")
+call s:h("pythonBuiltinObj", s:pink, "", "")
+call s:h("pythonSelf", s:yellow, "", "")
+call s:h("pythonBuiltinType", s:yellow, "", "")
+call s:h("pythonBuiltinFunc", s:cyan, "", "")
+call s:h("pythonFunction", s:cyan, "", "")
+call s:h("pythonExtraOperator", s:cyan, "", "")
+call s:h("pythonParam", s:mint, "", "")
+call s:h("pythonClassParameters", s:mint, "", "")
+call s:h("pythonInclude", s:orange, "", "")
+call s:h("pythonConditional", s:indigo, "", "")
 " }
 
 
@@ -274,4 +286,3 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
-
