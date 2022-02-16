@@ -224,6 +224,7 @@ call s:h("diffRemoved", s:red, "", "")
 call s:h("juliaFunctionCall", s:blue, "", "")
 call s:h("juliaSemicolon", s:mint, "", "")
 call s:h("juliaColon", s:mint, "", "")
+call s:h("juliaComma", s:mint, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
 " Python-mode
