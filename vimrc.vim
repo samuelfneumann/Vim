@@ -484,7 +484,9 @@ hi Conceal cterm=none gui=none
 
 " Set PDF viewer
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_view_automatic_xwin = 0
+let g:vimtex_view_automatic = 0
+
+let g:vimtex_compiler_method = "latexmk"
 
 " }}}
 
@@ -557,7 +559,7 @@ set spell spelllang=en_ca
 
 " <leader>cs (correct spelling) corrects the last spelling mistake
 nnoremap <leader>fs mq[s1z=`q
-inoremap <leader>fs <esc>mq[s1z=`q
+inoremap <leader>fs <esc>mq[s1z=`qa
 
 " Change the spelling highlight groups
 if g:colors_name ==? "default"
