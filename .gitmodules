@@ -31,3 +31,6 @@
 [submodule "vim/pack/plugins/start/vim-go"]
 	path = vim/pack/plugins/start/vim-go
 	url = git@github.com:fatih/vim-go.git
+[submodule "vim/pack/plugins/start/python-vim"]
+	path = vim/pack/plugins/start/python-vim
+	url = git@github.com:samuelfneumann/python-vim.git
