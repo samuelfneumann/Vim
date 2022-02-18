@@ -3,7 +3,7 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
-set timeoutlen=350
+set timeoutlen=300
 
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
@@ -525,6 +525,7 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Turn on syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+let g:pymode_syntax_exit_as_function = 1
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax_builtin_objs = 1
 let g:pymode_syntax_builtin_types = 1
@@ -605,6 +606,8 @@ vnoremap <leader>T :tab term ++close<cr>
 nnoremap <leader>T :tab term ++close<cr>
 tnoremap <leader>N <c-w>N<cr>
 tnoremap <c-N> <c-w>N<cr>
+
+nnoremap <c-s> :shell<cr>
 "}}}
 
 " Tab navigation -----------------------------------------------------------{{{
