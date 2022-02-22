@@ -586,6 +586,14 @@ endif
 " nnoremap -synt :SyntasticToggleMode<cr>
 " }}}
 
+" Vim-Go -------------------------------------------------------------------{{{
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 0
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+" }}}
+
 " Maps ---------------------------------------------------------------------{{{
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
