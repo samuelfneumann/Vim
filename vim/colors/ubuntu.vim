@@ -37,6 +37,8 @@ let s:selection   = s:darkgray
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
+let s:pmenu_bg    = { "gui": "#2c2c2c", "cterm": "0" }
+let s:pmenu_selection   = s:orange
 
 " Highlight trailing whitespace
 exec "hi _UbuntuExtraWhitespace" . " guibg=" . s:red.gui . " ctermbg=" . s:red.cterm
@@ -111,7 +113,14 @@ call s:h("DiffText", s:blue, "", "")
 
 call s:h("IncSearch", s:black, s:yellow, "")
 call s:h("Search", s:black, s:yellow, "")
+
 call s:h("netrwMarkFile", s:black, s:red, "")
+call s:h("netrwExe", s:green, "", "")
+call s:h("netrwCompress", s:red, "", "")
+call s:h("netrwMakeFile", s:orange, "", "")
+call s:h("netrwPix", s:yellow, "", "")
+call s:h("netrwDoc", s:indigo, "", "")
+call s:h("netrwTilde", s:orange, "", "")
 
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
@@ -119,9 +128,9 @@ call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
 
-call s:h("Pmenu", s:bg, s:fg, "")
-call s:h("PmenuSel", s:fg, s:blue, "")
-call s:h("PmenuSbar", "", s:selection, "")
+call s:h("Pmenu", s:pmenu_bg, s:fg, "")
+call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
+call s:h("PmenuSbar", "", s:orange, "")
 call s:h("PmenuThumb", "", s:fg, "")
 
 call s:h("SpellBad", "", "", "underline")

@@ -796,6 +796,23 @@ noremap <right> <nop>
 noremap <Down> <nop>
 "}}}
 
+" Pmenu --------------------------------------------------------------------{{{
+" Use <c-j> and <c-k> to move through menu items
+function! OmniPopup(action)
+    if pumvisible()
+        if a:action == 'j'
+            return "\<C-N>"
+        elseif a:action == 'k'
+            return "\<C-P>"
+        endif
+    endif
+    return a:action
+endfunction
+
+inoremap <c-j> <C-R>=OmniPopup('j')<CR>
+inoremap <c-k> <C-R>=OmniPopup('k')<CR>
+" }}}
+
 " Netrw --------------------------------------------------------------------{{{
 " https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
 let g:netrw_banner = 0
@@ -806,6 +823,7 @@ let g:netrw_winsize = 17
 let g:netrw_keepdir = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
+let g:netrw_special_syntax = 1
 
 nnoremap <c-d> :Lexplore<cr>
 
@@ -828,9 +846,9 @@ nnoremap <c-d> :Lexplore<cr>
 "		 mt:  	Mark a target directory
 "		 fr:  	Rename a file
 "		 fc:  	Copy marked files
-"		ftc:	Mark directory then copy marked files
+"		 fC:	Mark target directory then copy marked files
 "		 fm:	Move marked files
-"		ftm:	Mark directory then move marked files
+"		 fM:	Mark target directory then move marked files
 "		 fx:	Run external command on marked files
 "		 fls: 	List marked files
 "		 ft:  	Show target directory
@@ -864,9 +882,9 @@ function! NetrwMapping()
 	nmap <buffer> ft mt
 	nmap <buffer> fe R
 	nmap <buffer> fc mc
-	nmap <buffer> ftc mtmc
+	nmap <buffer> fC mtmc
 	nmap <buffer> fm mm
-	nmap <buffer> ftm mtmm
+	nmap <buffer> fM mtmm
 	nmap <buffer> fx mx
 	nmap <buffer> fls :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
 	nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>

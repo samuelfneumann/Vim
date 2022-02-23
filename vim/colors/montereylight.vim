@@ -111,15 +111,23 @@ call s:h("DiffText", s:blue, "", "")
 call s:h("IncSearch", s:black, s:yellow, "")
 call s:h("Search", s:black, s:yellow, "")
 
+call s:h("netrwMarkFile", s:black, s:red, "")
+call s:h("netrwExe", s:green, "", "")
+call s:h("netrwCompress", s:red, "", "")
+call s:h("netrwMakeFile", s:orange, "", "")
+call s:h("netrwPix", s:yellow, "", "")
+call s:h("netrwDoc", s:indigo, "", "")
+call s:h("netrwTilde", s:orange, "", "")
+
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
 call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
 
-call s:h("Pmenu", s:bg, s:fg, "")
-call s:h("PmenuSel", s:fg, s:blue, "")
-call s:h("PmenuSbar", "", s:selection, "")
+call s:h("Pmenu", s:pmenu_bg, s:fg, "")
+call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
+call s:h("PmenuSbar", "", s:orange, "")
 call s:h("PmenuThumb", "", s:fg, "")
 
 call s:h("SpellBad", "", "", "underline")
@@ -177,7 +185,7 @@ call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
-call s:h("Label", s:mint, "", "")
+call s:h("Label", s:slate, "", "")
 call s:h("Operator", s:cyan, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
@@ -186,9 +194,9 @@ call s:h("PreProc", s:cyan, "", "")
 call s:h("Include", s:purple, "", "")
 call s:h("Define", s:pink, "", "")
 call s:h("Macro", s:mint, "", "")
-call s:h("PreCondit", s:mint, "", "")
+call s:h("PreCondit", s:slate, "", "")
 
-call s:h("Type", s:indigo, "", "")
+call s:h("Type", s:yellow, "", "")
 call s:h("StorageClass", s:purple, "", "")
 call s:h("Structure", s:indigo, "", "")
 call s:h("Typedef", s:indigo, "", "")
@@ -204,9 +212,6 @@ call s:h("Ignore", s:fg, "", "")
 call s:h("Error", s:red, s:gutter_bg, "")
 call s:h("Todo", s:purple, "", "")
 
-" Python syntax
-call s:h("pythonDecoratorName", s:indigo, "", "")
-
 " }
 
 
@@ -221,23 +226,44 @@ call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
 " Julia-vim
 call s:h("juliaFunctionCall", s:blue, "", "")
-call s:h("juliaSemicolon", s:mint, "", "")
-call s:h("juliaColon", s:mint, "", "")
-call s:h("juliaComma", s:mint, "", "")
+call s:h("juliaSemicolon", s:slate, "", "")
+call s:h("juliaColon", s:slate, "", "")
+call s:h("juliaComma", s:slate, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
 " Python-mode
+call s:h("pythonDecoratorName", s:indigo, "", "")
+call s:h("pythonExClass", s:orange, "", "")
+call s:h("pythonOperator", s:cyan, "", "")
 call s:h("pythonClass", s:yellow, "", "")
 call s:h("pythonBuiltinObj", s:pink, "", "")
 call s:h("pythonSelf", s:yellow, "", "")
 call s:h("pythonBuiltinType", s:yellow, "", "")
-call s:h("pythonBuiltinFunc", s:cyan, "", "")
-call s:h("pythonFunction", s:cyan, "", "")
+call s:h("pythonBuiltinFunc", s:blue, "", "")
+call s:h("pythonFunction", s:blue, "", "")
 call s:h("pythonExtraOperator", s:cyan, "", "")
-call s:h("pythonParam", s:mint, "", "")
-call s:h("pythonClassParameters", s:mint, "", "")
+call s:h("pythonParam", s:slate, "", "")
+call s:h("pythonClassParameters", s:slate, "", "")
 call s:h("pythonInclude", s:orange, "", "")
-call s:h("pythonConditional", s:indigo, "", "")
+call s:h("pythonConditional", s:purple, "", "")
+call s:h("pythonStrFormat", s:mint, "", "")
+"Go-vim
+call s:h("goDeclType", s:slate, "", "")
+" call s:h("goFloats", s:cyan, "", "")
+" call s:h("goSignedInts", s:cyan, "", "")
+" call s:h("goUnignedInts", s:cyan, "", "")
+call s:h("goFunction", s:mint, "", "")
+call s:h("goBuiltins", s:cyan, "", "")
+call s:h("goFunctionCall", s:cyan, "", "")
+call s:h("goImport", s:pink, "", "")
+call s:h("goPackage", s:pink, "", "")
+call s:h("goDirective", s:pink, "", "")
+call s:h("goDeclaration", s:cyan, "", "")
+call s:h("goTypeDecl", s:cyan, "", "")
+call s:h("goTypeName", s:yellow, "", "")
+call s:h("goType", s:yellow, "", "")
+call s:h("goPointerOperator", s:cyan, "", "")
+call s:h("goOperator", s:cyan, "", "")
 " }
 
 
@@ -287,3 +313,6 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
+
+
+
