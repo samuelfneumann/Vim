@@ -798,19 +798,24 @@ noremap <Down> <nop>
 
 " Pmenu --------------------------------------------------------------------{{{
 " Use <c-j> and <c-k> to move through menu items
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
+" function! OmniPopup(action)
+"     if pumvisible()
+"         if a:action == 'j'
+"             return "\<C-N>"
+"         elseif a:action == 'k'
+"             return "\<C-P>"
+"         endif
+"     endif
+"     return a:action
+" endfunction
 
-inoremap <c-j> <C-R>=OmniPopup('j')<CR>
-inoremap <c-k> <C-R>=OmniPopup('k')<CR>
+" inoremap <c-j> <C-R>=OmniPopup('j')<CR>
+" inoremap <c-k> <C-R>=OmniPopup('k')<CR>
+
+inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
+inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
+inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
+
 " }}}
 
 " Netrw --------------------------------------------------------------------{{{
@@ -837,7 +842,8 @@ nnoremap <c-d> :Lexplore<cr>
 "		 .: 	Toggle the dotfiles
 "		 P: 	Close the preview window
 "		 L: 	Open a file and close netrw
-"		^x: 	Close netrw
+"		^d: 	Close netrw
+"		^l:		Open the file
 "	File Managing
 "		 ff:	Create a file
 "		 fm:  	Mark a file
@@ -866,8 +872,8 @@ function! NetrwMapping()
 	nmap <buffer> l <cr>
 	nmap <buffer> . gh
 	nmap <buffer> P <c-w>z
-	nmap <buffer> L <cr>:Lexplore<cr>
 	nmap <buffer> <c-x> :Lexplore<cr>
+	nmap <buffer> L <cr><c-w><c-p>:q<cr>
 
 	" Keep similar navigation for pane switching
 	nmap <buffer> <c-l> <c-w>l
@@ -880,7 +886,7 @@ function! NetrwMapping()
 	nmap <buffer> ff %:w<CR>:buffer #<CR>
 	nmap <buffer> fm mf
 	nmap <buffer> ft mt
-	nmap <buffer> fe R
+	nmap <buffer> fr R
 	nmap <buffer> fc mc
 	nmap <buffer> fC mtmc
 	nmap <buffer> fm mm
