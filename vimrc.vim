@@ -465,7 +465,6 @@ let g:UltiSnipsEnableSnipMate=0
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/Figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 " }}}
-" }}}
 
 " VimTex -------------------------------------------------------------------{{{
 let g:tex_flavor='latex'
@@ -592,6 +591,20 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_parameters = 0
 let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
+
+" Change the documentation maps to 'doc', since 'K' is remapped below
+" Also, we need to disable 'K' to open documentation, since plugins are loaded
+" after this file. If we leave this setting enabled, then Vim-Go will overwrite
+" our mapping (below) of 'K' to join the current line with  that above.
+let g:go_doc_keywordprg_enabled = 0
+augroup Documentation
+	autocmd!
+	autocmd FileType go nnoremap doc :GoDoc<cr>
+	autocmd FileType go vnoremap doc :GoDoc<cr>
+augroup end
+
+" }}}
+
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
@@ -712,19 +725,22 @@ nnoremap gA g_i
 nnoremap gI _a
 " }}}
 
-" Remap the <esc> key
+" Remap the <esc> key ------------------------------------------------------{{{
 inoremap jk <esc>
 vnoremap jk <esc>
 tnoremap jk <esc>
+" }}}
 
-" Edit and source vimrc
+" Edit and source vimrc ----------------------------------------------------{{{
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
 
-" Marks
+" Marks --------------------------------------------------------------------{{{
 " Remap jump-to-mark to be closer to make-mark map
 nnoremap , `
 nnoremap ,, ``
+" }}}
 
 " Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
 
@@ -741,9 +757,6 @@ nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
 nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
 nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
 nnoremap <leader>$$ viw<esc>a$<esc>bi$<esc>lell
-" vnoremap <leader>" <esc>'>A"<esc>'<I"<esc>
-" vnoremap <leader>` <esc>'>A`<esc>'<I`<esc>
-" vnoremap <leader>' <esc>'>A'<esc>'<I'<esc>
 vnoremap <leader>"" c""<esc>P
 vnoremap <leader>'' c''<esc>P
 vnoremap <leader>`` c``<esc>P
@@ -768,9 +781,10 @@ vnoremap K <nop>
 nnoremap K kJ
 "}}}
 
-" Place/remove semi-colon at line end without moving the cursor
+" Place/remove semi-colon at line end without moving the cursor ------------{{{
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
+" }}}
 
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
@@ -781,5 +795,98 @@ noremap <left> <nop>
 noremap <right> <nop>
 noremap <Down> <nop>
 "}}}
+
+" Netrw --------------------------------------------------------------------{{{
+" https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 17
+let g:netrw_keepdir = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_localcopydircmd = 'cp -r'
+
+nnoremap <c-d> :Lexplore<cr>
+
+" NetrwMapping
+"	Set mappings for netrw
+"
+"	Navigation
+"		 H:		Go back up in history
+"		 h: 	Go up a directory
+"		 l: 	Open a directory or file
+"		 .: 	Toggle the dotfiles
+"		 P: 	Close the preview window
+"		 L: 	Open a file and close netrw
+"		^x: 	Close netrw
+"	File Managing
+"		 ff:	Create a file
+"		 fm:  	Mark a file
+"		 mf:  	Mark a file
+"		 ft:  	Mark a target directory
+"		 mt:  	Mark a target directory
+"		 fr:  	Rename a file
+"		 fc:  	Copy marked files
+"		ftc:	Mark directory then copy marked files
+"		 fm:	Move marked files
+"		ftm:	Mark directory then move marked files
+"		 fx:	Run external command on marked files
+"		 fls: 	List marked files
+"		 ft:  	Show target directory
+"		 fu:  	Clear all marks
+"		 fo:  	Open with default application
+"
+"	Bookmarks
+"		bb:		Create bookmark in current directory
+"		bd: 	Delete most recent bookmark
+"		bj: 	Jump to most recent bookmark
+function! NetrwMapping()
+	" Navigation
+	nmap <buffer> H u
+	nmap <buffer> h -^
+	nmap <buffer> l <cr>
+	nmap <buffer> . gh
+	nmap <buffer> P <c-w>z
+	nmap <buffer> L <cr>:Lexplore<cr>
+	nmap <buffer> <c-x> :Lexplore<cr>
+
+	" Keep similar navigation for pane switching
+	nmap <buffer> <c-l> <c-w>l
+	nmap <buffer> <c-h> <c-w>h
+	nmap <buffer> <c-k> <c-w>k
+	nmap <buffer> <c-j> <c-w>j
+	nmap <leader>nhs :nohlsearch<cr>
+
+	" File managing - prefix = f
+	nmap <buffer> ff %:w<CR>:buffer #<CR>
+	nmap <buffer> fm mf
+	nmap <buffer> ft mt
+	nmap <buffer> fe R
+	nmap <buffer> fc mc
+	nmap <buffer> ftc mtmc
+	nmap <buffer> fm mm
+	nmap <buffer> ftm mtmm
+	nmap <buffer> fx mx
+	nmap <buffer> fls :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
+	nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
+	nmap <buffer> fd mtfq
+	nmap <buffer> fu mu
+	nmap <buffer> fo gx
+
+	" Bookmark
+	nmap <buffer> bb mb
+	nmap <buffer> bd mB
+	nmap <buffer> bj gbs
+endfunction
+
+augroup netrw_mapping
+	autocmd!
+	autocmd filetype netrw call NetrwMapping()
+augroup end
+" }}}
+
 "}}}
 "}}}
+
+

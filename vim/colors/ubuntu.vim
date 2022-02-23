@@ -111,6 +111,7 @@ call s:h("DiffText", s:blue, "", "")
 
 call s:h("IncSearch", s:black, s:yellow, "")
 call s:h("Search", s:black, s:yellow, "")
+call s:h("netrwMarkFile", s:black, s:red, "")
 
 call s:h("ErrorMsg", s:fg, "", "")
 call s:h("ModeMsg", s:fg, "", "")
