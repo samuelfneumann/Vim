@@ -608,6 +608,9 @@ augroup end
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
+
+noremap <c-q> :execute "normal! :q\r"<cr>
+
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
 " <leader>t[hlkj] opens a terminal at the left, right, up, or down pane
@@ -824,7 +827,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 17
+let g:netrw_winsize = 25
 let g:netrw_keepdir = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
@@ -843,8 +846,9 @@ nnoremap <c-d> :Lexplore<cr>
 "		 P: 	Close the preview window
 "		 L: 	Open a file and close netrw
 "		^d: 	Close netrw
-"		^l:		Open the file
+"
 "	File Managing
+"		  t:    Open file in new tab
 "		 ff:	Create a file
 "		 fm:  	Mark a file
 "		 mf:  	Mark a file
