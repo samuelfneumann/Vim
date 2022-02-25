@@ -34,6 +34,3 @@
 [submodule "vim/pack/plugins/start/python-vim"]
 	path = vim/pack/plugins/start/python-vim
 	url = git@github.com:samuelfneumann/python-vim.git
-[submodule "vim/pack/plugins/start/nerdtree"]
-	path = vim/pack/plugins/start/nerdtree
-	url = git@github.com:preservim/nerdtree.git

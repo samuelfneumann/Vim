@@ -828,7 +828,7 @@ inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 " https://gist.github.com/t-mart/610795fcf7998559ea80
 let g:netrw_banner = 0
 let g:netrw_liststyle = 0
-let g:netrw_browse_split = 4
+" let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_keepdir = 0
@@ -869,7 +869,7 @@ nnoremap <c-u> :Lexplore<cr>
 function! NetrwMapping()
 	" Navigation
 	nmap <buffer> H u
-	nmap <buffer> h -^
+	nmap <buffer> h -
 	nmap <buffer> l <cr>
 	nmap <buffer> . gh
 	nmap <buffer> P <c-w>z
@@ -882,8 +882,6 @@ function! NetrwMapping()
 	nmap <buffer> <c-k> <c-w>k
 	nmap <buffer> <c-j> <c-w>j
 	nmap <buffer> <leader>nhs :nohlsearch<cr>
-	nmap <buffer> - o
-	nmap <buffer> \ v
 
 	" File managing - prefix = f
 	nmap <buffer> f %:w<CR>:buffer #<CR>
@@ -933,6 +931,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 
 autocmd FileType nerdtree nmap <buffer> l o
 autocmd FileType nerdtree nmap <buffer> h p
+autocmd FileType nerdtree nmap c jx
 autocmd FileType nerdtree nmap . I
 " }}}
 
