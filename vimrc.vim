@@ -609,7 +609,7 @@ augroup end
 
 " Maps ---------------------------------------------------------------------{{{
 
-noremap <c-q> :execute "normal! :q\r"<cr>
+noremap <c-q> :execute "normal! :qall\r"<cr>
 
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -823,8 +823,9 @@ inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 
 " Netrw --------------------------------------------------------------------{{{
 " https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+" https://gist.github.com/t-mart/610795fcf7998559ea80
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
@@ -845,25 +846,19 @@ nnoremap <c-d> :Lexplore<cr>
 "		 .: 	Toggle the dotfiles
 "		 P: 	Close the preview window
 "		 L: 	Open a file and close netrw
-"		^d: 	Close netrw
+"		^d: 	Close/open netrw
+"		 ^l:	Refresh
 "
 "	File Managing
-"		  t:    Open file in new tab
-"		 ff:	Create a file
-"		 fm:  	Mark a file
-"		 mf:  	Mark a file
-"		 ft:  	Mark a target directory
-"		 mt:  	Mark a target directory
-"		 fr:  	Rename a file
-"		 fc:  	Copy marked files
-"		 fC:	Mark target directory then copy marked files
-"		 fm:	Move marked files
-"		 fM:	Mark target directory then move marked files
-"		 fx:	Run external command on marked files
-"		 fls: 	List marked files
-"		 ft:  	Show target directory
-"		 fu:  	Clear all marks
-"		 fo:  	Open with default application
+"		t:		Open file in new tab
+"		f:		Create a file
+"		d:		Create a directory
+"		R:  	Rename a file
+"		ls: 	List marked files
+"		T:  	Show target directory
+"	    x/^x:  	Open with default application
+"		D:		Delete a file or an empty directory
+"	   RD:		Recursively delete a directory
 "
 "	Bookmarks
 "		bb:		Create bookmark in current directory
@@ -884,28 +879,40 @@ function! NetrwMapping()
 	nmap <buffer> <c-h> <c-w>h
 	nmap <buffer> <c-k> <c-w>k
 	nmap <buffer> <c-j> <c-w>j
-	nmap <leader>nhs :nohlsearch<cr>
+	nmap <buffer> <leader>nhs :nohlsearch<cr>
+	nmap <buffer> - o
+	nmap <buffer> \ v
 
 	" File managing - prefix = f
-	nmap <buffer> ff %:w<CR>:buffer #<CR>
-	nmap <buffer> fm mf
-	nmap <buffer> ft mt
-	nmap <buffer> fr R
-	nmap <buffer> fc mc
-	nmap <buffer> fC mtmc
-	nmap <buffer> fm mm
-	nmap <buffer> fM mtmm
-	nmap <buffer> fx mx
-	nmap <buffer> fls :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
-	nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
-	nmap <buffer> fd mtfq
-	nmap <buffer> fu mu
-	nmap <buffer> fo gx
+	nmap <buffer> f %:w<CR>:buffer #<CR>
+	nmap <buffer> ls :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
+	nmap <buffer> T :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
+	nmap <buffer> <c-x> gxA
+
+	" Recursively delete directories
+	nmap <buffer> RD :call NetrwRemoveRecursive()<cr>
 
 	" Bookmark
 	nmap <buffer> bb mb
 	nmap <buffer> bd mB
 	nmap <buffer> bj gbs
+
+endfunction
+
+function! NetrwRemoveRecursive()
+	if &filetype ==# 'netrw'
+		cnoremap <buffer> <CR> rm -r<CR>
+		normal mu
+		normal mf
+
+	try
+		normal mx
+	catch
+		echo "Cancelled"
+	endtry
+
+	cunmap <buffer> <CR>
+	endif
 endfunction
 
 augroup netrw_mapping
