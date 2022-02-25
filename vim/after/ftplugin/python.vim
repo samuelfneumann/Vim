@@ -1,6 +1,7 @@
 " Textwidth ----------------------------------------------------------------{{{
 " Julia text width is 92 characters
-autocmd FileType go setlocal textwidth=79
+autocmd FileType python setlocal textwidth=79
+autocmd FileType python set expandtab
 "}}}
 
 " Format options -----------------------------------------------------------{{{
