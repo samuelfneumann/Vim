@@ -773,8 +773,10 @@ vnoremap <leader>$$ c$$<esc>P
 " Backward full screen, backward half screen
 " forward full screen, forward half screen
 nnoremap <c-b> <c-b>
+nnoremap <c-u> <nop>
 nnoremap <c-n> <c-u>
 nnoremap <c-f> <c-f>
+nnoremap <c-d> <nop>
 nnoremap <c-g> <c-d>
 "}}}
 
@@ -834,7 +836,7 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_special_syntax = 1
 
-nnoremap <c-d> :Lexplore<cr>
+nnoremap <c-u> :Lexplore<cr>
 
 " NetrwMapping
 "	Set mappings for netrw
@@ -846,7 +848,7 @@ nnoremap <c-d> :Lexplore<cr>
 "		 .: 	Toggle the dotfiles
 "		 P: 	Close the preview window
 "		 L: 	Open a file and close netrw
-"		^d: 	Close/open netrw
+"		^u: 	Close/open netrw
 "		 ^l:	Refresh
 "
 "	File Managing
@@ -919,6 +921,19 @@ augroup netrw_mapping
 	autocmd!
 	autocmd filetype netrw call NetrwMapping()
 augroup end
+" }}}
+
+" NERDTree -----------------------------------------------------------------{{{
+nnoremap <c-d> :NERDTreeMirror<cr>:NERDTreeToggle<cr>
+nnoremap <silent> <leader><c-d> :NERDTreeFind<cr>
+
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 0
+let g:NERDTreeAutoDeleteBuffer = 1
+
+autocmd FileType nerdtree nmap <buffer> l o
+autocmd FileType nerdtree nmap <buffer> h p
+autocmd FileType nerdtree nmap . I
 " }}}
 
 "}}}
