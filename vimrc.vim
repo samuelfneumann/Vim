@@ -826,17 +826,20 @@ inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 " Netrw --------------------------------------------------------------------{{{
 " https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
 " https://gist.github.com/t-mart/610795fcf7998559ea80
+" Look at adjusting this section with netrw#UserMaps
 let g:netrw_banner = 0
 let g:netrw_liststyle = 0
 " let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_alto = 1
+let g:netrw_winsize = 17
 let g:netrw_keepdir = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_special_syntax = 1
+let g:netrw_fastbrowse = 2
 
-nnoremap <c-u> :Lexplore<cr>
+nnoremap <c-d> :Lexplore<cr>
 
 " NetrwMapping
 "	Set mappings for netrw
@@ -849,14 +852,14 @@ nnoremap <c-u> :Lexplore<cr>
 "		 P: 	Close the preview window
 "		 L: 	Open a file and close netrw
 "		^u: 	Close/open netrw
-"		 ^l:	Refresh
+"		 ^r:	Refresh
 "
 "	File Managing
 "		t:		Open file in new tab
 "		f:		Create a file
 "		d:		Create a directory
 "		R:  	Rename a file
-"		ls: 	List marked files
+"		z:	 	List marked files
 "		T:  	Show target directory
 "	    x/^x:  	Open with default application
 "		D:		Delete a file or an empty directory
@@ -868,6 +871,7 @@ nnoremap <c-u> :Lexplore<cr>
 "		bj: 	Jump to most recent bookmark
 function! NetrwMapping()
 	" Navigation
+	nmap <buffer> <c-r> :e .<cr>
 	nmap <buffer> H u
 	nmap <buffer> h -
 	nmap <buffer> l <cr>
@@ -883,9 +887,9 @@ function! NetrwMapping()
 	nmap <buffer> <c-j> <c-w>j
 	nmap <buffer> <leader>nhs :nohlsearch<cr>
 
-	" File managing - prefix = f
+	" File managing
 	nmap <buffer> f %:w<CR>:buffer #<CR>
-	nmap <buffer> ls :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
+	nmap <buffer> z :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
 	nmap <buffer> T :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
 	nmap <buffer> <c-x> gxA
 
@@ -922,17 +926,17 @@ augroup end
 " }}}
 
 " NERDTree -----------------------------------------------------------------{{{
-nnoremap <c-d> :NERDTreeMirror<cr>:NERDTreeToggle<cr>
-nnoremap <silent> <leader><c-d> :NERDTreeFind<cr>
+" nnoremap <c-d> :NERDTreeMirror<cr>:NERDTreeToggle<cr>
+" nnoremap <silent> <leader><c-d> :NERDTreeFind<cr>
 
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 0
-let g:NERDTreeAutoDeleteBuffer = 1
+" let g:NERDTreeMinimalUI = 1
+" let g:NERDTreeDirArrows = 0
+" let g:NERDTreeAutoDeleteBuffer = 1
 
-autocmd FileType nerdtree nmap <buffer> l o
-autocmd FileType nerdtree nmap <buffer> h p
-autocmd FileType nerdtree nmap c jx
-autocmd FileType nerdtree nmap . I
+" autocmd FileType nerdtree nmap <buffer> l o
+" autocmd FileType nerdtree nmap <buffer> h p
+" autocmd FileType nerdtree nmap c jx
+" autocmd FileType nerdtree nmap . I
 " }}}
 
 "}}}
