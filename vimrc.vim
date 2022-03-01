@@ -545,6 +545,9 @@ let g:pymode_lint_checkers = ['pep8']
 let g:winresizer_start_key = '<c-a>'
 let g:winresizer_gui_start_key = g:winresizer_start_key
 
+" Ensure that WinResizer works in vim terminal mode
+tnoremap <c-a> <c-w>:WinResizerStartResize<cr>
+
 " Disable in GUI since I never use a GUI
 let g:winresizer_gui_enable = 0
 
@@ -610,6 +613,7 @@ augroup end
 " Maps ---------------------------------------------------------------------{{{
 
 noremap <c-q> :execute "normal! :qall\r"<cr>
+tnoremap <c-q> :execute "normal! :qall\r"<cr>
 
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -741,6 +745,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Marks --------------------------------------------------------------------{{{
 " Remap jump-to-mark to be closer to make-mark map
+vnoremap ,, ``
+vnoremap , `
 nnoremap , `
 nnoremap ,, ``
 " }}}
@@ -839,19 +845,19 @@ let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_special_syntax = 1
 let g:netrw_fastbrowse = 2
 
-nnoremap <c-d> :Lexplore<cr>
+nnoremap <leader>d :Lexplore<cr>
 
 " NetrwMapping
 "	Set mappings for netrw
 "
 "	Navigation
-"		 H:		Go back up in history
-"		 h: 	Go up a directory
-"		 l: 	Open a directory or file
-"		 .: 	Toggle the dotfiles
-"		 P: 	Close the preview window
-"		 L: 	Open a file and close netrw
-"		^u: 	Close/open netrw
+"		  H:		Go back up in history
+"		  h: 	Go up a directory
+"		  l: 	Open a directory or file
+"		  .: 	Toggle the dotfiles
+"		  P: 	Close the preview window
+"		  L: 	Open a file and close netrw
+" <leader>d: 	Close/open netrw
 "		 ^r:	Refresh
 "
 "	File Managing
@@ -877,7 +883,7 @@ function! NetrwMapping()
 	nmap <buffer> l <cr>
 	nmap <buffer> . gh
 	nmap <buffer> P <c-w>z
-	nmap <buffer> <c-x> :Lexplore<cr>
+	nmap <buffer> <leader>d :Lexplore<cr>
 	nmap <buffer> L <cr><c-w><c-p>:q<cr>
 
 	" Keep similar navigation for pane switching
