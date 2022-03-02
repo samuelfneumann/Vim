@@ -37,6 +37,10 @@ let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
+let s:pmenu_bg    = { "gui": "292332", "cterm": "none" }
+let s:pmenu_fg    = s:fg
+let s:pmenu_selection   = s:pink
+
 
 " Highlight trailing whitespace
 exec "hi _MontereyExtraWhitespace" . " guibg=" . s:red.gui . " ctermbg=" . s:red.cterm
@@ -126,10 +130,11 @@ call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
 
-call s:h("Pmenu", s:pmenu_bg, s:fg, "")
+call s:h("Pmenu", s:pmenu_fg, s:pmenu_bg, "")
 call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
-call s:h("PmenuSbar", "", s:orange, "")
+call s:h("PmenuSbar", "", s:pink, "")
 call s:h("PmenuThumb", "", s:fg, "")
+
 
 call s:h("SpellBad", "", "", "underline")
 call s:h("SpellCap", s:blue, "", "")
