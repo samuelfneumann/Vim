@@ -93,3 +93,5 @@ fmt
 multinoulli
 overfit
 MLE
+discriminative
+unnormalized
