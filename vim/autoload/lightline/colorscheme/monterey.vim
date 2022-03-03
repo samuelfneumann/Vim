@@ -66,8 +66,8 @@ let s:p.insert.right   = [ [ s:fg, s:green, 15, 2, 'bold' ], [ s:fg, s:green, 15
 let s:p.replace.left    = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
 let s:p.replace.right  = [ [ s:fg, s:red1, 15, 1, 'bold' ], [ s:fg, s:red1, 15, 7, 'bold' ] ]
 
-let s:p.visual.left     = [ [ s:fg, s:cyan, 15, 5, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
-let s:p.visual.right   = [ [ s:fg, s:cyan, 15, 5, 'bold' ], [ s:fg, s:cyan, 15, 5, 'bold' ] ]
+let s:p.visual.left     = [ [ s:fg, s:indigo, 15, 13, 'bold' ], [ s:fg, s:gray3, 15, 7] ]
+let s:p.visual.right   = [ [ s:fg, s:indigo, 15, 13, 'bold' ], [ s:fg, s:indigo, 15, 13, 'bold' ] ]
 
 let s:p.terminal.left   = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:gray3, 15, 7 ] ]
 let s:p.terminal.right = [ [ s:fg, s:orange, 15, 11, 'bold' ], [ s:fg, s:orange, 15, 11, 'bold' ] ]
