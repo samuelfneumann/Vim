@@ -782,52 +782,52 @@ vnoremap <leader>$ c$$<esc>P
 "}}}
 
 " Select inside symbols ---------------------------------------------------{{{
-nnoremap vf) :<c-b>normal! f)vf)<cr>
-onoremap f) :<c-b>normal! f)vf)<cr>
-nnoremap vf( :<c-b>normal! f(vf(<cr>
-onoremap f( :<c-b>normal! f(vf(<cr>
-nnoremap vb( :<c-b>normal! F(vf(<cr>
-onoremap b( :<c-b>normal! F(vf(<cr>
-nnoremap vb) :<c-b>normal! F)vf)<cr>
-onoremap b) :<c-b>normal! F)vf)<cr>
+nnoremap vl) :<c-h>normal! f)vf)<cr>
+onoremap l) :<c-h>normal! f)vf)<cr>
+nnoremap vl( :<c-h>normal! f(vf(<cr>
+onoremap l( :<c-h>normal! f(vf(<cr>
+nnoremap vh( :<c-h>normal! l(vf(<cr>
+onoremap h( :<c-h>normal! l(vf(<cr>
+nnoremap vh) :<c-h>normal! l)vf)<cr>
+onoremap h) :<c-h>normal! l)vf)<cr>
 
-nnoremap vf] :<c-b>normal! f]vf]<cr>
-onoremap f] :<c-b>normal! f]vf]<cr>
-nnoremap vf[ :<c-b>normal! f[vf[<cr>
-onoremap f[ :<c-b>normal! f[vf[<cr>
-nnoremap vb[ :<c-b>normal! F[vf[<cr>
-onoremap b[ :<c-b>normal! F[vf[<cr>
-nnoremap vb] :<c-b>normal! F]vf]<cr>
-onoremap b] :<c-b>normal! F]vf]<cr>
+nnoremap vl] :<c-h>normal! f]vf]<cr>
+onoremap l] :<c-h>normal! f]vf]<cr>
+nnoremap vl[ :<c-h>normal! f[vf[<cr>
+onoremap l[ :<c-h>normal! f[vf[<cr>
+nnoremap vh[ :<c-h>normal! l[vf[<cr>
+onoremap h[ :<c-h>normal! l[vf[<cr>
+nnoremap vh] :<c-h>normal! l]vf]<cr>
+onoremap h] :<c-h>normal! l]vf]<cr>
 
-nnoremap vf} :<c-b>normal! f}vf}<cr>
-onoremap f} :<c-b>normal! f}vf}<cr>
-nnoremap vf{ :<c-b>normal! f{vf{<cr>
-onoremap f{ :<c-b>normal! f{vf{<cr>
-nnoremap vb{ :<c-b>normal! F{vf{<cr>
-onoremap b{ :<c-b>normal! F{vf{<cr>
-nnoremap vb} :<c-b>normal! F}vf}<cr>
-onoremap b} :<c-b>normal! F}vf}<cr>
+nnoremap vl} :<c-h>normal! f}vf}<cr>
+onoremap l} :<c-h>normal! f}vf}<cr>
+nnoremap vl{ :<c-h>normal! f{vf{<cr>
+onoremap l{ :<c-h>normal! f{vf{<cr>
+nnoremap vh{ :<c-h>normal! l{vf{<cr>
+onoremap h{ :<c-h>normal! l{vf{<cr>
+nnoremap vh} :<c-h>normal! l}vf}<cr>
+onoremap h} :<c-h>normal! l}vf}<cr>
 
-nnoremap vf" :<c-b>normal! f"vf"<cr>
-onoremap f" :<c-b>normal! f"vf"<cr>
-nnoremap vb" :<c-b>normal! F"vf"<cr>
-onoremap b" :<c-b>normal! F"vf"<cr>
+nnoremap vl" :<c-h>normal! f"vf"<cr>
+onoremap l" :<c-h>normal! f"vf"<cr>
+nnoremap vh" :<c-h>normal! l"vf"<cr>
+onoremap h" :<c-h>normal! l"vf"<cr>
 
-nnoremap vf' :<c-b>normal! f'vf'<cr>
-onoremap f' :<c-b>normal! f'vf'<cr>
-nnoremap vb' :<c-b>normal! F'vf'<cr>
-onoremap b' :<c-b>normal! F'vf'<cr>
+nnoremap vl' :<c-h>normal! f'vf'<cr>
+onoremap l' :<c-h>normal! f'vf'<cr>
+nnoremap vh' :<c-h>normal! l'vf'<cr>
+onoremap h' :<c-h>normal! l'vf'<cr>
 
-nnoremap vf$ :<c-b>normal! f$vf$<cr>
-onoremap f$ :<c-b>normal! f$vf$<cr>
-nnoremap vb$ :<c-b>normal! F$vf$<cr>
-onoremap b$ :<c-b>normal! F$vf$<cr>
+nnoremap vl$ :<c-h>normal! f$vf$<cr>
+onoremap l$ :<c-h>normal! f$vf$<cr>
+nnoremap vh$ :<c-h>normal! l$vf$<cr>
+onoremap h$ :<c-h>normal! l$vf$<cr>
 
-nnoremap vf` :<c-b>normal! f`vf`<cr>
-onoremap f` :<c-b>normal! f`vf`<cr>
-nnoremap vb` :<c-b>normal! F`vf`<cr>
-onoremap b` :<c-b>normal! F`vf`<cr>
+nnoremap vl` :<c-h>normal! f`vf`<cr>
+onoremap l` :<c-h>normal! f`vf`<cr>
+nnoremap vh` :<c-h>normal! l`vf`<cr>
+onoremap h` :<c-h>normal! l`vf`<cr>
 "}}}
 
 " Page up and page down ----------------------------------------------------{{{
