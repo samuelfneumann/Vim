@@ -759,20 +759,75 @@ nnoremap ,, ``
 " in <symbol>
 "
 " In normal mode, <leader><symbol> wraps the current word in <symbol>
-nnoremap <leader>"" viw<esc>a"<esc>bi"<esc>lell
-nnoremap <leader>`` viw<esc>a`<esc>bi`<esc>lell
-nnoremap <leader>'' viw<esc>a'<esc>bi'<esc>lell
-nnoremap <leader>() viw<esc>a)<esc>bi(<esc>lell
-nnoremap <leader>[] viw<esc>a]<esc>bi[<esc>lell
-nnoremap <leader>{} viw<esc>a}<esc>bi{<esc>lell
-nnoremap <leader>$$ viw<esc>a$<esc>bi$<esc>lell
-vnoremap <leader>"" c""<esc>P
-vnoremap <leader>'' c''<esc>P
-vnoremap <leader>`` c``<esc>P
-vnoremap <leader>() c()<esc>P
-vnoremap <leader>[] c[]<esc>P
-vnoremap <leader>{} c{}<esc>P
-vnoremap <leader>$$ c$$<esc>P
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lell
+nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lell
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lell
+nnoremap <leader>) viw<esc>a)<esc>bi(<esc>lell
+nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lell
+nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>lell
+nnoremap <leader>] viw<esc>a]<esc>bi[<esc>lell
+nnoremap <leader>} viw<esc>a}<esc>bi{<esc>lell
+nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>lell
+nnoremap <leader>$ viw<esc>a$<esc>bi$<esc>lell
+vnoremap <leader>" c""<esc>P
+vnoremap <leader>' c''<esc>P
+vnoremap <leader>` c``<esc>P
+vnoremap <leader>) c()<esc>P
+vnoremap <leader>( c()<esc>P
+vnoremap <leader>] c[]<esc>P
+vnoremap <leader>[ c[]<esc>P
+vnoremap <leader>} c{}<esc>P
+vnoremap <leader>{ c{}<esc>P
+vnoremap <leader>$ c$$<esc>P
+"}}}
+
+" Select inside symbols ---------------------------------------------------{{{
+nnoremap vi) :<c-u>normal! f)vi)<cr>
+onoremap i) :<c-u>normal! f)vi)<cr>
+nnoremap vi( :<c-u>normal! f(vi(<cr>
+onoremap i( :<c-u>normal! f(vi(<cr>
+nnoremap vu( :<c-u>normal! F(vi(<cr>
+onoremap u( :<c-u>normal! F(vi(<cr>
+nnoremap vu) :<c-u>normal! F)vi)<cr>
+onoremap u) :<c-u>normal! F)vi)<cr>
+
+nnoremap vi] :<c-u>normal! f]vi]<cr>
+onoremap i] :<c-u>normal! f]vi]<cr>
+nnoremap vi[ :<c-u>normal! f[vi[<cr>
+onoremap i[ :<c-u>normal! f[vi[<cr>
+nnoremap vu[ :<c-u>normal! F[vi[<cr>
+onoremap u[ :<c-u>normal! F[vi[<cr>
+nnoremap vu] :<c-u>normal! F]vi]<cr>
+onoremap u] :<c-u>normal! F]vi]<cr>
+
+nnoremap vi} :<c-u>normal! f}vi}<cr>
+onoremap i} :<c-u>normal! f}vi}<cr>
+nnoremap vi{ :<c-u>normal! f{vi{<cr>
+onoremap i{ :<c-u>normal! f{vi{<cr>
+nnoremap vu{ :<c-u>normal! F{vi{<cr>
+onoremap u{ :<c-u>normal! F{vi{<cr>
+nnoremap vu} :<c-u>normal! F}vi}<cr>
+onoremap u} :<c-u>normal! F}vi}<cr>
+
+nnoremap vi" :<c-u>normal! f"vi"<cr>
+onoremap i" :<c-u>normal! f"vi"<cr>
+nnoremap vu" :<c-u>normal! F"vi"<cr>
+onoremap u" :<c-u>normal! F"vi"<cr>
+
+nnoremap vi' :<c-u>normal! f'vi'<cr>
+onoremap i' :<c-u>normal! f'vi'<cr>
+nnoremap vu' :<c-u>normal! F'vi'<cr>
+onoremap u' :<c-u>normal! F'vi'<cr>
+
+nnoremap vi$ :<c-u>normal! f$vi$<cr>
+onoremap i$ :<c-u>normal! f$vi$<cr>
+nnoremap vu$ :<c-u>normal! F$vi$<cr>
+onoremap u$ :<c-u>normal! F$vi$<cr>
+
+nnoremap vi` :<c-u>normal! f`vi`<cr>
+onoremap i` :<c-u>normal! f`vi`<cr>
+nnoremap vu` :<c-u>normal! F`vi`<cr>
+onoremap u` :<c-u>normal! F`vi`<cr>
 "}}}
 
 " Page up and page down ----------------------------------------------------{{{
