@@ -5,13 +5,13 @@
 	path = vim/pack/plugins/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
 [submodule "vim/pack/plugins/start/JuliaFormatter.vim"]
-	path = vim/pack/plugins/start/JuliaFormatter.vim
+	path = vim/pack/plugins/opt/JuliaFormatter.vim
 	url = git@github.com:kdheepak/JuliaFormatter.vim.git
 [submodule "vim/pack/plugins/start/nerdcommenter"]
 	path = vim/pack/plugins/start/nerdcommenter
 	url = git@github.com:preservim/nerdcommenter.git
 [submodule "vim/pack/plugins/start/tmuxline.vim"]
-	path = vim/pack/plugins/start/tmuxline.vim
+	path = vim/pack/plugins/opt/tmuxline.vim
 	url = git@github.com:edkolev/tmuxline.vim.git
 [submodule "vim/pack/plugins/start/ultisnips"]
 	path = vim/pack/plugins/start/ultisnips
