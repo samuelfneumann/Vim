@@ -37,7 +37,7 @@ let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
-let s:pmenu_bg    = { "gui": "292332", "cterm": "none" }
+let s:pmenu_bg    = { "gui": "#292332", "cterm": "none" }
 let s:pmenu_fg    = s:fg
 let s:pmenu_selection   = s:pink
 
@@ -135,7 +135,6 @@ call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
 call s:h("PmenuSbar", "", s:pink, "")
 call s:h("PmenuThumb", "", s:fg, "")
 
-
 call s:h("SpellBad", "", "", "underline")
 call s:h("SpellCap", s:blue, "", "")
 call s:h("SpellLocal", s:indigo, "", "")
@@ -191,7 +190,7 @@ call s:h("Statement", s:indigo, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:brown, "", "")
-call s:h("Label", s:slate, "", "")
+call s:h("Label", s:mint, "", "")
 call s:h("Operator", s:cyan, "", "")
 call s:h("Keyword", s:pink, "", "")
 call s:h("Exception", s:orange, "", "")
@@ -200,7 +199,7 @@ call s:h("PreProc", s:cyan, "", "")
 call s:h("Include", s:purple, "", "")
 call s:h("Define", s:pink, "", "")
 call s:h("Macro", s:mint, "", "")
-call s:h("PreCondit", s:slate, "", "")
+call s:h("PreCondit", s:mint, "", "")
 
 call s:h("Type", s:yellow, "", "")
 call s:h("StorageClass", s:purple, "", "")
@@ -232,9 +231,9 @@ call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
 " Julia-vim
 call s:h("juliaFunctionCall", s:blue, "", "")
-call s:h("juliaSemicolon", s:slate, "", "")
-call s:h("juliaColon", s:slate, "", "")
-call s:h("juliaComma", s:slate, "", "")
+call s:h("juliaSemicolon", s:mint, "", "")
+call s:h("juliaColon", s:mint, "", "")
+call s:h("juliaComma", s:mint, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
 " Python-mode
@@ -248,13 +247,13 @@ call s:h("pythonBuiltinType", s:yellow, "", "")
 call s:h("pythonBuiltinFunc", s:blue, "", "")
 call s:h("pythonFunction", s:blue, "", "")
 call s:h("pythonExtraOperator", s:cyan, "", "")
-call s:h("pythonParam", s:slate, "", "")
-call s:h("pythonClassParameters", s:slate, "", "")
+call s:h("pythonParam", s:mint, "", "")
+call s:h("pythonClassParameters", s:mint, "", "")
 call s:h("pythonInclude", s:orange, "", "")
 call s:h("pythonConditional", s:purple, "", "")
 call s:h("pythonStrFormat", s:mint, "", "")
 "Go-vim
-call s:h("goDeclType", s:slate, "", "")
+call s:h("goDeclType", s:mint, "", "")
 " call s:h("goFloats", s:cyan, "", "")
 " call s:h("goSignedInts", s:cyan, "", "")
 " call s:h("goUnignedInts", s:cyan, "", "")
@@ -319,5 +318,6 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
+
 
 
