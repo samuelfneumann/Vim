@@ -201,7 +201,7 @@ call s:h("Define", s:pink, "", "")
 call s:h("Macro", s:mint, "", "")
 call s:h("PreCondit", s:mint, "", "")
 
-call s:h("Type", s:yellow, "", "")
+call s:h("Type", s:indigo, "", "")
 call s:h("StorageClass", s:purple, "", "")
 call s:h("Structure", s:indigo, "", "")
 call s:h("Typedef", s:indigo, "", "")

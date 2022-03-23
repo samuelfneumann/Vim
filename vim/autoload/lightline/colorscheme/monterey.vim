@@ -44,7 +44,7 @@ else
   let s:red2   = '#ff4f44'
   let s:pink   = '#ff375f'
   let s:orange = '#ff9f0a'
-  let s:indigo = '5d5ce6'
+  let s:indigo = '#5d5ce6'
   let s:yellow = '#ffd60a'
   let s:cyan   = '#5ac9f5'
 endif

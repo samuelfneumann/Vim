@@ -98,3 +98,5 @@ unnormalized
 Mahalanobis
 sigmoid
 Wishart
+runtime
+vectorize
