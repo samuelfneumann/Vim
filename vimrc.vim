@@ -54,6 +54,15 @@ elseif s:darwin
 	colorscheme montereydark
 endif
 
+" Cursor changes in insert mode to a bar
+let dynamic_cursor = 1
+if dynamic_cursor && &term =~ "xterm\\|rxvt"
+	let &t_SI = "\<Esc>]12;orange\x7"
+	let &t_SI .= "\<Esc>[6 q"
+	let &t_EI = "\<esc>]12;red\x7"
+	let &t_EI .= "\<esc>[2 q"
+endif
+
 " }}}
 
 " VIMSCRIPT --------------------------------------------------------------- {{{
