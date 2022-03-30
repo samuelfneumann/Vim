@@ -792,7 +792,7 @@ vnoremap <leader>$ c$$<esc>P
 
 " Select inside symbols ---------------------------------------------------{{{
 nnoremap vl) :<c-u>normal! f)vi)<cr>
-onoremap ) :<c-u>normal! f)vi)<cr>
+onoremap l) :<c-u>normal! f)vi)<cr>
 nnoremap vl( :<c-u>normal! f(vi(<cr>
 onoremap l( :<c-u>normal! f(vi(<cr>
 nnoremap vh( :<c-u>normal! F(vi(<cr>
