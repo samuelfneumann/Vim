@@ -758,6 +758,7 @@ vnoremap ,, ``
 vnoremap , `
 nnoremap , `
 nnoremap ,, ``
+nnoremap ` ,
 " }}}
 
 " Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
