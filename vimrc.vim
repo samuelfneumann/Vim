@@ -651,6 +651,23 @@ augroup Go
 augroup end
 " }}}
 
+" Gutentags ----------------------------------------------------------------{{{
+" And Gutentags+
+
+" Enable gtags modules
+let g:gutentags_modules = ['ctags']
+
+" Config project root markers
+let g:gutentags_project_root = ['.root']
+
+" Hide tag files
+let g:gutentags_ctags_tagfile = ".tags"
+
+" Change focus to quickfix window after search
+let g:gutentags_plus_switch = 1
+
+" }}}
+
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{

@@ -12,4 +12,4 @@ vim/.netrwhist
 **/*.swp
 **/*.un~
 **/*.DS_Store
-**/tags
+**/.tags
