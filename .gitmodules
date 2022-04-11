@@ -28,12 +28,18 @@
 [submodule "vim/pack/plugins/start/winresizer"]
 	path = vim/pack/plugins/start/winresizer
 	url = git@github.com:samuelfneumann/winresizer.git
-[submodule "vim/pack/plugins/start/vim-go"]
-	path = vim/pack/plugins/start/vim-go
-	url = git@github.com:fatih/vim-go.git
 [submodule "vim/pack/plugins/start/python-vim"]
 	path = vim/pack/plugins/start/python-vim
 	url = git@github.com:samuelfneumann/python-vim.git
 [submodule "vim/pack/plugins/start/vim-toml"]
 	path = vim/pack/plugins/start/vim-toml
 	url = git@github.com:cespare/vim-toml.git
+[submodule "vim/pack/plugins/start/nim.vim"]
+	path = vim/pack/plugins/start/nim.vim
+	url = https://github.com/zah/nim.vim
+[submodule "vim/pack/plugins/start/govim"]
+	path = vim/pack/plugins/start/govim
+	url = https://github.com/govim/govim.git
+[submodule "vim/pack/plugins/start/vim-gutentags"]
+	path = vim/pack/plugins/start/vim-gutentags
+	url = git@github.com:ludovicchabant/vim-gutentags

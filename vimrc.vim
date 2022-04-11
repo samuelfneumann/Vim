@@ -3,7 +3,23 @@ set termencoding=utf-8 " The encoding to use to type and display
 set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
 set title " Set filename in window title bar
 
+" Timeout for nex-key-press in maps
 set timeoutlen=300
+
+" Wrte swap file only after half a second of inactivity
+set updatetime=500
+
+" Delay for popups
+set balloondelay=250
+
+" Set popup options
+if has("patch-8.1.1904")
+	set completeopt+=popup
+	set completepopup=align:menu,border:off,highlight:Pmenu
+endif
+
+" Allow the sign column for quickfixes
+set signcolumn=yes
 
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
@@ -171,21 +187,26 @@ set rulerformat=%Y\ %=(%l,%c)%V%p%% " Disappears if statusline is on
 " Lightline settings -------------------------------------------------------{{{
 " If weird things happen, place this before setting the colourscheme
 if has('termguicolors') && s:darwin && &termguicolors
-	let g:lightline = {
-				\ 'colorscheme': 'monterey',
-				\ }
+	let s:colours = 'monterey'
 elseif has('termguicolors') && s:linux && &termguicolors
-	let g:lightline = {
-				\ 'colorscheme': 'ubuntu',
-				\ }
+	let s:colours = 'ubuntu'
 else
-	" If not using termguicolours, use the terminal colours by default
-	" (monterey and ubuntu themes also do this, but using termcolours to be
-	" explicit)
-	let g:lightline = {
-				\ 'colorscheme': 'termcolours',
-				\ }
+	let s:colours = 'termcolours'
 endif
+
+" Set the lightline textual elements
+let g:lightline = {
+			\ 'colorscheme': s:colours,
+			\ 'active': {
+				\ 'left': [ ['mode', 'paste'],
+				\			['readonly', 'filename' ],
+				\			['modified'] ]
+				\ },
+				\ 'component': {
+					\ },
+				\ 'component_function': {
+					\ },
+					\ }
 
 " Enable the lightline status and tab lines
 let g:lightline.enable = {
@@ -332,6 +353,7 @@ augroup ModifiedExpandTab
 	autocmd!
 	autocmd FileType python setlocal expandtab " PEP8 says to expand tabs
 	autocmd FileType julia setlocal expandtab " Julia should have expanded tabs
+	autocmd FileType nim setlocal expandtab
 augroup end
 
 set smarttab
@@ -598,23 +620,35 @@ endif
 " }}}
 
 " Vim-Go -------------------------------------------------------------------{{{
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 0
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
+" Using GoVim rather than Vim-Go
+" let g:go_highlight_operators = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_function_parameters = 0
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_types = 1
 
-" Change the documentation maps to 'doc', since 'K' is remapped below
-" Also, we need to disable 'K' to open documentation, since plugins are loaded
-" after this file. If we leave this setting enabled, then Vim-Go will overwrite
-" our mapping (below) of 'K' to join the current line with  that above.
-let g:go_doc_keywordprg_enabled = 0
-augroup Documentation
+" " Change the documentation maps to 'doc', since 'K' is remapped below
+" " Also, we need to disable 'K' to open documentation, since plugins are loaded
+" " after this file. If we leave this setting enabled, then Vim-Go will overwrite
+" " our mapping (below) of 'K' to join the current line with  that above.
+" let g:go_doc_keywordprg_enabled = 0
+" augroup Documentation
+"     autocmd!
+"     autocmd FileType go nnoremap doc :GoDoc<cr>
+"     autocmd FileType go vnoremap doc :GoDoc<cr>
+" augroup end
+
+" " Enable gopls
+" let g:go_def_mode = 'gopls'
+" let g:go_info_mode = 'gopls'
+" }}}
+
+" GoVim --------------------------------------------------------------------{{{
+augroup Go
 	autocmd!
-	autocmd FileType go nnoremap doc :GoDoc<cr>
-	autocmd FileType go vnoremap doc :GoDoc<cr>
+	autocmd! BufEnter,BufNewFile *.go,go.mod syntax on
+	autocmd BufLeave *.go,go.mod syntax off
 augroup end
-
 " }}}
 
 " }}}
