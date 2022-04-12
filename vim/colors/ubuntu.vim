@@ -234,6 +234,7 @@ call s:h("juliaColon", s:slate, "", "")
 call s:h("juliaComma", s:slate, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
+
 " Python-mode
 call s:h("pythonDecoratorName", s:indigo, "", "")
 call s:h("pythonExClass", s:orange, "", "")
@@ -250,6 +251,7 @@ call s:h("pythonClassParameters", s:slate, "", "")
 call s:h("pythonInclude", s:orange, "", "")
 call s:h("pythonConditional", s:purple, "", "")
 call s:h("pythonStrFormat", s:mint, "", "")
+
 "Go-vim
 call s:h("goDeclType", s:slate, "", "")
 " call s:h("goFloats", s:cyan, "", "")
@@ -269,6 +271,12 @@ call s:h("goPointerOperator", s:cyan, "", "")
 call s:h("goOperator", s:cyan, "", "")
 " }
 
+" Nim
+call s:h("nimKeyword", s:yellow, "", "")
+call s:h("nimBuiltin", s:pink, "", "")
+call s:h("nimFunction", s:cyan, "", "")
+call s:h("nimNumber", s:orange, "", "")
+" }
 
 
 " Git {

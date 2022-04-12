@@ -231,11 +231,12 @@ call s:h("diffAdded", s:green, "", "")
 call s:h("diffRemoved", s:red, "", "")
 " Julia-vim
 call s:h("juliaFunctionCall", s:blue, "", "")
-call s:h("juliaSemicolon", s:mint, "", "")
-call s:h("juliaColon", s:mint, "", "")
-call s:h("juliaComma", s:mint, "", "")
+call s:h("juliaSemicolon", s:slate, "", "")
+call s:h("juliaColon", s:slate, "", "")
+call s:h("juliaComma", s:slate, "", "")
 call s:h("juliaParDelim", s:white, "", "")
 call s:h("juliaRangeKeyword", s:yellow, "", "")
+
 " Python-mode
 call s:h("pythonDecoratorName", s:indigo, "", "")
 call s:h("pythonExClass", s:orange, "", "")
@@ -247,13 +248,14 @@ call s:h("pythonBuiltinType", s:yellow, "", "")
 call s:h("pythonBuiltinFunc", s:blue, "", "")
 call s:h("pythonFunction", s:blue, "", "")
 call s:h("pythonExtraOperator", s:cyan, "", "")
-call s:h("pythonParam", s:mint, "", "")
-call s:h("pythonClassParameters", s:mint, "", "")
+call s:h("pythonParam", s:slate, "", "")
+call s:h("pythonClassParameters", s:slate, "", "")
 call s:h("pythonInclude", s:orange, "", "")
 call s:h("pythonConditional", s:purple, "", "")
 call s:h("pythonStrFormat", s:mint, "", "")
+
 "Go-vim
-call s:h("goDeclType", s:mint, "", "")
+call s:h("goDeclType", s:slate, "", "")
 " call s:h("goFloats", s:cyan, "", "")
 " call s:h("goSignedInts", s:cyan, "", "")
 " call s:h("goUnignedInts", s:cyan, "", "")
@@ -271,6 +273,12 @@ call s:h("goPointerOperator", s:cyan, "", "")
 call s:h("goOperator", s:cyan, "", "")
 " }
 
+" Nim
+call s:h("nimKeyword", s:yellow, "", "")
+call s:h("nimBuiltin", s:pink, "", "")
+call s:h("nimFunction", s:cyan, "", "")
+call s:h("nimNumber", s:orange, "", "")
+" }
 
 
 " Git {
@@ -318,6 +326,3 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
-
-
-
