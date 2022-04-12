@@ -348,20 +348,31 @@ set cursorline
 "}}}
 
 " Tabbing ------------------------------------------------------------------{{{
-set noexpandtab
-augroup ModifiedExpandTab
-	autocmd!
-	autocmd FileType python setlocal expandtab " PEP8 says to expand tabs
-	autocmd FileType julia setlocal expandtab " Julia should have expanded tabs
-	autocmd FileType nim setlocal expandtab
-augroup end
 
+" Sets the tab levels for nim files
+function SetNimTabbing()
+	set tabstop=2 " Set tab width to 2 columns
+	set softtabstop=2
+	set shiftwidth=2 " Set shift width to 2 spaces
+endfunction
+
+set noexpandtab
 set smarttab
 set tabstop=4 " Set tab width to 4 columns
 set softtabstop=4
 set shiftwidth=4 " Set shift width to 4 spaces
 set autoindent
 set smartindent
+augroup ModifiedExpandTab
+	autocmd!
+	autocmd FileType python setlocal expandtab " PEP8 says to expand tabs
+	autocmd FileType julia setlocal expandtab " Julia should have expanded tabs
+
+	" Really, the nim.vim extension handles this, but explicitly set these
+	" values in case the nim.vim extension is not installed
+	autocmd FileType nim setlocal expandtab
+	autocmd FileType nim call SetNimTabbing()
+augroup end
 "}}}
 
 " File Type Detection ------------------------------------------------------{{{
