@@ -64,7 +64,7 @@ endif
 " Set the theme
 if s:linux
 	colorscheme ubuntu
-elseif s:darwin && LightOrDark()
+elseif s:darwin && !LightOrDark()
 	colorscheme montereylight
 elseif s:darwin
 	colorscheme montereydark
