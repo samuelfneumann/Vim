@@ -37,7 +37,7 @@ function LightOrDark()
 
 		" Set if OS appearance is light or dark
 		let light_not_dark=1
-		if v:shell_error != 0
+		if v:shell_error != 0 || output ==? "Light"
 			" Light theme
 			let light_not_dark=1
 		else
@@ -64,7 +64,7 @@ endif
 " Set the theme
 if s:linux
 	colorscheme ubuntu
-elseif s:darwin && !LightOrDark()
+elseif s:darwin && LightOrDark()
 	colorscheme montereylight
 elseif s:darwin
 	colorscheme montereydark
