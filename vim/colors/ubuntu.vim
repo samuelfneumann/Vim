@@ -273,6 +273,7 @@ call s:h("goOperator", s:cyan, "", "")
 
 " Nim
 call s:h("nimKeyword", s:yellow, "", "")
+call s:h("nimSpecialVar", s:yellow, "", "")
 call s:h("nimBuiltin", s:pink, "", "")
 call s:h("nimFunction", s:cyan, "", "")
 call s:h("nimNumber", s:orange, "", "")
