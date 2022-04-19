@@ -238,6 +238,7 @@ call s:h("juliaRangeKeyword", s:yellow, "", "")
 
 " Python-mode
 call s:h("pythonDecoratorName", s:indigo, "", "")
+call s:h("pythonException", s:indigo, "", "")
 call s:h("pythonExClass", s:orange, "", "")
 call s:h("pythonOperator", s:cyan, "", "")
 call s:h("pythonClass", s:yellow, "", "")
