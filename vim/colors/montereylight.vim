@@ -23,7 +23,7 @@ let s:mint        = { "gui": "#02c7be", "cterm": "14" }
 let s:white       = { "gui": "#ffffff", "cterm": "15" }
 
 let s:fg          = s:black
-let s:bg          = { "gui": "#ececec", "cterm": "none" }
+let s:bg          = { "gui": "#ededec", "cterm": "none" }
 
 let s:comment_fg  = { "gui": "#8e8e93", "cterm": "7", "attr": "" }
 let s:linenr_bg   = s:bg
@@ -37,7 +37,7 @@ let s:selection   = { "gui": "#d4d4d4", "cterm": "7" }
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
-let s:pmenu_bg    = { "gui": "#ececec", "cterm": "none" }
+let s:pmenu_bg    = { "gui": "#e4e4e2", "cterm": "none" }
 let s:pmenu_fg    = s:fg
 let s:pmenu_selection   = s:pink
 
@@ -238,6 +238,7 @@ call s:h("juliaRangeKeyword", s:yellow, "", "")
 
 " Python-mode
 call s:h("pythonDecoratorName", s:indigo, "", "")
+call s:h("pythonException", s:indigo, "", "")
 call s:h("pythonExClass", s:orange, "", "")
 call s:h("pythonOperator", s:cyan, "", "")
 call s:h("pythonClass", s:yellow, "", "")
