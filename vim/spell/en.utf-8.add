@@ -102,3 +102,6 @@ runtime
 vectorize
 RL
 stepsize
+reparameterization
+soft
+reparameterized

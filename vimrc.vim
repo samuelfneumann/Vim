@@ -803,6 +803,12 @@ nnoremap gA g_i
 nnoremap gI _a
 " }}}
 
+" Join and move lines ------------------------------------------------------{{{
+nnoremap doc K
+vnoremap K <nop>
+nnoremap K kJ
+"}}}
+
 " Remap the <esc> key ------------------------------------------------------{{{
 inoremap jk <esc>
 vnoremap jk <esc>
@@ -911,12 +917,6 @@ nnoremap <c-n> <c-u>
 nnoremap <c-f> <c-f>
 nnoremap <c-d> <nop>
 nnoremap <c-g> <c-d>
-"}}}
-
-" Join and move lines ------------------------------------------------------{{{
-nnoremap doc K
-vnoremap K <nop>
-nnoremap K kJ
 "}}}
 
 " Place/remove semi-colon at line end without moving the cursor ------------{{{
