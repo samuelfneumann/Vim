@@ -37,7 +37,7 @@ let s:selection   = { "gui": "#4b3c53", "cterm": "8" }
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
-let s:pmenu_bg    = { "gui": "#292332", "cterm": "none" }
+let s:pmenu_bg    = { "gui": "#362e42", "cterm": "none" }
 let s:pmenu_fg    = s:fg
 let s:pmenu_selection   = s:pink
 
