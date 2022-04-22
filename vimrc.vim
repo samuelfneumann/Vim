@@ -683,8 +683,16 @@ let g:gutentags_plus_switch = 1
 
 " Maps ---------------------------------------------------------------------{{{
 
+" Place/remove semi-colon at line end without moving the cursor
+nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
+nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
+
+" Quit all with <c-q>
 noremap <c-q> :execute "normal! :qall\r"<cr>
 tnoremap <c-q> :execute "normal! :qall\r"<cr>
+
+" Backspace with z
+nnoremap <BS> hx
 
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -919,11 +927,6 @@ nnoremap <c-d> <nop>
 nnoremap <c-g> <c-d>
 "}}}
 
-" Place/remove semi-colon at line end without moving the cursor ------------{{{
-nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
-nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
-" }}}
-
 " Remove arrow keys and esc ------------{{{
 inoremap <esc> <nop>
 vnoremap <esc> <nop>
@@ -1056,20 +1059,6 @@ augroup netrw_mapping
 	autocmd!
 	autocmd filetype netrw call NetrwMapping()
 augroup end
-" }}}
-
-" NERDTree -----------------------------------------------------------------{{{
-" nnoremap <c-d> :NERDTreeMirror<cr>:NERDTreeToggle<cr>
-" nnoremap <silent> <leader><c-d> :NERDTreeFind<cr>
-
-" let g:NERDTreeMinimalUI = 1
-" let g:NERDTreeDirArrows = 0
-" let g:NERDTreeAutoDeleteBuffer = 1
-
-" autocmd FileType nerdtree nmap <buffer> l o
-" autocmd FileType nerdtree nmap <buffer> h p
-" autocmd FileType nerdtree nmap c jx
-" autocmd FileType nerdtree nmap . I
 " }}}
 
 "}}}
