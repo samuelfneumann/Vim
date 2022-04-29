@@ -115,10 +115,26 @@ set showcmd " Show partial commands you type in last line
 set showmode " Show mode in last line
 " set mouse=a " Allow mouse usage
 set ttyfast " Increase scroll speed
-set undofile " Use an undo file
 set magic " Use magic for escape characters
 set scrolloff=5 " Scroll 5 lines past cursor with mouse
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
+
+" Undo files ---------------------------------------------------------------{{{
+" Create the undo directory
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+
+set undofile
+
+" You may want to add this to your crontab to ensure that the vim undo files
+" get cleaned up after 90 days
+" # m  h  dom mon dow   command
+"   00 00 *   *   3     find /home/samuel/.vim/undo-dir -type f -mtime +90 -delete
+"}}}
 
 " Terminal settings --------------------------------------------------------{{{
 augroup TerminalSettings
