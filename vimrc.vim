@@ -128,6 +128,7 @@ if !isdirectory($HOME."/.vim/undo-dir")
     call mkdir($HOME."/.vim/undo-dir", "", 0700)
 endif
 
+set undodir=~/.vim/undo-dir
 set undofile
 
 " You may want to add this to your crontab to ensure that the vim undo files
