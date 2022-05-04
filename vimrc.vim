@@ -1,26 +1,3 @@
-set fileencodings=utf-8,ucs-bom,latin1 " Encodings to try when opening file
-set termencoding=utf-8 " The encoding to use to type and display
-set encoding=utf-8 " Encoding to use inside of Vim (e.g. in buffers)
-set title " Set filename in window title bar
-
-" Timeout for nex-key-press in maps
-set timeoutlen=300
-
-" Wrte swap file only after half a second of inactivity
-set updatetime=500
-
-" Delay for popups
-set balloondelay=250
-
-" Set popup options
-if has("patch-8.1.1904")
-	set completeopt+=popup
-	set completepopup=align:menu,border:off,highlight:Pmenu
-endif
-
-" Allow the sign column for quickfixes
-set signcolumn=yes
-
 " Get the OS type
 let s:os = trim(system("uname")) " Get the OS name
 let s:darwin = s:os==?"Darwin"
@@ -110,14 +87,60 @@ let mapleader="-"
 let localleader='\'
 " }}}
 
+" Encodings to try when opening file
+set fileencodings=utf-8,ucs-bom,latin1
+
+" The encoding to use to type and display
+set termencoding=utf-8
+
+" Encoding to use inside of Vim (e.g. in buffers)
+set encoding=utf-8
+
+" Set filename in window title bar
+set title
+
+" Don't use vi compatability
 set nocompatible
-set showcmd " Show partial commands you type in last line
-set showmode " Show mode in last line
+
+" Show partial commands you type in last line
+set showcmd
+
+" Don't show mode in last line, we use lightline
+set noshowmode
+
 " set mouse=a " Allow mouse usage
-set ttyfast " Increase scroll speed
-set magic " Use magic for escape characters
-set scrolloff=5 " Scroll 5 lines past cursor with mouse
+
+" Increase scroll speed"
+set ttyfast
+
+" Use magic for escape characters
+set magic
+
+" Scroll 5 lines past cursor with mouse
+set scrolloff=5
+
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
+
+" Timeout for next-key-press in maps
+set timeoutlen=275
+
+" Wrte swap file only after half a second of inactivity
+set updatetime=500
+
+" Set popup options
+if has("patch-8.1.1904")
+	set completeopt+=popup
+	set completepopup=align:menu,border:off,highlight:Pmenu
+endif
+" Delay for popups
+set balloondelay=200
+
+" Allow the sign column for quickfixes
+set signcolumn=number
+
+" Wrap long lines
+set wrap
+
 
 " Undo files ---------------------------------------------------------------{{{
 " Create the undo directory
