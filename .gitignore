@@ -13,3 +13,5 @@ vim/.netrwhist
 **/*.un~
 **/*.DS_Store
 **/.tags
+vim/undo-dir/
+**/.tags.lock
