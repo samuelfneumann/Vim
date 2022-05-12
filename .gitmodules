@@ -46,3 +46,6 @@
 [submodule "vim/pack/plugins/start/gutentags_plus"]
 	path = vim/pack/plugins/start/gutentags_plus
 	url = git@github.com:skywind3000/gutentags_plus.git
+[submodule "vim/pack/plugins/start/vim-wayland-clipboard"]
+	path = vim/pack/plugins/start/vim-wayland-clipboard
+	url = git@github.com:jasonccox/vim-wayland-clipboard.git
