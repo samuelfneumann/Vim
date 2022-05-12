@@ -28,9 +28,6 @@
 [submodule "vim/pack/plugins/start/winresizer"]
 	path = vim/pack/plugins/start/winresizer
 	url = git@github.com:samuelfneumann/winresizer.git
-[submodule "vim/pack/plugins/start/python-vim"]
-	path = vim/pack/plugins/start/python-vim
-	url = git@github.com:samuelfneumann/python-vim.git
 [submodule "vim/pack/plugins/start/vim-toml"]
 	path = vim/pack/plugins/start/vim-toml
 	url = git@github.com:cespare/vim-toml.git
@@ -49,3 +46,9 @@
 [submodule "vim/pack/plugins/start/vim-wayland-clipboard"]
 	path = vim/pack/plugins/start/vim-wayland-clipboard
 	url = git@github.com:jasonccox/vim-wayland-clipboard.git
+[submodule "vim/pack/plugins/start/python-mode"]
+	path = vim/pack/plugins/start/python-mode
+	url = https://github.com/python-mode/python-mode.git
+[submodule "vim/pack/plugins/start/python-vim"]
+	path = vim/pack/plugins/start/python-vim
+	url = https://github.com/samuelfneumann/python-vim.git
