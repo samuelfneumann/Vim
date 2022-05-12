@@ -1,5 +1,4 @@
 " Textwidth ----------------------------------------------------------------{{{
-" Julia text width is 92 characters
 autocmd FileType go setlocal textwidth=79
 "}}}
 
@@ -12,4 +11,3 @@ set formatoptions-=l " Long lines should be broken in insert mode
 set formatoptions+=j " Remove comment leader when joining lines
 set formatoptions+=q " Allow formatting of comments with "gq"
 "}}}
-

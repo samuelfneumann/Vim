@@ -3,6 +3,7 @@ let s:os = trim(system("uname")) " Get the OS name
 let s:darwin = s:os==?"Darwin"
 let s:linux = s:os==?"Linux"
 
+
 " Functions -----------------------------------------------------------------{{{
 " LightOrDark returns if the operating system appearance on macOS is light
 " (true) or dark (false)
@@ -127,7 +128,7 @@ set timeoutlen=275
 " Wrte swap file only after half a second of inactivity
 set updatetime=500
 
-" Set popup options
+" Show infor for completion candidates in a popup menu
 if has("patch-8.1.1904")
 	set completeopt+=popup
 	set completepopup=align:menu,border:off,highlight:Pmenu
@@ -695,11 +696,7 @@ endif
 " }}}
 
 " GoVim --------------------------------------------------------------------{{{
-augroup Go
-	autocmd!
-	autocmd! BufEnter,BufNewFile *.go,go.mod syntax on
-	autocmd BufLeave *.go,go.mod syntax off
-augroup end
+
 " }}}
 
 " Gutentags ----------------------------------------------------------------{{{
