@@ -568,6 +568,11 @@ hi Conceal cterm=none gui=none
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_automatic = 0
 
+augroup LaTeX
+	autocmd!
+	autocmd filetype tex nnoremap <localleader>v :VimtexView<cr>
+augroup end
+
 let g:vimtex_compiler_method = "latexmk"
 
 " }}}
