@@ -720,6 +720,9 @@ let g:gutentags_plus_switch = 1
 
 " Maps ---------------------------------------------------------------------{{{
 
+" Go to textwidth column
+nnoremap <localleader>\| :execute "normal! _" . &textwidth . "l"<cr>
+
 " Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
