@@ -721,7 +721,12 @@ let g:gutentags_plus_switch = 1
 " Maps ---------------------------------------------------------------------{{{
 
 " Go to textwidth column
+onoremap <localleader>\| :execute "normal! _" . &textwidth . "l"<cr>
 nnoremap <localleader>\| :execute "normal! _" . &textwidth . "l"<cr>
+vnoremap <localleader>\| :<c-u>call ToLastCol()<cr>
+function ToLastCol()
+	execute "normal! gv_" . &textwidth . "l"
+endfunction
 
 " Place/remove semi-colon at line end without moving the cursor
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
