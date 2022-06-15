@@ -123,9 +123,9 @@ set scrolloff=5
 set backspace=indent,eol,start " Allow backspacing over auto indents etc.
 
 " Timeout for next-key-press in maps
-set timeoutlen=275
+set timeoutlen=300
 
-" Wrte swap file only after half a second of inactivity
+" Write swap file only after half a second of inactivity
 set updatetime=500
 
 " Show infor for completion candidates in a popup menu
@@ -142,6 +142,8 @@ set signcolumn=number
 " Wrap long lines
 set wrap
 
+" Set autocomplete options
+set completeopt=longest,menuone,preview
 
 " Undo files ---------------------------------------------------------------{{{
 " Create the undo directory
@@ -739,12 +741,9 @@ endfunction
 nnoremap <leader>; :execute "normal! mqA;\e`q"<cr>
 nnoremap <leader>;x :execute "normal! mq:s/;$//e\e`q"<cr>:nohlsearch<cr>
 
-" Quit all with <c-q>
-noremap <c-q> :execute "normal! :qall\r"<cr>
-tnoremap <c-q> :execute "normal! :qall\r"<cr>
-
-" Backspace with z
-nnoremap <BS> hx
+" Increment and decrements numbers
+nnoremap <leader>in <c-a>
+nnoremap <leader>dn <c-x>
 
 " Terminal navigation ----------------------------------------------------{{{
 " Open the terminal using -[tT]
@@ -990,25 +989,12 @@ noremap <Down> <nop>
 "}}}
 
 " Pmenu --------------------------------------------------------------------{{{
-" Use <c-j> and <c-k> to move through menu items
-" function! OmniPopup(action)
-"     if pumvisible()
-"         if a:action == 'j'
-"             return "\<C-N>"
-"         elseif a:action == 'k'
-"             return "\<C-P>"
-"         endif
-"     endif
-"     return a:action
-" endfunction
-
-" inoremap <c-j> <C-R>=OmniPopup('j')<CR>
-" inoremap <c-k> <C-R>=OmniPopup('k')<CR>
-
+" Use <c-j> and <c-k> to move through menu items and enter to select menu
+" items if and only if the pmenu is visible, otherwise use the regular
+" functionality of these keys
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
-
 " }}}
 
 " Netrw --------------------------------------------------------------------{{{
