@@ -191,7 +191,9 @@ set number
 
 " Auto read when files are changed outside vim -----------------------------{{{
 set autoread
-au CursorHold,FocusGained,BufEnter * checktime
+" silent! here ensure no wierdness happens when ctrl-f is pressed in command
+" mode.
+au CursorHold,FocusGained,BufEnter * silent! checktime
 ""}}}
 
 " On Save -----------------------------------------------------------------{{{
