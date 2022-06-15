@@ -130,7 +130,7 @@ call s:h("Question", s:purple, "", "")
 
 call s:h("Pmenu", s:pmenu_bg, s:fg, "")
 call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
-call s:h("PmenuSbar", "", s:orange, "")
+call s:h("PmenuSbar", "", s:indigo, "")
 call s:h("PmenuThumb", "", s:fg, "")
 
 call s:h("SpellBad", "", "", "underline")
