@@ -178,7 +178,7 @@ set showmatch " Show matching brackets when cursor is over them
 " Searching ----------------------------------------------------------------{{{
 set hlsearch " Use highlighting when searching
 set incsearch " Highlight matching characters as you type
-nnoremap -nhs :nohlsearch<cr>
+nnoremap <leader>nhs :nohlsearch<cr>
 
 " Ignore case when search term contains only lowercase letters. Only take case
 " into account when the search term has uppercase letters.
@@ -670,6 +670,7 @@ endif
 " }}}
 
 " Syntastic ----------------------------------------------------------------{{{
+" This is now covered by specific language plugins such as python-mode or govim
 "
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
@@ -723,6 +724,36 @@ let g:gutentags_ctags_tagfile = ".tags"
 " Change focus to quickfix window after search
 let g:gutentags_plus_switch = 1
 
+" }}}
+
+" Sub Mode --------------------------------------------------------------{{{
+let g:submode_always_show_submode = 1
+" }}}
+
+" Window Mode --------------------------------------------------------------{{{
+" With winresizer, this mode is obselete, since winresizer is better at
+" resizing windows than this is! This would be good for creating new windows,
+" but then a full mode is overkill
+"
+" call submode#enter_with('window', 'n', '', '<c-w>')
+" call submode#heave_with('window', 'n', '', '<esc>')
+" call submode#leave_with('window', 'n', '', 'jk')
+
+" for key in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+"             \'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+"     " Maps lowercase, uppercase, and <c-key>
+"     call submode#map('window', 'n', '', key, '<c-w>' . key)
+"     call submode#map('window', 'n', '', toupper(key), '<c-w>' . toupper(key))
+"     call submode#map('window', 'n', '', '<c-' . key . '>', '<c-w>' . '<c-' .  key . '>')
+" endfor
+
+" " Go through symbols. '|' not supported by submode
+" for key in ['=', '_', '+', '-', '<', '>']
+"     call submode#map('window', 'n', '', key, '<c-w>' . key)
+" endfor
+
+" Access window mode the old way using leader
+" nnoremap <leader>w <c-w>
 " }}}
 
 " }}}
