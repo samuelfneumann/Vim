@@ -52,3 +52,6 @@
 [submodule "vim/pack/plugins/start/vim-submode"]
 	path = vim/pack/plugins/start/vim-submode
 	url = git@github.com:kana/vim-submode.git
+[submodule "vim/pack/plugins/start/is.vim"]
+	path = vim/pack/plugins/start/is.vim
+	url = git@github.com:haya14busa/is.vim.git
