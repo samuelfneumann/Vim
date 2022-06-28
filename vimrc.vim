@@ -178,6 +178,7 @@ set showmatch " Show matching brackets when cursor is over them
 " Searching ----------------------------------------------------------------{{{
 set hlsearch " Use highlighting when searching
 set incsearch " Highlight matching characters as you type
+set shortmess-=S " Show the number of search matches at the bottom right
 nnoremap <leader>nhs :nohlsearch<cr>
 
 " Ignore case when search term contains only lowercase letters. Only take case
