@@ -890,8 +890,10 @@ noremap <leader>bls :ls<cr>
 "}}}
 
 " Line navigation ----------------------------------------------------------{{{
-nnoremap gA g_i
-nnoremap gI _a
+nnoremap ga g_i
+nnoremap gi _a
+nnoremap gl g_
+nnoremap gh _
 " }}}
 
 " Join and move lines ------------------------------------------------------{{{
