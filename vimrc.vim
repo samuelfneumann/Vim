@@ -868,10 +868,10 @@ noremap <c-l> <c-w>l
 " Pane splitting
 " - for horizontal split
 " \ for vertical split
-tnoremap <leader>sp- <c-w>:split<cr>
-nnoremap <leader>sp- :split<cr>
-tnoremap <leader>sp\ <c-w>:vsplit<cr>
-nnoremap <leader>sp\ :vsplit<cr>
+nnoremap <leader>- <c-w>:split<cr>
+nnoremap <leader>\ <c-w>:vsplit<cr>
+tnoremap <leader>- <c-w>:split<cr>
+tnoremap <leader>\ <c-w>:vsplit<cr>
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
