@@ -55,3 +55,6 @@
 [submodule "vim/pack/plugins/start/is.vim"]
 	path = vim/pack/plugins/start/is.vim
 	url = git@github.com:haya14busa/is.vim.git
+[submodule "vim/pack/plugins/start/vim-easycomplete"]
+	path = vim/pack/plugins/start/vim-easycomplete
+	url = git@github.com:jayli/vim-easycomplete.git

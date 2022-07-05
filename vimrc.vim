@@ -653,9 +653,13 @@ let g:winresizer_horiz_resize=3
 " Set spell check on
 set spell spelllang=en_ca
 
-" <leader>cs (correct spelling) corrects the last spelling mistake
-nnoremap <leader>fs mq[s1z=`q
-inoremap <leader>fs <esc>mq[s1z=`qa
+" <leader>bfs (fix backward spelling) corrects the last spelling mistake
+nnoremap <leader>fbs mq[s1z=`q
+inoremap <leader>fbs <esc>mq[s1z=`qa
+
+" <leader>ffs (fix forward spelling) corrects the next spelling mistake
+nnoremap <leader>ffs mq]s1z=`q
+inoremap <leader>ffs <esc>mq[s1z=`qa
 
 " Change the spelling highlight groups
 if g:colors_name ==? "default"
@@ -757,6 +761,60 @@ let g:submode_always_show_submode = 1
 " nnoremap <leader>w <c-w>
 " }}}
 
+" Vim-EasyComplete
+" Enable tabnine AI completion
+let g:easycomplete_tabnine_enable=1
+let g:easycomplete_tabnine_config = {
+			\ 'line_limit': 1000,
+			\ 'max_num_result': 3,
+			\ }
+let g:easycomplete_menu_skin = {
+	      \   "buf": {
+	      \      "kind":"⚯",
+      \      "menu":"[B]",
+      \    },
+      \   "snip": {
+	      \      "kind":"<>",
+      \      "menu":"[S]",
+      \    },
+      \   "dict": {
+	      \      "kind":"d",
+      \      "menu":"[D]",
+      \    },
+      \   "tabnine": {
+	      \      "kind":"",
+      \    },
+      \ }
+
+let g:easycomplete_lsp_type_font = {
+	      \ 'text' : '⚯',         'method':'m',    'function': 'f',
+      \ 'constructor' : '≡',  'field': 'f',    'default':'d',
+      \ 'variable' : '𝘤',     'class':'c',     'interface': 'i',
+      \ 'module' : 'm',       'property': 'p', 'unit':'u',
+      \ 'value' : '𝘧',        'enum': 'e',     'keyword': 'k',
+      \ 'snippet': '𝘧',       'color': 'c',    'file':'f',
+      \ 'reference': 'r',     'folder': 'f',   'enummember': 'e',
+      \ 'constant':'c',       'struct': 's',   'event':'e',
+      \ 'typeparameter': 't', 'var': 'v',      'const': 'c',
+      \ 'operator':'o',
+      \ 't':'𝘵',   'f':'𝘧',   'c':'𝘤',   'm':'𝘮',   'u':'𝘶',   'e':'𝘦',
+      \ 's':'𝘴',   'v':'𝘷',   'i':'𝘪',   'p':'𝘱',   'k':'𝘬',   'r':'𝘳',
+      \ 'o':"𝘰",   'l':"𝘭",   'a':"𝘢",   'd':'𝘥',
+      \ }
+
+let g:easycomplete_sign_text = {
+      \   'error':       "◉",
+      \   'warning':     "▲",
+      \   'information': '◎',
+      \   'hint':        '▧'
+      \ }
+
+nnoremap <silent> nd :EasyCompleteNextDiagnostic<CR>
+nnoremap <silent> pd :EasyCompletePreviousDiagnostic<CR>
+noremap gd :EasyCompleteGotoDefinition<CR>
+noremap gr :EasyCompleteReference<CR>
+
+" }}}
 " }}}
 
 " Maps ---------------------------------------------------------------------{{{
@@ -871,7 +929,12 @@ noremap <c-l> <c-w>l
 nnoremap <leader>- <c-w>:split<cr>
 nnoremap <leader>\ <c-w>:vsplit<cr>
 tnoremap <leader>- <c-w>:split<cr>
-tnoremap <leader>\ <c-w>:vsplit<cr>
+nnoremap <leader>\ <c-w>:vsplit<cr>
+
+tnoremap <leader>sp- <c-w>:split<cr>
+nnoremap <leader>sp- :split<cr>
+tnoremap <leader>sp\ <c-w>:vsplit<cr>
+nnoremap <leader>sp\ :vsplit<cr>
 "}}}
 
 " Buffer navigation --------------------------------------------------------{{{
@@ -894,6 +957,8 @@ nnoremap ga g_i
 nnoremap gi _a
 nnoremap gl g_
 nnoremap gh _
+nnoremap gk gg
+nnoremap gj G
 " }}}
 
 " Join and move lines ------------------------------------------------------{{{
@@ -913,14 +978,14 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 
-" Marks --------------------------------------------------------------------{{{
-" Remap jump-to-mark to be closer to make-mark map
-vnoremap ,, ``
-vnoremap , `
-nnoremap , `
-nnoremap ,, ``
-nnoremap ` ,
-" }}}
+" " Marks --------------------------------------------------------------------{{{
+" " Remap jump-to-mark to be closer to make-mark map
+" vnoremap ,, ``
+" vnoremap , `
+" nnoremap , `
+" nnoremap ,, ``
+" nnoremap ` ,
+" " }}}
 
 " Wrap text in `, ", ', (), [], {}, or $$ ----------------------------------{{{
 
