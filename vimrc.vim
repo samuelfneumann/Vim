@@ -762,32 +762,41 @@ let g:submode_always_show_submode = 1
 " }}}
 
 " Vim-EasyComplete
+nnoremap <silent> <leader>nd :EasyCompleteNextDiagnostic<CR>
+nnoremap <silent> <leader>pd :EasyCompletePreviousDiagnostic<CR>
+nnoremap gd :EasyCompleteGotoDefinition<CR>
+nnoremap gr :EasyCompleteReference<CR>
+
+let g:easycomplete_tab_trigger = ""
+
 " Enable tabnine AI completion
-let g:easycomplete_tabnine_enable=1
+let g:easycomplete_tabnine_enable=0
 let g:easycomplete_tabnine_config = {
 			\ 'line_limit': 1000,
 			\ 'max_num_result': 3,
 			\ }
+
 let g:easycomplete_menu_skin = {
-	      \   "buf": {
-	      \      "kind":"⚯",
+	  \   "buf": {
+	  \      "kind":"⚯",
       \      "menu":"[B]",
       \    },
       \   "snip": {
-	      \      "kind":"<>",
+	  \      "kind":"<>",
       \      "menu":"[S]",
       \    },
       \   "dict": {
-	      \      "kind":"d",
+	  \      "kind":"d",
       \      "menu":"[D]",
       \    },
       \   "tabnine": {
-	      \      "kind":"",
+	  \      "kind":"",
+	  \      "menu": "[TN]",
       \    },
       \ }
 
 let g:easycomplete_lsp_type_font = {
-	      \ 'text' : '⚯',         'method':'m',    'function': 'f',
+	  \ 'text' : '⚯',         'method':'m',    'function': 'f',
       \ 'constructor' : '≡',  'field': 'f',    'default':'d',
       \ 'variable' : '𝘤',     'class':'c',     'interface': 'i',
       \ 'module' : 'm',       'property': 'p', 'unit':'u',
@@ -808,11 +817,6 @@ let g:easycomplete_sign_text = {
       \   'information': '◎',
       \   'hint':        '▧'
       \ }
-
-nnoremap <silent> nd :EasyCompleteNextDiagnostic<CR>
-nnoremap <silent> pd :EasyCompletePreviousDiagnostic<CR>
-noremap gd :EasyCompleteGotoDefinition<CR>
-noremap gr :EasyCompleteReference<CR>
 
 " }}}
 " }}}

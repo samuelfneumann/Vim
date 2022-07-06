@@ -37,7 +37,8 @@ let s:selection   = s:darkgray
 let s:vertsplit   = s:gray
 let s:gutter_bg   = s:bg
 
-let s:pmenu_bg    = { "gui": "#2c2c2c", "cterm": "0" }
+let s:pmenu_fg    = s:fg
+let s:pmenu_bg    = s:linenr_fg
 let s:pmenu_selection   = s:orange
 
 " Highlight trailing whitespace
@@ -128,10 +129,10 @@ call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
 
-call s:h("Pmenu", s:pmenu_bg, s:fg, "")
+call s:h("Pmenu", s:pmenu_fg, s:pmenu_bg, "")
 call s:h("PmenuSel", s:fg, s:pmenu_selection, "")
-call s:h("PmenuSbar", "", s:indigo, "")
-call s:h("PmenuThumb", "", s:fg, "")
+call s:h("PmenuSbar", "", s:pmenu_selection, "")
+call s:h("PmenuThumb", "", s:pmenu_bg, "")
 
 call s:h("SpellBad", "", "", "underline")
 call s:h("SpellCap", s:blue, "", "")
