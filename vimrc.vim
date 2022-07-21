@@ -3,6 +3,9 @@ let s:os = trim(system("uname")) " Get the OS name
 let s:darwin = s:os==?"Darwin"
 let s:linux = s:os==?"Linux"
 
+" Allow modifyOtherKeys -- can't get this to work in foot terminal
+" let &t_TI = "\<esc>[>4;2m"
+" let &t_TE = "\<esc>[>4;m"
 
 " Functions -----------------------------------------------------------------{{{
 " LightOrDark returns if the operating system appearance on macOS is light
@@ -50,7 +53,7 @@ endif
 
 " Cursor changes in insert mode to a bar
 let dynamic_cursor = 1
-if dynamic_cursor && &term =~ "xterm\\|rxvt"
+if dynamic_cursor && &term =~ "xterm\\|rxvt\\|foot"
 	" let &t_SI = "\<Esc>]12;orange\x7"
 	let &t_SI .= "\<Esc>[6 q"
 	" let &t_EI = "\<Esc>]12;red\x7"
@@ -503,21 +506,6 @@ let g:julia_spellcheck_docstrings=1
 
 "}}}
 
-" Julia-formatter Options --------------------------------------------------{{{
-augroup JuliaFormatter
-	autocmd!
-	" Remap = to use JuliaFormatter.vim
-	autocmd FileType julia nnoremap =G :.,$JuliaFormatterFormat<cr>
-	autocmd FileType julia nnoremap = :.,.JuliaFormatterFormat<cr>
-	autocmd FileType julia vnoremap = :JuliaFormatterFormat<cr>
-augroup end
-let g:JuliaFormatter_options = {
-			\ 'style' : 'blue',
-			\ }
-" let g:JuliaFormatter_always_launch_server=1
-let g:JuliaFormatter_use_sysimage=1
-" }}}
-
 " UltiSnips Options --------------------------------------------------------{{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>" " Next snippet arg
@@ -579,7 +567,11 @@ augroup LaTeX
 augroup end
 
 let g:vimtex_compiler_method = "latexmk"
-
+let g:vimtex_compiler_latexmk = {
+			\'options': [
+				\'--shell-escape'
+			\],
+\}
 " }}}
 
 " NerdCommenter ------------------------------------------------------------{{{
@@ -796,13 +788,13 @@ let g:easycomplete_menu_skin = {
       \ }
 
 let g:easycomplete_lsp_type_font = {
-	  \ 'text' : '⚯',         'method':'m',    'function': 'f',
+	  \ 'text' : '',         'method':'m',    'function': 'f',
       \ 'constructor' : '≡',  'field': 'f',    'default':'d',
       \ 'variable' : '𝘤',     'class':'c',     'interface': 'i',
       \ 'module' : 'm',       'property': 'p', 'unit':'u',
       \ 'value' : '𝘧',        'enum': 'e',     'keyword': 'k',
-      \ 'snippet': '𝘧',       'color': 'c',    'file':'f',
-      \ 'reference': 'r',     'folder': 'f',   'enummember': 'e',
+      \ 'snippet': '𝘧',       'color': 'c',    'file':'',
+      \ 'reference': 'r',     'folder': '',   'enummember': 'e',
       \ 'constant':'c',       'struct': 's',   'event':'e',
       \ 'typeparameter': 't', 'var': 'v',      'const': 'c',
       \ 'operator':'o',
@@ -824,8 +816,8 @@ let g:easycomplete_sign_text = {
 " Maps ---------------------------------------------------------------------{{{
 
 " Go to textwidth column
-onoremap <localleader>\| :execute "normal! _" . &textwidth . "l"<cr>
-nnoremap <localleader>\| :execute "normal! _" . &textwidth . "l"<cr>
+onoremap <localleader>\| :execute "normal! 0" . &textwidth . "l"<cr>
+nnoremap <localleader>\| :execute "normal! 0" . &textwidth . "l"<cr>
 vnoremap <localleader>\| :<c-u>call ToLastCol()<cr>
 function ToLastCol()
 	execute "normal! gv_" . &textwidth . "l"
@@ -944,16 +936,17 @@ nnoremap <leader>sp\ :vsplit<cr>
 " Buffer navigation --------------------------------------------------------{{{
 tnoremap <leader>bd <c-w>:bd
 nnoremap <leader>bd :bd
-" tnoremap <c-i> <c-w>:bnext<cr> " Not sure why but this blocks tab auto-complete in the terminal
-" noremap <c-i> :bnext<cr>
-" tnoremap <c-u> <c-w>:bprev<cr>
-" noremap <c-u> :bprev<cr>
+tnoremap <leader>i <c-w>:bnext<cr>
+noremap <leader>i :bnext<cr>
+tnoremap <leader>u <c-w>:bprev<cr>
+noremap <leader>u :bprev<cr>
 " tnoremap <leader><c-i> <c-w>:bfirst<cr>
 " noremap <leader><c-i> :bfirst<cr>
 " tnoremap <leader><c-u> <c-w>:blast<cr>
 " noremap <leader><c-u> :blast<cr>
 tnoremap <leader>bls <c-w>:ls<cr>
 noremap <leader>bls :ls<cr>
+
 "}}}
 
 " Line navigation ----------------------------------------------------------{{{
@@ -961,8 +954,11 @@ nnoremap ga g_i
 nnoremap gi _a
 nnoremap gl g_
 nnoremap gh _
-nnoremap gk gg
-nnoremap gj G
+
+vnoremap ga g_i
+vnoremap gi _a
+vnoremap gl g_
+vnoremap gh _
 " }}}
 
 " Join and move lines ------------------------------------------------------{{{
